@@ -1,0 +1,544 @@
+.scroll-content {
+    background: var(--pageBackgroundColor);
+    padding: 0px !important;
+    margin-top: 56px;
+}
+
+.col {
+    padding: 0px;
+}
+
+.toolbar-background {
+    background: var(--pageBackgroundColor);
+}
+
+.pageHeadlineText {
+    background: linear-gradient(to right, #d0196c 0%, #772a88 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    font-size: var(--mainHeadlineText);
+    font-weight: var(--font-medium);
+    padding: 0px;
+    margin: 0px;
+}
+
+.noRecordFoundCard {
+    box-shadow: var(--shadow1);
+    display: flex;
+    width: 100%;
+    padding: 15px;
+    background: var(--pageBackgroundColor);
+    text-align: center;
+    justify-content: center;
+    h2 {
+        font-size: var(--subHeadline);
+        font-weight: var(--font-regular);
+        margin-bottom: 0px;
+    }
+}
+
+.leaveSummaryMainInfo {
+    padding: 30px;
+    .leaveSummaryDropdown {
+        width: 30%;
+        display: inline-block;
+        margin-bottom: 30px;
+        .item-select {
+            padding: 0px;
+            border: 1px solid var(--inputBorderColor);
+            border-radius: 3px;
+            --padding-start: 0px !important;
+            --ion-safe-area-left: 0px !important;
+            --padding-end: 0px !important;
+            --border-width: 0px !important;
+            --border-color: transparent !important;
+            --ion-item-background: transparent !important;
+            --ion-background-color: transparent !important;
+            cursor: pointer;
+            &:hover {
+                background: var(--pageBackgroundColor) !important;
+                --ion-item-background: var(--pageBackgroundColor) !important;
+                --ion-background-color: var(--pageBackgroundColor) !important;
+                --background-hover: var(--pageBackgroundColor) !important;
+                --background-activated: var(--pageBackgroundColor) !important;
+                --background-focused: var(--pageBackgroundColor) !important;
+                --background: var(--pageBackgroundColor) !important;
+            }
+            .label {
+                padding-left: 16px;
+                color: var(--blackColor);
+            }
+            ion-select {
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+    }
+    .leaveSummaryDetails {
+        width: 18%;
+        float: right;
+        margin-top: 15px;
+        .button {
+            --background: var(--backgroundGradient);
+            border-radius: 4px;
+            text-transform: capitalize;
+            letter-spacing: .4px;
+            font-weight: 400;
+            &:hover {
+                --background: var(--backgroundGradient);
+                --background-focused: var(--backgroundGradient);
+                --background-hover: var(--backgroundGradient);
+            }
+        }
+    }
+    .leaveSummaryCard {
+        -webkit-box-shadow: var(--shadow1);
+        -moz-box-shadow: var(--shadow1);
+        box-shadow: var(--shadow1);
+        display: flex;
+        width: 100%;
+        position: relative;
+        margin-bottom: 20px;
+        border-radius: 3px;
+        border-left: 3px solid var(--calendarAppliedLeave);
+        padding: 15px;
+        cursor: pointer;
+        &.flexi {
+            border-left: 3px solid var(--calendarAppliedLeave);
+        }
+        &.compensatory {
+            border-left: 3px solid var(--calendarAppliedLeave);
+        }
+        &.outOfOffice {
+            border-left: 3px solid var(--tableOutOfOffice);
+        }
+        &.swipeMiss {
+            border-left: 3px solid var(--calendarSwipeMiss);
+        }
+        &.workFromHome {
+            border-left: 3px solid var(--tableWorkFromHome);
+        }
+        &.meetingOutOfOffice {
+            border-left: 3px solid var(--tableOutOfOffice);
+        }
+        &.privilege {
+            border-left: 3px solid var(--calendarAppliedLeave);
+        }
+        &.adoption {
+            border-left: 3px solid var(--calendarAppliedLeave);
+        }
+        &.bereavement {
+            border-left: 3px solid var(--calendarAppliedLeave);
+        }
+        &.lossPay {
+            border-left: 3px solid var(--calendarAppliedLeave);
+        }
+        &.optional {
+            border-left: 3px solid var(--calendarOptionalHoliday);
+        }
+        &.paternity {
+            border-left: 3px solid var(--calendarAppliedLeave);
+        }
+        &.scheduled {
+            border-left: 3px solid var(--calendarAppliedLeave);
+        }
+        &.userCancelledLeave {
+            background: var(--userCancelledLeave);
+            border-left: 3px solid var(--userCancelledLeave);
+            div {
+                h5,
+                h3,
+                h4 {
+                    color: var(--font-color-white);
+                    -webkit-text-fill-color: #fff !important;
+                }
+            }
+            .msgDivForCancelledLeave {
+                width: calc(100% + 3px);
+                display: block;
+                position: absolute;
+                top: 100%;
+                background: rgba(0, 0, 0, 0.75);
+                left: -3px;
+                padding: 12px;
+                border-left: 3px solid rgba(0, 0, 0, 0.75);
+                z-index: 1;
+                h5 {
+                    margin: 0px;
+                    color: var(--font-color-white);
+                    font-size: var(--paragraph-text);
+                    letter-spacing: 0.4px;
+                }
+            }
+            .infoIconForCancelledLeave {
+                position: absolute;
+                top: 50%;
+                left: 10px;
+                transform: translateY(-50%);
+                width: auto;
+                padding-left: 0px;
+                height: 30px;
+            }
+        }
+        div {
+            width: calc(100% - 3%);
+            padding-left: 3%;
+            &.leaveType {
+                h5 {
+                    font-size: var(--mainHeadlineText);
+                    font-weight: var(--font-light);
+                    margin: 0px;
+                    margin-bottom: 10px;
+                }
+                h3 {
+                    font-size: var(--mainHeadlineText);
+                    font-weight: var(--font-medium);
+                    margin: 0px;
+                }
+            }
+            h5 {
+                font-size: var(--subHeadline);
+                font-weight: var(--font-regular);
+                color: var(--gryTextColor);
+                letter-spacing: 0.4px;
+                margin: 0px;
+                margin-bottom: 10px;
+            }
+            h3 {
+                font-size: var(--cardHeadlineText);
+                font-weight: var(--font-medium);
+                margin: 0px;
+            }
+            h4 {
+                font-size: var(--subHeadline);
+                font-weight: var(--font-medium);
+                margin: 0px;
+            }
+        }
+        .moreOptions {
+            //width: 20%;
+            width: 20px;
+            vertical-align: middle;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 0;
+            cursor: pointer;
+            position: absolute;
+            margin: auto;
+            text-align: center;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            img {
+                height: 25px;
+                width: 20px;
+            }
+        }
+        .printBtn {
+            position: inherit;
+            width: auto;
+            right: 20px;
+            padding-left: 0;
+            button {
+                background: url(/../assets/icon/LMS-Print.png);
+                max-width: 30px;
+                min-width: 30px;
+                height: 30px;
+                -webkit-box-shadow: none;
+                box-shadow: none;
+                background-repeat: no-repeat;
+                background-size: 20px;
+                background-position: center center;
+                position: absolute;
+                top: 50%;
+                right: 45px;
+                margin: 0;
+                -webkit-transform: translateY(-50%);
+                transform: translateY(-50%);
+            }
+        }
+        .moreOptionList {
+            position: absolute;
+            top: 30px;
+            right: 6%;
+            width: 100px;
+            padding-left: 10px;
+            background: var(--lightSkyBlue);
+            border: 1px solid var(--blueBorder);
+            .list {
+                margin: 0px;
+                .item {
+                    background: transparent;
+                    padding-left: 0px;
+                    .item-inner {
+                        border-bottom: 0px;
+                        padding-right: 0px;
+                        .input-wrapper {
+                            padding-left: 0%;
+                            width: 100%;
+                        }
+                        .label {
+                            margin: 0px;
+                            font-size: var(--subHeadline);
+                            letter-spacing: 0.4px;
+                        }
+                    }
+                }
+            }
+        }
+        .approvalStatus {
+            /*Bug fixes by Bhushan/Mangesh : 05-03-2019*/
+            text-align: center;
+            border-radius: var(--roundedForImgCorner);
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            background-position: 0 0, 0 100%;
+            background-repeat: no-repeat;
+            -webkit-background-size: 100% 1px;
+            -moz-background-size: 100% 1px;
+            background-size: 100% 1px;
+            background-image: var(--backgroundGradient);
+            border-bottom-color: transparent;
+            width: auto;
+            background: linear-gradient( to right, var(--MediumVioletRed) 0%, var(--purpleColor) 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            display: inline-block;
+            &.approved {
+                background: linear-gradient( to right, var(--MediumVioletRed) 0%, var(--purpleColor) 100%) !important;
+                -webkit-background-clip: text !important;
+                -webkit-text-fill-color: transparent !important;
+                border-radius: var(--roundedForImgCorner);
+                text-align: center;
+            }
+        }
+        ion-icon[name="attach"] {
+            font-size: 26px;
+            color: var(--purpleColor);
+            position: absolute;
+            right: 47px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+    .pagination {
+        -webkit-box-shadow: 1px 10px 24px -8px rgba(0, 0, 0, 0.15);
+        -moz-box-shadow: 1px 10px 24px -8px rgba(0, 0, 0, 0.15);
+        box-shadow: 1px 10px 24px -8px rgba(0, 0, 0, 0.15);
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .paginationWrapper {
+        background: var(--pageBackgroundColor);
+        box-shadow: var(--shadow1);
+        border-radius: var(--roundedForImgCorner);
+        ion-row {
+            justify-content: center;
+            flex-wrap: nowrap;
+            position: relative;
+        }
+        ion-col {
+            width: 15%;
+            max-width: 50%;
+            display: inline-block;
+            flex-basis: auto;
+            flex-grow: unset;
+            &.firstBtn {
+                button {
+                    width: auto;
+                }
+            }
+            &.lastBtn {
+                button {
+                    width: auto;
+                }
+            }
+            button {
+                background-color: transparent;
+                box-shadow: none;
+                height: 42px;
+                width: 40px;
+                height: 40px;
+                text-align: center;
+                margin: 0 auto;
+                border-radius: 50%;
+                font-size: var(--paragraph-text-medium);
+                font-weight: var(--font-medium);
+                text-transform: uppercase;
+                .button-block {
+                    width: 100%;
+                }
+            }
+        }
+        .activated {
+            button {
+                color: #fff;
+                background: linear-gradient( to right, var(--MediumVioletRed) 0%, var(--purpleColor) 100%) !important;
+                border-radius: 50%;
+            }
+        }
+    }
+}
+
+
+/****************** Added CSS For Mobile View *******************/
+
+@media (max-width: 768px) {
+    // .content-ios {
+    //     .scroll-content {
+    //         display: inline-block;
+    //         width: 100%;
+    //     }
+    // }
+    .leaveSummaryMainInfo {
+        padding: 16px;
+        .leaveSummaryDetails {
+            width: 100%;
+            float: none;
+            margin-top: 0px;
+            margin-bottom: 10px;
+            ion-button {
+                width: 100%;
+            }
+        }
+    }
+    .leaveSummaryMainInfo .leaveSummaryDropdown {
+        width: 100%;
+        margin-bottom: 16px;
+        ion-list {
+            margin-bottom: 0px;
+        }
+    }
+    .leaveSummaryMainInfo .leaveSummaryCard {
+        display: block;
+        div {
+            width: 100%;
+            padding-left: 0px;
+            margin-bottom: 16px;
+            & h5 {
+                margin-bottom: 5px;
+            }
+        }
+        .moreOptions {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            width: auto;
+        }
+        .printBtn {
+            display: none;
+        }
+        .leaveStartDate,
+        .leaveEndDate {
+            display: inline-block;
+            width: 49%;
+        }
+        &.userCancelledLeave {
+            .infoIconForCancelledLeave {
+                position: absolute;
+                top: 75%;
+                left: auto;
+                transform: none;
+                width: auto;
+                padding-left: 0px;
+                right: 10px;
+                height: 30px;
+            }
+        }
+        ion-icon[name="attach"] {
+            right: 50px;
+            top: 25px;
+        }
+    }
+    .leaveSummaryMainInfo .paginationWrapper ion-col {
+        width: auto;
+        max-width: auto;
+        display: flex;
+        flex-basis: 0;
+        flex-grow: 1;
+    }
+    .paginationWrapper {
+        .grid {
+            padding: 0px;
+        }
+        ion-row {
+            display: inline-block;
+            width: 100%;
+            overflow-x: hidden;
+            white-space: normal;
+            ion-col {
+                width: 21.5% !important;
+                display: inline-block !important;
+            }
+        }
+    }
+}
+
+// .printSection {
+//     display: none;
+// }
+.leaveSummaaryPopover {
+    .popover-content {
+        .moreOptionList {
+            background: #ecf2fe;
+            ion-item {
+                padding-left: 0px;
+                --padding-start: 0px !important;
+                --ion-safe-area-left: 0px !important;
+                --padding-end: 0px !important;
+                --border-width: 0px !important;
+                --border-color: transparent !important;
+                --ion-item-background: transparent !important;
+                --ion-background-color: transparent !important;
+                --inner-padding-end: 0px !important;
+                --inner-padding-start: 0px !important;
+                &.item-select {
+                    cursor: pointer;
+                }
+                &:hover {
+                    background: transparent !important;
+                    --ion-item-background: transparent !important;
+                    --ion-background-color: transparent !important;
+                    --background-hover: transparent !important;
+                    --background-activated: transparent !important;
+                    --background-focused: transparent !important;
+                    --background: transparent !important;
+                }
+                span {
+                    padding-left: 15px;
+                }
+            }
+        }
+    }
+}
+
+.leaveSummaaryPopover {
+    .popover-content {
+        left: 75% !important;
+    }
+    ion-content {
+        min-height: 85px;
+        width: 150px;
+        background: var(--lightSkyBlue);
+    }
+}
+
+@media screen {
+    .printSection {
+        display: none;
+    }
+}
+
+@media print {
+    .printSection {
+        display: block;
+        width: 100%;
+        font-family: "Poppins";
+        font-weight: 600;
+        font-style: normal;
+    }
+}

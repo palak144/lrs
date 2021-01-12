@@ -1,0 +1,9 @@
+<ion-content>
+  <ion-calendar [(ngModel)]="date" (onSelect)="onDateSelect($event)" (monthChange)="onMonthChange($event)" (onChange)="onDateChange($event)"
+    [options]="options" [type]="type" [format]="'YYYY-MM-DD'">
+  </ion-calendar>
+
+  <div class="cancelBtn"> 
+    <button ion-button class="clear" (click)="closeCalendarPopup()">Cancel</button>
+  </div>
+</ion-content>

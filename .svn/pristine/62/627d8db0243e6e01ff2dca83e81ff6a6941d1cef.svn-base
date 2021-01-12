@@ -1,0 +1,67 @@
+$colors: ( primary: #488aff, secondary: #32db64, danger: #f53d3d, light: #f4f4f4, dark: #222, cal-color: #ff8732);
+@function bindColors($color-value) {
+    @if ($color-value !=cal-color) {
+        @return map-get($colors, $color-value)
+    }
+    @else {
+        @if (type-of(map-get($colors, $color-value)) !=color) {
+            @return #488aff
+        }
+        @else {
+            @return map-get($colors, $color-value)
+        }
+    }
+}
+
+$blackBgColor:#000;
+$fontWhiteColor:#fff;
+$calendarBoxShadow: 0px 3px 12px 0px #969696;
+
+/******************** India calendar color code **************/
+
+$calendarSwipeMiss: #fa214e;
+$calendarFixedHoliday: #06b357;
+$calendarAppliedLeave: #0081c3;
+$calendarOtherHoliday: #0081c3;
+$calendarPendingApproval: #828282;
+$calendarOptionalHoliday: #7b37e2;
+$userCancelledLeave: #ff4445;
+$workFromHome: #65B3DA;
+$outOfOffice: #ffb6c1;
+
+/************** US Leave Color********************/
+
+$calendarFloatingLeave: #ff921d;
+
+/************** UK Leave Color********************/
+
+$calendarAnnualLeave: #ff921d;
+
+/**************** LiveX Leaves ************/
+
+$calendarLiveXIndiaLeaves: #00fcf6;
+
+/************ SA Leave Legends************/
+
+$SAannualLeave: #257a9f;
+$SAsickLeave: #00fcf6;
+$SAotherLeave: #7b37e2;
+$SAfixedHoliday: #00c25f;
+$SApendingForApproval: #828282;
+
+/********** Font Variables ******************/
+
+$font-light: 300;
+$font-regular: 400;
+$font-medium: 500;
+$font-semiBold: 600;
+$font-bold: 700;
+$mainHeadlineText: 20px;
+$cardHeadlineText: 18px;
+$subHeadline: 16px;
+$paragraph-text: 14px;
+$paragraph-text-small: 12px;
+$paragraph-text-medium: 13px;
+$inputLabelSize: 13px;
+$largeMainHeadlineText: 22px;
+$paragraph-text-large: 15px;

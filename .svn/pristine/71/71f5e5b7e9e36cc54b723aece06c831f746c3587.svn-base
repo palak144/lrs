@@ -1,0 +1,42 @@
+<ion-content>
+    <ion-grid>
+        <ion-row class="loginMainRow">
+            <ion-col size-md="6" size-lg="6" size-xl="6" size-sm="12" size="12" class="loginLeftSide">
+                <div class="loginInfoLeft">
+                    <h2>Login to your Account</h2>
+                    <ion-list (keydown)="keyDownFunction($event)">
+
+                        <div class="group">
+                            <input type="text" [class.validUserInfo]="global.checkIfDataIsValid(user) && global.checkIfDataIsValid(user.userId)" [(ngModel)]="user.userId" required>
+                            <label>Username</label>
+                        </div>
+
+                        <div class="group">
+                            <input type="password" [class.validUserInfo]="global.checkIfDataIsValid(user) && global.checkIfDataIsValid(user.password)" [type]="passwordType" [(ngModel)]="user.password" required>
+                            <label>Password</label>
+                            <ion-icon item-end [name]="passwordIcon" class="passwordIcon" (click)='hideShowPassword()'></ion-icon>
+                        </div>
+
+                        <ion-row class="actionButton">
+                            <button class="submitBtn" ion-button (click)="signIn()">Login</button>
+                        </ion-row>
+                    </ion-list>
+
+                </div>
+            </ion-col>
+            <ion-col class="loginInfoSection">
+                <div class="loginInfoRight">
+                    <i>
+            <img src="assets/imgs/Zensar_logo.png" />
+          </i>
+                    <h1>
+                        <span>Leave</span>
+                        <span>Management</span>
+                        <span>System</span>
+                    </h1>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+  <button class="btn" ion-button full (click)="add_to_home()" *ngIf="showBtn">Install</button>
+</ion-content>

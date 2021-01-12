@@ -1,0 +1,25 @@
+<app-header></app-header>
+
+<ion-content padding>
+<ion-row>
+  <div class="faqInfoMain" *ngIf="global.checkIfDataIsValid(faqsArray)">
+    <h2 class="pageHeading">FAQ's and Policy</h2>
+  <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 padding class="faqInfoRow" *ngFor="let faqQuestions of faqsArray; let i = index;">
+          <ion-row class="prOverviewSection prAboutUsSection">
+          <h2 class="sectionHeading" (click)="toggleCard(faqQuestions)" [class.expandedCard]="faqQuestions.expanded" [innerHTML]="faqQuestions.question">
+            <span>
+               <!-- {{faqQuestions.question}} -->
+            </span>
+            </h2>
+            <app-expandable-section [expandHeight]="" [expanded]="faqQuestions.expanded">
+            <div *ngIf="faqQuestions.expanded == true" >
+                <p class="sectionDescription" [innerHTML]="faqQuestions.body">
+                  <!-- {{faqQuestions.body}} -->
+                </p>
+            </div>
+        </app-expandable-section>
+      </ion-row>
+  </ion-col>
+  </div>
+  </ion-row>
+</ion-content>

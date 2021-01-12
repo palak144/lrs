@@ -1,0 +1,111 @@
+<app-header></app-header>
+
+<ion-content>
+    <ion-row>
+        <ion-col size="12" size-sm="12" size-md="12" size-lg="12" size-xl="12" class="leaveSummaryMainInfo">
+
+            <div class="leaveSummaryDropdown"
+                *ngIf="global.checkIfDataIsValid(tempPagedArray) && tempPagedArray.length != 0">
+
+                <!-- <form class="" (ngSubmit)='submitSearch()'> -->
+                <div>
+                    <!-- <ion-searchbar name="searchText" class="search" showCancelButton="never" value="string"
+                            type="text" [(ngModel)]="searchText" (keyup)="submitSearch()"></ion-searchbar> -->
+                    <!-- <ion-searchbar type="text" name="q" [(ngModel)]="q" placeholder="search" (keyup)="submitSearch()"></ion-searchbar> -->
+                    <ion-searchbar round [(ngModel)]="searchText" showCancelButton="never"
+                        placeholder="Search by ID or Name"></ion-searchbar>
+                </div>
+                <!-- </form> -->
+            </div>
+
+            <!-- <h2 class="pageHeading">Leave Approval</h2> -->
+            <!-- Confirmed with Rahul by Bhushan : 17-04-2019 -->
+            <div class="leaveSummaryCard" (click)="goToApprovalDetailPage(leave)"
+                *ngFor="let leave of pagedItems | leaveApprovalEmployeeFilter : 'EMPLOYEE_NAME' : searchText; let associateIndex=index;"
+                [ngClass]="{flexi:leave.LEAVE_TYPE == 'Flexi Leave' , 
+            compensatory:leave.LEAVE_TYPE == 'Compensatory Leave',
+            adoption:leave.LEAVE_TYPE == 'Adoption_Leave',
+            bereavement:leave.LEAVE_TYPE == 'Bereavement Leave' , 
+            lossPay:leave.LEAVE_TYPE == 'Loss of Pay',
+            optional:leave.LEAVE_TYPE == 'Optional Holidays',
+            outOfOffice:leave.LEAVE_TYPE == 'Out of Office' , 
+            paternity:leave.LEAVE_TYPE == 'Paternity_Leave',
+            privilege:leave.LEAVE_TYPE == 'Privilege Leave',
+            scheduled:leave.LEAVE_TYPE == 'Scheduled Off' , 
+            swipeMiss:leave.LEAVE_TYPE == 'Swipe Miss',
+            workFromHome:leave.LEAVE_TYPE == 'Work From Home',
+            userCancelledLeave:leave.is_cancel_request == '1'}" padding>
+                <ion-icon
+                    *ngIf="global.checkIfDataIsValid(leave) && global.checkIfDataIsValid(leave.attachment_file_name)"
+                    name="attach"></ion-icon>
+                <div class="userName">
+                    <h5 class="employeeName">Name</h5>
+                    <h3>{{ leave.EMPLOYEE_NAME }} </h3>
+                </div>
+                <div class="leaveType" *ngIf="global.checkIfDataIsValid(leave)">
+                    <h5>{{ leave.LEAVE_TYPE }}</h5>
+                    <h3>{{ leave.DURATION }}
+                        <!-- <span *ngIf="leave.DURATION <= 1 && global.getLocalStorageUserCountry().toLowerCase() == global.usLocation.toLowerCase()">Hr</span>
+            <span *ngIf="leave.DURATION > 1 && global.getLocalStorageUserCountry().toLowerCase() == global.usLocation.toLowerCase()">Hrs</span> -->
+
+                        <span *ngIf="leave.DURATION <= 1 && leave.location == 'US'">Hr</span>
+                        <span *ngIf="leave.DURATION > 1 && leave.location == 'US'">Hrs</span>
+
+                        <span *ngIf="leave.DURATION <= 1 && leave.location != 'US'">Day</span>
+                        <span *ngIf="leave.DURATION > 1 && leave.location != 'US'">Days</span></h3>
+                </div>
+
+                <div class="leaveStartDate">
+                    <h5>Start Date</h5>
+                    <h4>{{ leave.START_DATE }}</h4>
+                </div>
+
+                <div class="leaveEndDate">
+                    <h5>End Date</h5>
+                    <h4>{{ leave.END_DATE }}</h4>
+                </div>
+                <div class="infoIconForCancelledLeave" *ngIf="leave.is_cancel_request == '1'"
+                    (click)="leave.showLeaveCancelledMessage=!leave.showLeaveCancelledMessage; $event.stopPropagation()">
+                    <img src="assets/imgs/info-white.png">
+                </div>
+                <!-- Changes by Bhushan : Purbali Observations - 19-04-2019 -->
+
+                <div class="moreOptions" (click)="showMoreOption(leave, $event); $event.stopPropagation()">
+                    <img src="assets/icon/leave-summary/moreOptions.svg">
+                </div>
+                <!-- <div *ngIf="leave.isShow" class="moreOptionList">
+          <ion-list>
+            <ion-item>Edit</ion-item>
+            <ion-item>Delete</ion-item>
+          </ion-list>
+        </div> -->
+                <div class="msgDivForCancelledLeave" *ngIf="leave.showLeaveCancelledMessage">
+                    <h5 [innerHtml]="leave.cancelRequestMessage"></h5>
+                </div>
+                <!-- Changes by Bhushan : Purbali Observations - 19-04-2019 -->
+
+            </div>
+            <ion-row class="paginationWrapper" *ngIf="global.checkIfDataIsValid(pagedItems) && paginationButtonCount>1">
+                <ion-grid class="button-group">
+                    <ion-row *ngIf="pager.pages && pager.pages.length">
+                        <ion-col *ngIf="pager.totalPages > 5" class="firstBtn" [ngClass]="{disabled:pager.currentPage == 1}">
+                            <button ion-button block color="light" (click)="setPage(1)">First</button>
+                        </ion-col>
+                        <ion-col *ngFor="let page of pager.pages" class="numberBtn" [ngClass]="{activated:pager.currentPage == page}">
+                            <button ion-button block color="light" (click)="setPage(page)">{{page}}</button>
+                        </ion-col>
+                        <ion-col *ngIf="pager.totalPages > 5" class="lastBtn"
+                            [ngClass]="{disabled:pager.currentPage == pager.totalPages}">
+                            <button ion-button block color="light" (click)="setPage(pager.totalPages)">Last</button>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-row>
+
+            <div class="noRecordFoundCard" *ngIf="!global.checkIfDataIsValid(pagedItems)">
+                <h2>No results to show</h2>
+            </div>
+
+        </ion-col>
+    </ion-row>
+</ion-content>

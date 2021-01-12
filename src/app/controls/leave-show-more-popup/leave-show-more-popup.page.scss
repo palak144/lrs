@@ -1,0 +1,40 @@
+
+
+.moreOptionList {
+  padding-left: 10px;
+  background: var(--lightSkyBlue);
+  ion-item {
+    padding-left: 0px;
+    --padding-start: 0px !important;
+    --ion-safe-area-left: 0px !important;
+    --padding-end: 0px !important;
+    --border-width: 0px !important;
+    --border-color: transparent !important;
+    --ion-item-background: transparent !important;
+    --ion-background-color: transparent !important;
+    --inner-padding-end: 0px !important;
+    --inner-padding-start: 0px !important;
+    cursor: pointer;
+    &.item-select {
+        cursor: pointer;
+    }
+    &:hover {
+        background: transparent !important;
+        --ion-item-background: transparent !important;
+        --ion-background-color:transparent !important;
+        --background-hover: transparent !important;
+        --background-activated: transparent !important;
+        --background-focused: transparent !important;
+        --background: transparent !important;
+    }
+    span {
+        padding-left: 15px;
+    }
+}
+}
+
+
+
+
+
+/****************** Added CSS For Mobile View *******************/

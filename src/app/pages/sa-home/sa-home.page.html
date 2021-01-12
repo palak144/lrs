@@ -1,0 +1,505 @@
+<app-header></app-header>
+
+<ion-content>
+    <ion-grid class="homepageWrapper">
+        <ion-row>
+            <ion-col size="12" size-lg="8" size-md="8" size-sm="12" size-xl="8" class="pageLeftSideMainForm">
+                <div class="pageLeftSideMain">
+                    <div class="pageLeftSideInfo">
+                        <div class="actualDateBox">
+                            <h2>Actual Leave Balance</h2>
+                            <div (click)="calCulateBalanceLeaves()">
+                                <i><img src="assets/imgs/calendar_white.png" /></i> {{ currDateToDisplay }}
+                            </div>
+                            <div>
+                                <span>{{ annualLeave }}</span> AL
+                            </div>
+                            <div>
+                                <span>{{ sickLeave }}</span> SL
+                            </div>
+                        </div>
+                        <div class="leaveBlanceInfo" *ngIf="global.checkIfDataIsValid(homeMessage)">
+                            <p [innerHTML]="homeMessage"></p>
+                        </div>
+                    </div>
+                </div>
+            </ion-col>
+            <ion-col size-lg="8" size-md="8" size-sm="12" size-xl="8" class="formWrapper">
+                <ion-col size-lg="12" size-md="12" size-sm="12" size-xl="12" class="pageLeftSideMainForm leaveForm">
+                    <div class="pageLeftSideMainForm" *ngIf="isEditable">
+                        <div class="leaveApplicationForm">
+                            <h2>Leave Application</h2>
+                            <ion-row class="formWrapper">
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12">
+                                    <ion-list>
+                                        <label>Leave Type</label>
+                                        <ion-item>
+                                            <ion-select (ionChange)="selectedLeaveType(leaveInfo.leaveType)" [(ngModel)]="leaveInfo.leaveType">
+                                                <ion-select-option value="Annual Leave">Annual Leave</ion-select-option>
+                                                <ion-select-option value="Advance Sick Leave">Advance Sick Leave
+                                                </ion-select-option>
+                                                <ion-select-option *ngIf="!isMale" value="Commissioning Parental">
+                                                    Commissioning Parental
+                                                </ion-select-option>
+                                                <ion-select-option value="Family Responsibility Leave">Family Responsibility Leave
+                                                </ion-select-option>
+                                                <ion-select-option value="Loss of Pay">Loss of Pay</ion-select-option>
+                                                <ion-select-option *ngIf="!isMale" value="Maternity Leave ZA">Maternity Leave ZA
+                                                </ion-select-option>
+                                                <ion-select-option value="Parental Adoption Leave">Parental Adoption Leave
+                                                </ion-select-option>
+                                                <ion-select-option *ngIf="isMale" value="Parental Leave ZA">Parental Leave ZA
+                                                </ion-select-option>
+                                                <ion-select-option value="Sick Leave">Sick Leave</ion-select-option>
+                                                <ion-select-option value="Work From Home">Work From Anywhere</ion-select-option>
+                                            </ion-select>
+                                        </ion-item>
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+
+                            <ion-row>
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12">
+                                    <ion-list>
+                                        <label>Start Date</label>
+                                        <ion-item (click)="openStartDateCalendar()">
+                                            <span>{{ leaveInfo.startDate }}</span>
+                                        </ion-item>
+                                        <i class="calendarIcon"><img src="assets/imgs/calendar_gray.png"
+                                                (click)="openStartDateCalendar()" /></i>
+                                    </ion-list>
+                                </ion-col>
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12">
+                                    <ion-list>
+                                        <label>End Date</label>
+                                        <ion-item (click)="openEndDateCalendar()"><span>{{ leaveInfo.endDate }}</span>
+                                        </ion-item>
+                                        <i class="calendarIcon"><img src="assets/imgs/calendar_gray.png"
+                                                (click)="openEndDateCalendar()" /></i>
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+
+                            <!-- <ion-row *ngIf="leaveInfo.leaveType == 'Maternity Leave ZA' || leaveInfo.leaveType == 'Commissioning Parental'"> -->
+                            <ion-row *ngIf="leaveInfo.leaveType == 'Commissioning Parental'">
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12">
+                                    <ion-list>
+                                        <label>Child Birth Date</label>
+                                        <ion-item (click)="openChildBirthDueDate()">
+                                            <span>{{ leaveInfo.startHalfDay }}</span></ion-item>
+                                        <i class="calendarIcon"><img src="assets/imgs/calendar_gray.png"
+                                                (click)="openChildBirthDueDate()" /></i>
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+
+
+                            <ion-row *ngIf="leaveInfo.leaveType == 'Parental Adoption Leave'">
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12">
+                                    <ion-list>
+                                        <label>Child Adoption Date</label>
+                                        <ion-item (click)="openChildAdoptionDateCalendar()">
+                                            <span>{{ leaveInfo.startHalfDay }}</span>
+                                        </ion-item>
+                                        <i class="calendarIcon"><img src="assets/imgs/calendar_gray.png"
+                                                (click)="openChildAdoptionDateCalendar()" /></i>
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+
+                            <ion-row *ngIf="leaveInfo.leaveType == 'Annual Leave' || leaveInfo.leaveType == 'Sick Leave'" class="a1">
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12">
+                                    <ion-list>
+                                        <label>Start Date Half Day</label>
+                                        <ion-item>
+                                            <ion-select [(ngModel)]="leaveInfo.startHalfDay" (ionChange)="calculateDurationStartDateHalfDay()">
+                                                <ion-select-option value="1st Half">First Half</ion-select-option>
+                                                <ion-select-option value="2nd Half">Second Half</ion-select-option>
+                                            </ion-select>
+                                        </ion-item>
+                                    </ion-list>
+                                </ion-col>
+
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12" *ngIf="global.checkIfDataIsValid(leaveInfo.endDate) && leaveInfo.startDate != leaveInfo.endDate">
+                                    <ion-list>
+                                        <label>End Date Half Day</label>
+                                        <ion-item>
+                                            <ion-select [(ngModel)]="leaveInfo.endHalfDay" (ionChange)="calculateDurationEndDateHalfDay()">
+                                                <ion-select-option value="1st Half">First Half</ion-select-option>
+                                                <ion-select-option value="2nd Half">Second Half</ion-select-option>
+                                            </ion-select>
+                                        </ion-item>
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+
+                            <ion-row>
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12">
+                                    <ion-list>
+                                        <label>Total Duration</label>
+                                        <div class="totalDuration">
+                                            {{leaveInfo.absence_days}}</div>
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+
+                            <ion-row>
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12" *ngIf="leaveInfo.leaveType == 'Parental Leave ZA'">
+                                    <ion-list>
+                                        <label>Spouse Name</label>
+                                        <ion-item>
+                                            <ion-input [(ngModel)]="leaveInfo.startHalfDay"></ion-input>
+                                        </ion-item>
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+
+                            <ion-row *ngIf="(leaveInfo.leaveType == 'Sick Leave' || leaveInfo.leaveType == 'Advance Sick Leave' || leaveInfo.leaveType == 'Commissioning Parental' || leaveInfo.leaveType == 'Parental Adoption Leave' || leaveInfo.leaveType == 'Maternity Leave ZA')">
+                                <ion-col size="12" size-sm="12" size-md="10" size-lg="10">
+                                    <ion-list *ngIf="global.checkIfDataIsValid(leaveInfo.attachedFileLink)" (click)="openFile(leaveInfo.attachedFileLink)">
+                                        <label>Supporting Documents</label>
+                                        <p class="uploadedFileName"> {{ leaveInfo.attachment_file_name }} <span (click)="leaveInfo.attachedFileLink =''">
+                                                <ion-icon name="close-circle"></ion-icon>
+                                            </span></p>
+
+                                    </ion-list>
+                                    <ion-list *ngIf="!global.checkIfDataIsValid(leaveInfo.attachedFileLink)" class="attachFileWrapper">
+
+                                        <label (click)="openUploader($event)">Supporting Documents</label>
+                                        <!-- <input type="file" class="fileUpload" id="file" name="attachment"
+                                            (change)="handleFileInput($event.target.files); $event.stopPropagation()"> -->
+                                        <ion-row>
+                                            <input type="file" class="fileExplorerBtn" name="attachment" id="file" (change)="handleFileInput($event.target.files); $event.stopPropagation()">
+                                            <button class="uploadBtn">Upload Document</button>
+                                            <ion-input class="fileNameInput" [(ngModel)]="fileName" readonly></ion-input>
+                                        </ion-row>
+
+
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+
+                            <ion-row>
+                                <ion-col size="12" size-sm="12" size-md="10" size-lg="10">
+                                    <ion-list>
+                                        <label>Comment</label>
+                                        <ion-item>
+                                            <ion-textarea rows="5" maxLength="500" [(ngModel)]="leaveInfo.employee_Comments"></ion-textarea>
+                                        </ion-item>
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+
+                            <div class="approverInfoSection desktopNone" padding>
+                                <p>
+                                    <label>Approver</label> | {{ managerInfo.managerName }}</p>
+                                <p>
+                                    <label>2nd
+                                        Approver</label> | {{ twoUpManagerInfo.manager2UpName }}</p>
+                            </div>
+
+                            <ion-col size="12" size-sm="12" size-md="10" size-lg="10" class="buttonSection">
+                                <div class="ButtonDiv desktopView">
+                                    <div *ngIf="flagsForButtonsVisibility=='clearPreview' && global.checkIfDataIsValid(leaveInfo.absence_days)">
+                                        <button (click)="clearDialogue()" class="clear">Clear</button>
+                                        <button (click)="getPreview()" class="preview">Preview</button>
+                                    </div>
+                                    <div *ngIf="flagsForButtonsVisibility=='deletePreview' && global.checkIfDataIsValid(leaveInfo.absence_days)">
+                                        <button (click)="deleteLeave()" class="clear">Delete</button>
+                                        <button (click)="getPreview()" class="preview">Preview</button>
+                                    </div>
+                                </div>
+                            </ion-col>
+                        </div>
+                    </div>
+
+                    <div class="pageLeftSideMainForm" *ngIf="!isEditable">
+                        <div class="leaveApplicationForm">
+                            <h2>Leave Application
+                            </h2>
+                            <ion-row class="formWrapper">
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12">
+                                    <ion-list>
+                                        <label>Leave Type</label>
+                                        <ion-item>
+                                            <span> {{ leaveInfo.leaveType }}</span>
+                                        </ion-item>
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+
+                            <ion-row>
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12">
+                                    <ion-list>
+                                        <label>Start Date</label>
+                                        <ion-item><span>{{ leaveInfo.startDate }}</span></ion-item>
+                                    </ion-list>
+                                </ion-col>
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12">
+                                    <ion-list>
+                                        <label>End Date</label>
+                                        <ion-item><span>{{ leaveInfo.endDate }}</span></ion-item>
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+
+                            <ion-row *ngIf="global.checkIfDataIsValid(leaveInfo.startHalfDay) && (leaveInfo.leaveType == 'Maternity Leave ZA' || leaveInfo.leaveType == 'Commissioning Parental')">
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12">
+                                    <ion-list>
+                                        <label>Child Birth Date</label>
+                                        <ion-item>
+                                            <span> {{ leaveInfo.startHalfDay }} </span>
+                                        </ion-item>
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+
+                            <ion-row *ngIf="global.checkIfDataIsValid(leaveInfo.startHalfDay) && (leaveInfo.leaveType == 'Parental Adoption Leave')">
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12">
+                                    <ion-list>
+                                        <label>Child Adoption Date</label>
+                                        <ion-item>
+                                            <span> {{ leaveInfo.startHalfDay }} </span>
+                                        </ion-item>
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+
+                            <ion-row *ngIf="leaveInfo.leaveType == 'Annual Leave' || leaveInfo.leaveType == 'Sick Leave'">
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12" *ngIf="global.checkIfDataIsValid(leaveInfo.startHalfDay)">
+                                    <ion-list>
+                                        <label>Start Date Half Day</label>
+                                        <ion-item>
+                                            <span> {{ leaveInfo.startHalfDay }} </span>
+                                        </ion-item>
+                                    </ion-list>
+                                </ion-col>
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12" *ngIf="global.checkIfDataIsValid(leaveInfo.endHalfDay)">
+                                    <ion-list>
+                                        <label>End Date Half Day</label>
+                                        <ion-item>
+                                            <span> {{ leaveInfo.endHalfDay }} </span>
+                                        </ion-item>
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12">
+                                    <ion-list>
+                                        <label>Total Duration</label>
+                                        <ion-item>
+                                            <span> {{ leaveInfo.absence_days }} </span>
+                                        </ion-item>
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+
+                            <ion-row>
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12" *ngIf="leaveInfo.leaveType == 'Parental Leave ZA'">
+                                    <ion-list>
+                                        <label>Spouse Name</label>
+                                        <ion-item>
+                                            <ion-input [innerHtml]="leaveInfo.startHalfDay"></ion-input>
+                                        </ion-item>
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+
+                            <ion-row class="supportingDoc" *ngIf="(global.checkIfDataIsValid(leaveInfo) && ((leaveInfo.leaveType == 'Sick Leave' || leaveInfo.leaveType == 'Advance Sick Leave' || leaveInfo.leaveType == 'Commissioning Parental' || leaveInfo.leaveType == 'Parental Adoption Leave' || leaveInfo.leaveType == 'Maternity Leave ZA')) && global.checkIfDataIsValid(fileToUpload) && global.checkIfDataIsValid(fileToUpload.name))">
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12">
+                                    <ion-list>
+                                        <label>Supporting Documents</label>
+                                        <ion-item>
+                                            <span *ngIf="global.checkIfDataIsValid(leaveInfo.attachedFileLink)">
+                                                {{ leaveInfo.attachment_file_name }} </span>
+                                            <span *ngIf="!global.checkIfDataIsValid(leaveInfo.attachedFileLink)">
+                                                {{ fileToUpload.name }}
+                                            </span>
+                                        </ion-item>
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+
+                            <ion-row>
+                                <ion-col size="12" size-sm="12" size-md="10" size-lg="10">
+                                    <ion-list>
+                                        <label>Comment</label>
+                                        <ion-item>
+                                            <span class="userComment" [innerHtml]="leaveInfo.employee_Comments"></span>
+                                        </ion-item>
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+
+                            <div class="approverInfoSection desktopNone" padding>
+                                <p *ngIf="global.checkIfDataIsValid(managerInfo) && global.checkIfDataIsValid(managerInfo.managerName)">
+                                    <label>Approver</label> | {{ managerInfo.managerName }}</p>
+                                <p *ngIf="global.checkIfDataIsValid(twoUpManagerInfo) && global.checkIfDataIsValid(twoUpManagerInfo.manager2UpName)">
+                                    <label>2nd
+                                        Approver</label> | {{ twoUpManagerInfo.manager2UpName }}</p>
+                            </div>
+
+                            <ion-col size="12" size-sm="12" size-md="10" size-lg="10" class="buttonSection">
+                                <div class="ButtonDiv desktopView">
+                                    <div *ngIf="flagsForButtonsVisibility=='cancelApply'">
+                                        <button (click)="cancel()" class="clear">Edit</button>
+                                        <button (click)="applyLeave()" class="preview">Apply</button>
+                                    </div>
+                                    <div *ngIf="flagsForButtonsVisibility=='editApply'">
+                                        <button (click)="editLeave()" class="clear">Edit</button>
+                                        <button (click)="applyLeave()" class="preview">Apply</button>
+                                    </div>
+                                    <div *ngIf="flagsForButtonsVisibility=='deleteLeave'">
+                                        <button (click)="deleteLeave()" class="clear">Delete Leave</button>
+                                    </div>
+                                </div>
+                            </ion-col>
+                        </div>
+                    </div>
+                </ion-col>
+            </ion-col>
+            <ion-col size-lg="4" size-md="4" size-sm="12" size="12" class="pageRightSideMainCalendar">
+                <div class="pageRightSideInfoCalendar">
+                    <ion-calendar [(ngModel)]="date" (onSelect)="onDateSelect($event)" [type]="type" [options]="options" [format]="'YYYY-MM-DD'" (monthChange)="monthChange($event)" class="saCalendar">
+                    </ion-calendar>
+
+
+                    <!--holiday Calender starts -->
+                    <!-- <ion-button class="ionButtonHolidayCal" color="dark">
+                        <p>Holiday List</p>
+                        <ion-icon ios="ios-arrow-up" md="md-arrow-up"></ion-icon>
+                    </ion-button>
+
+
+                    <div class="holidayList" id="holidayList">
+
+                        <div class="disp">
+                            <div>
+                                <p>Date mon week </p>
+                                <p>Date mon week </p>
+                                <p>Date mon week </p>
+                            </div>
+
+                            <div class="circlesDiv">
+                                <p><span class="circle fixedHoliday "></span></p>
+                                <p><span class="circle optionalHoliday"></span></p>
+                                <p><span class="circle fixedHoliday"></span></p>
+
+                            </div>
+                            <div>
+                                <p> Holiday 1</p>
+                                <p> Holiday 2</p>
+                                <p> Holiday 3</p>
+                            </div>
+
+                        </div>
+                    </div> -->
+
+
+
+                    <!--holiday Calender ends -->
+
+                    <div class="leaveHolidyStatus">
+                        <div>
+                            <div class="leaveStatusInfo">
+                                <ion-row align-items-center class="row Annual_Leave">
+                                    <ion-col size="2">
+                                        <span class="swipMissColor"></span>
+                                    </ion-col>
+                                    <ion-col size="10">
+                                        <p>Annual Leave</p>
+                                    </ion-col>
+                                </ion-row>
+
+                                <ion-row align-items-center class="row Sick_Leave">
+                                    <ion-col size="2">
+                                        <span class="swipMissColor"></span>
+                                    </ion-col>
+                                    <ion-col size="10">
+                                        <p>Sick Leave/Advance Sick Leave</p>
+                                    </ion-col>
+                                </ion-row>
+
+                                <ion-row align-items-center class="row Other_Leave">
+                                    <ion-col size="2">
+                                        <span class="swipMissColor"></span>
+                                    </ion-col>
+                                    <ion-col size="10">
+                                        <p>Other Leaves</p>
+                                    </ion-col>
+                                </ion-row>
+
+                                <ion-row align-items-center class="row Fixed_Holiday">
+                                    <ion-col size="2">
+                                        <span class="swipMissColor"></span>
+                                    </ion-col>
+                                    <ion-col size="10">
+                                        <p>Fixed Holiday</p>
+                                    </ion-col>
+                                </ion-row>
+
+                                <ion-row align-items-center class="row PendingForApproval">
+                                    <ion-col size="2">
+                                        <span class="swipMissColor"></span>
+                                    </ion-col>
+                                    <ion-col size="10">
+                                        <p>Pending For Approval</p>
+                                    </ion-col>
+                                </ion-row>
+
+                                <ion-row align-items-center class="row workFromHome">
+                                    <ion-col size="2">
+                                        <span class="swipMissColor"></span>
+                                    </ion-col>
+                                    <ion-col size="10">
+                                        <p>Work From Anywhere</p>
+                                    </ion-col>
+                                </ion-row>
+
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        <div class="approverInfoSection mobileNone" padding>
+                            <p *ngIf="global.checkIfDataIsValid(managerInfo) && global.checkIfDataIsValid(managerInfo.managerName)">
+                                <label>Approver</label> | {{ managerInfo.managerName }}</p>
+                            <p *ngIf="global.checkIfDataIsValid(twoUpManagerInfo) && global.checkIfDataIsValid(twoUpManagerInfo.manager2UpName)">
+                                <label>2nd
+                                    Approver</label> | {{ twoUpManagerInfo.manager2UpName }}</p>
+                        </div>
+                    </div>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+
+<div class="mobileView">
+    <div class="mobileButtonMainSec">
+        <div *ngIf="flagsForButtonsVisibility=='clearPreview' && global.checkIfDataIsValid(leaveInfo.absence_days)">
+            <button (click)="clearDialogue()" class="clear">Clear</button>
+            <button (click)="getPreview()">Preview</button>
+        </div>
+        <div *ngIf="flagsForButtonsVisibility=='deletePreview' && global.checkIfDataIsValid(leaveInfo.absence_days)">
+            <button (click)="deleteLeave()" class="clear">Delete</button>
+            <button (click)="getPreview()">Preview</button>
+        </div>
+    </div>
+    <div class="mobileButtonMainSec">
+        <div *ngIf="flagsForButtonsVisibility=='cancelApply'">
+            <button (click)="cancel()" class="clear">Edit</button>
+            <button (click)="applyLeave()">Apply</button>
+        </div>
+        <div *ngIf="flagsForButtonsVisibility=='editApply'">
+            <button (click)="editLeave()" class="clear">Edit</button>
+            <button (click)="applyLeave()">Apply</button>
+        </div>
+        <div *ngIf="flagsForButtonsVisibility=='deleteLeave'">
+            <button (click)="deleteLeave()" class="clear">Delete Leave</button>
+        </div>
+    </div>
+</div>

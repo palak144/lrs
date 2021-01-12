@@ -1,0 +1,308 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+// Font path is used to include ionicons,
+// roboto, and noto sans fonts
+$font-path: "../assets/fonts";
+// The app direction is used to include
+// rtl styles in your app. For more info, please see:
+// http://ionicframework.com/docs/theming/rtl-support/
+$app-direction: ltr;
+// @import "ionic.globals";
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/theming/overriding-ionic-variables/
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+// @import "ionic.theme.default";
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/ionicons/
+// @import "ionic.ionicons";
+// Fonts
+// --------------------------------------------------
+//@import "roboto";
+//@import "noto-sans";
+@font-face {
+    font-family: "Poppins";
+    src: url("../assets/fonts/poppins/Poppins-SemiBold.woff2") format("woff2"), url("../assets/fonts/poppins/Poppins-SemiBold.woff2") format("woff");
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url("../assets/fonts/poppins/Poppins-Regular.woff2") format("woff2"), url("../assets/fonts/poppins/Poppins-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url("../assets/fonts/poppins/Poppins-Medium.woff2") format("woff2"), url("../assets/fonts/poppins/Poppins-Medium.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url("../assets/fonts/poppins/Poppins-Bold.woff2") format("woff2"), url("../assets/fonts/poppins/Poppins-Bold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url("../assets/fonts/poppins/Poppins-Light.woff2") format("woff2"), url("../assets/fonts/poppins/Poppins-Light.woff") format("woff");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url("../assets/fonts/poppins/Poppins-Thin.woff2") format("woff2"), url("../assets/fonts/poppins/Poppins-Thin.woff") format("woff");
+    font-weight: 100;
+    font-style: normal;
+}
+
+html {
+    --ion-default-font: "Poppins" !important;
+    font-weight: normal !important;
+}
+
+body {
+    font-family: "Poppins" !important;
+    font-weight: normal !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+label,
+input,
+div,
+button,
+a,
+ul,
+li {
+    font-family: "Poppins" !important;
+}
+
+
+/********** Colors Variables ******************/
+
+:root {
+    --font-family-base: "Poppins", sans-serif;
+    --pageBackgroundColor: #fff;
+    --font-color-white: #fff;
+    --font-color-black: #000;
+    --font-color-gray: #4d4d4d;
+    --inputBorderColor: #dedede;
+    --inputLeableColor: #7c7c7c;
+    --MediumVioletRed: #d0196c;
+    --purpleColor: #772a88;
+    --pageBackgroundGry: #d0d0d0;
+    --flexiLeave: #7955d1;
+    --previlegeLeave: #06d1e0;
+    --gryTextColor: #2a2a2a;
+    --bgTransparent: transparent;
+    --lightGry: #f2f2f2;
+    --blackColor: #000;
+    --swipMissColor: #fc204e;
+    --fixedLeaveColor: #06b359;
+    --workFromHomeColor: #7c38e3;
+    --lightSkyBlue: #ecf2fe;
+    --blueBorder: #bac5d9;
+    --backgroundGradient: -webkit-linear-gradient( -45deg, #d0196c 0%, #772a88 100%);
+    /********** Font Variables ******************/
+    --font-light: 300;
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semiBold: 600;
+    --font-bold: 700;
+    --mainHeadlineText: 20px;
+    --cardHeadlineText: 18px;
+    --subHeadline: 16px;
+    --paragraph-text: 14px;
+    --paragraph-text-small: 12px;
+    --paragraph-text-medium: 13px;
+    --inputLabelSize: 13px;
+    --largeMainHeadlineText: 22px;
+    --paragraph-text-large: 15px;
+    /******************** Border radius **************/
+    --roundedCorner: 100px;
+    --roundedForImgCorner: 4px;
+    /**************shadow Variables*****************/
+    --shadow1: 1px 5px 20px 1px rgba(236, 236, 236, 0.76);
+    --insetShadow: inset 0px 10px 20px 0px rgba(236, 236, 236, 0.76);
+    --calendarBoxShadow: 0px 3px 12px 0px #969696;
+    /***************** Gradient CSS ****************/
+    --backgroundGradient: -webkit-linear-gradient(-45deg, #d0196c 0%, #772a88 100%);
+    /******************** calendar color code **************/
+    --calendarSwipeMiss: #fa214e;
+    --calendarFixedHoliday: #06b357;
+    --calendarAppliedLeave: #0081c3;
+    --calendarOtherHoliday: #0081c3;
+    --calendarPendingApproval: #828282;
+    --calendarOptionalHoliday: #7b37e2;
+    --userCancelledLeave: #ff4445;
+    --workFromHome: #65B3DA;
+    --outOfOffice: #ffb6c1;
+    --Special_Sick_Leave_COVID-19: #166d20;
+    /************** US Leave Color********************/
+    --calendarFloatingLeave: #ff921d;
+    /************** UK Leave Color********************/
+    --calendarAnnualLeave: #ff921d;
+    /**************** LiveX Leaves ************/
+    --calendarLiveXIndiaLeaves: #00fcf6;
+    /*****************Manager Dashboard**************/
+    --pageBackgroundColorLightGrey: #f2f2f2;
+    --tableHeadingColor: #202123;
+    --tabelBorderColor: #313234;
+    --tableHeadingMonthColor1: #41464c;
+    --tableHeadingMonthColor2: #4e5b6b;
+    --tabelFlexiLeave: #f35f5d;
+    --tabelFixedLeave: #00c25f;
+    --tabelpaidLeave: #828282;
+    --tabelHalfDayLeave: #257a9f;
+    --tabelUnpaidLeave: #fee066;
+    --tabelOtherLeave: #6fc1b3;
+    --tableWeekend: #f6f6f6;
+    --tableWorkFromHome: #65B3DA;
+    --tableOutOfOffice: #ffb6c1;
+    /************ SA Leave Legends************/
+    --SAannualLeave: #257a9f;
+    --SAsickLeave: #00fcf6;
+    --SAotherLeave: #7b37e2;
+    --SAfixedHoliday: #00c25f;
+    --SApendingForApproval: #828282;
+    --SAWorkFromHome: #65B3DA;
+}
+
+
+/******************** default css changes ***************************/
+
+ion-alert {
+    --background: #000 !important;
+    .alert-wrapper {
+        --background: var(--pageBackgroundColor) !important;
+        .alert-head {
+            padding-top: 10px;
+            padding-bottom: 5px;
+        }
+        .alert-radio-group {
+            border-top: 0px;
+            padding: 0px 10px;
+            border-bottom: 0px;
+            border: 0px;
+            // min-height: 250px !important;
+            overflow-y: scroll;
+            &::-webkit-scrollbar {
+                display: block !important;
+            }
+            .alert-radio-button {
+                height: 43px !important;
+                .alert-radio-icon {
+                    order: 1;
+                    border: 2px solid #000;
+                    height: 16px;
+                    min-width: 16px;
+                    width: 16px;
+                    border-radius: 50%;
+                    left: 5px;
+                }
+                .alert-radio-label {
+                    order: 2;
+                    font-size: var(--paragraph-text);
+                    letter-spacing: 0.4px;
+                    padding-inline-start: 15px;
+                    padding-inline-end: 0px;
+                    padding-left: 20px;
+                    text-align: left;
+                    padding-top: 5px;
+                    padding-bottom: 5px;
+                }
+                &[aria-checked=true] {
+                    .alert-radio-icon {
+                        border-color: var(--MediumVioletRed);
+                    }
+                    .alert-radio-inner {
+                        top: 2px;
+                        left: 2px;
+                        width: 8px;
+                        height: 8px;
+                        border-radius: 50%;
+                        transform: none;
+                        border: 0px transparent !important;
+                        background: var(--MediumVioletRed);
+                    }
+                    .alert-radio-label {
+                        color: var(--MediumVioletRed);
+                    }
+                }
+            }
+        }
+        .alert-radio-group::-webkit-scrollbar {
+            width: 5px;
+            display: block !important;
+        }
+        .alert-radio-group::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        }
+        .alert-radio-group::-webkit-scrollbar-thumb {
+            background-color: #000;
+            outline: 1px solid slategrey;
+        }
+        .alert-button-group {
+            display: flex;
+            padding: 0px;
+            margin-top: 10px;
+            flex-direction: row;
+            flex-flow: row;
+            .alert-button {
+                width: 100%;
+                margin: 0px;
+                border: 0px;
+                background: var(--backgroundGradient);
+                color: var( --font-color-white);
+                font-size: var(--paragraph-text);
+                letter-spacing: 0.4px;
+                font-weight: var(--font-medium);
+                text-align: center;
+                border-radius: 0px;
+                border: 0px;
+                span {
+                    justify-content: center;
+                }
+            }
+        }
+    }
+}

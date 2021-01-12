@@ -1,0 +1,82 @@
+<ion-content>
+    <div class="employeeLeaveDetailsWrapper" *ngIf="_global.checkIfDataIsValid(_employeeDetailsData) && _global.checkIfDataIsValid(_monthArray)">
+        <i class="close-btn" (click)="closeModal()"><img src="assets/icon/menu/close.png"></i>
+        <div class="employeeDetailsWrapper">
+            <div class="employeeDetails">
+                <div class="employeeImg">
+                    <img [src]="_employeeDetailsData.employeePhoto">
+                </div>
+                <div class="employeeName">
+                    <h2>{{_employeeDetailsData.employeeName}}</h2>
+                    <p>{{_employeeDetailsData.employeeDesignation}}</p>
+                </div>
+                <div class="employeeLeaveDetailsSec">
+                    <div class="employeePL" *ngFor="let singleLeaveTypeBalance of _employeeDetailsData.leaveBalance">
+                        <span class="balAvail">{{singleLeaveTypeBalance.balanceAvailable}}</span>
+                        <span class="leaveName">{{singleLeaveTypeBalance.leaveName}}</span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="leaveDetailsTableWrapper">
+            <div class="tableResponsive">
+                <table class="leaveTable">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <!-- month : Manager Dashboard UAT Observations by Pooja : 22-11-2019 -->
+                            <th *ngFor="let singleLeaveTypeDetails of _employeeDetailsData.leaveTypeWiseDetails;">
+                                <span class="number">{{singleLeaveTypeDetails.totalLeaves}}</span>
+                                <span>{{singleLeaveTypeDetails.leaveName}}</span>
+                            </th>
+                            <!-- <th>
+                                <span class="number">{{getTotalLeaves(_employeeDetailsData)}}</span>
+                                <span>Leaves Availed</span>
+                            </th> -->
+                            <!-- <th>
+                                    <span class="number">16</span>
+                                    <span>Vacation</span>
+                                </th>
+                                <th>
+                                    <span class="number">16</span>
+                                    <span>Vacation</span>
+                                </th>
+                                <th>
+                                    <span class="number">16</span>
+                                    <span>Vacation</span>
+                                </th>
+                                <th>
+                                    <span class="number">16</span>
+                                    <span>Vacation</span>
+                                </th>
+                                <th>
+                                    <span class="number">16</span>
+                                    <span>Vacation</span>
+                                </th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let singleMonth of _monthArray;">
+                            <td>{{singleMonth.monthName}}</td>
+                            <td *ngFor="let singleLeaveTypeDetails of _employeeDetailsData.leaveTypeWiseDetails;">{{getLeaveTypeWiseLeaveCountForThisMonth(singleMonth, singleLeaveTypeDetails)}}</td>
+                            <!-- <td>{{getLeaveCountForThisMonth(singleMonth)}}</td> -->
+                        </tr>
+                        <!-- <tr>
+                                <td>Jan</td>
+                                <td>01</td>
+                                <td>01</td>
+                            </tr>
+                            <tr>
+                                <td>Jan</td>
+                                <td>01</td>
+                                <td>01</td>
+                            </tr> -->
+                    </tbody>
+                </table>
+            </div>
+            <!-- Suggestions by Pooja/Purbali : 04-12-2019 -->
+            <div *ngIf="_global.checkIfDataIsValid(_employeeDetailsData.leaveTypeNames)" [innerHtml]="_employeeDetailsData.leaveTypeNames"></div>
+        </div>
+    </div>
+</ion-content>

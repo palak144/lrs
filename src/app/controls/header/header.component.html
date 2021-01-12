@@ -1,0 +1,38 @@
+<ion-header class="myLeavesHeader">
+  <ion-toolbar hideBackButton>
+    <ion-menu-toggle class="menuIconWrapper" *ngIf="global.getMenuIcon() == true">
+      <img class="menuIcon" src="assets/icon/header/Menu.png">
+    </ion-menu-toggle>
+
+    <ion-grid class="headerGrid">
+      <ion-row>
+        <ion-col class="forMobileView" size="9" size-sm="9" size-md="9" size-lg="7" size-xl="7">
+          <button ion-button class="back-button backButton" *ngIf="global.getBackIcon() == true"
+            (click)="headerBackButtonClicked()">
+            <img class="menuIcon" src="assets/icon/header/back.png"/> </button> 
+            <h1 class="pageHeadlineText">
+              <span [innerHtml]="global.getPageTitle()"></span>
+            </h1>
+        </ion-col>
+
+        <ion-col size="3" size-sm="3" size-md="6" size-lg="5" size-xl="5" class="noneForMobile" col-3 col-sm-3 col-md-6 col-lg-6 col-xl-5>
+          <ion-row class="detailsWrapper">
+            <div class="location">
+              <p><span class="text">{{global.getUserLocation()}}</span><i><img
+                    src="assets/icon/header/location.png" /></i></p>
+            </div>
+
+            <div class="personalDetails">
+              <i><img [src]="global.getUserProfilePic()" /></i>
+              <span class="text">Hi, {{global.getFullName()}}</span>
+            </div>
+
+            <div class="logout" (click)="logoutDialog()">
+              <i><img src="assets/icon/header/Logout.png" /></i>
+            </div>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>

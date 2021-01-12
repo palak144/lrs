@@ -1,0 +1,1039 @@
+            .scroll-content {
+                background: var(--pageBackgroundColor);
+                padding: 0px !important;
+                margin-top: 56px;
+            }
+            
+            .bar-button-menutoggle {
+                display: block !important;
+            }
+            
+            .col,
+            .grid {
+                padding: 0px;
+            }
+            
+            .leaveBlanceInfo {
+                position: absolute;
+                bottom: 0;
+                font-size: 12px;
+                .red {
+                    color: red;
+                }
+                .green {
+                    color: green;
+                }
+                .blue {
+                    color: blue;
+                }
+            }
+            
+            .homepageWrapper {
+                padding: 0px;
+                .formWrapper {
+                    padding: 0px;
+                    ion-list {
+                        background: transparent;
+                        min-height: 100px;
+                        ion-item {
+                            padding-left: 0px;
+                            --padding-start: 0px !important;
+                            --ion-safe-area-left: 0px !important;
+                            --padding-end: 0px !important;
+                            --border-width: 0px !important;
+                            --border-color: transparent !important;
+                            --ion-item-background: var(--pageBackgroundColor) !important;
+                            --ion-background-color: var(--pageBackgroundColor) !important;
+                            --inner-padding-end: 0px !important;
+                            --inner-padding-start: 0px !important;
+                            &:hover {
+                                background: var(--pageBackgroundColor) !important;
+                                --ion-item-background: var(--pageBackgroundColor) !important;
+                                --ion-background-color: var(--pageBackgroundColor) !important;
+                                --background-hover: var(--pageBackgroundColor) !important;
+                                --background-activated: var(--pageBackgroundColor) !important;
+                                --background-focused: var(--pageBackgroundColor) !important;
+                                --background: var(--pageBackgroundColor) !important;
+                            }
+                            &.item-select {
+                                cursor: pointer;
+                            }
+                            span {
+                                padding-left: 15px;
+                            }
+                            &.item-textarea {
+                                height: auto;
+                                ion-textarea {
+                                    margin: 0px;
+                                    padding: 0px 0px 0px 15px;
+                                }
+                            }
+                             :root {
+                                .item-native {
+                                    --padding-left: 0px;
+                                    .item-inner {
+                                        border-bottom: 0px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .totalDuration {
+                        background: var(--pageBackgroundColor);
+                        height: 50px;
+                        border: 1px solid var(--inputBorderColor);
+                        border-radius: var(--roundedForImgCorner);
+                        padding: 0px 15px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                    }
+                    ion-select {
+                        max-width: 100%;
+                        width: 100%;
+                        --margin-top: 0px !important;
+                    }
+                }
+                .calendarWrapper {
+                    position: absolute;
+                    right: 0;
+                }
+            }
+            
+            .pageLeftSideMain h2,
+            .pageLeftSideMainForm h2,
+            .leaveApplicationForm h2,
+            .pageRightSideInfo h2,
+            .leaveHolidyStatus h2 {
+                font-size: var(--cardHeadlineText);
+                font-weight: var(--font-regular);
+                margin: 0px;
+                margin-bottom: 16px;
+            }
+            
+            .actualDateBox {
+                display: inline-block;
+                width: 60%;
+                float: left;
+                vertical-align: -webkit-baseline-middle;
+                div {
+                    display: inline-block;
+                    padding: 16px;
+                    color: var(--font-color-white);
+                    text-transform: uppercase;
+                    font-size: var(--paragraph-text);
+                    font-weight: 500;
+                    border-radius: var(--roundedForImgCorner);
+                    min-width: calc(25% - 10px);
+                    text-align: center;
+                    min-height: 85px;
+                    float: left;
+                    margin-right: 10px;
+                    &:nth-child(2) {
+                        background: #00c25f;
+                        cursor: pointer;
+                    }
+                    &:nth-child(3) {
+                        background: #0081c3;
+                        margin-bottom: 10px;
+                    }
+                    &:nth-child(4) {
+                        background: #17baf1;
+                        margin-bottom: 10px;
+                    }
+                    &:nth-child(5) {
+                        background: #0081c3;
+                        margin-bottom: 10px;
+                    }
+                    span {
+                        display: block;
+                        text-align: center;
+                        font-size: 15px;
+                        font-weight: var(--font-bold);
+                    }
+                    i {
+                        display: block;
+                        width: 31px;
+                        margin: 0 auto;
+                    }
+                }
+            }
+            
+            .pageLeftSideInfo {
+                background: var(--pageBackgroundColor);
+                padding: 30px;
+                order: 1;
+                -webkit-box-shadow: inset -3px 0px 5px 0px rgba(0, 0, 0, 0.1);
+                -moz-box-shadow: inset -3px 0px 5px 0px rgba(0, 0, 0, 0.1);
+                box-shadow: inset -3px 0px 5px 0px rgba(0, 0, 0, 0.1);
+                display: flex;
+                .swipeMissSection {
+                    display: inline-block;
+                    width: 19%;
+                    margin-left: 5%;
+                    div {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        padding: 16px;
+                        color: #fff;
+                        text-transform: uppercase;
+                        font-size: 14px;
+                        font-weight: 500;
+                        border-radius: 4px;
+                        background: var(--swipMissColor);
+                        width: 60%;
+                        text-align: center;
+                        min-height: 85px;
+                        span {
+                            display: block;
+                            text-align: center;
+                            font-size: var(--largeMainHeadlineText);
+                            font-weight: var(--font-bold);
+                        }
+                    }
+                }
+                .pageLeftSideMainForm {
+                    background: var(--pageBackgroundGry);
+                }
+            }
+            
+            .pageLeftSideMainForm {
+                background: var(--pageBackgroundGry);
+                display: inline-block;
+                width: 100%;
+                padding: 0px;
+                h2 {
+                    padding: 0px;
+                    margin: 0px;
+                }
+                .formWrapper {
+                    margin-top: 15px;
+                }
+                .pageRightSideMain {
+                    background: var(--pageBackgroundColor);
+                    -webkit-box-shadow: -4px 0px 23px 0px rgba(0, 0, 0, 0.09);
+                    -moz-box-shadow: -4px 0px 23px 0px rgba(0, 0, 0, 0.09);
+                    box-shadow: -4px 0px 23px 0px rgba(0, 0, 0, 0.09);
+                    order: 2;
+                    .pageRightSideInfo {
+                        padding: 30px;
+                        border-bottom: 1px solid var(--inputBorderColor);
+                        h2 {
+                            text-transform: uppercase;
+                        }
+                    }
+                }
+            }
+            
+            .pageRightSideMainCalendar {
+                background: var(--pageBackgroundColor);
+                position: absolute;
+                right: 0;
+            }
+            
+            .pageRightSideInfoCalendar {
+                padding: 30px;
+                order: 4;
+                ion-calendar {
+                    .title {
+                        .switch-btn {
+                            .button-inner {
+                                font-size: var(--cardHeadlineText);
+                                letter-spacing: 0.4px;
+                                text-transform: capitalize;
+                                .arrow-dropdown {
+                                    font-size: 22px;
+                                }
+                            }
+                        }
+                        .button {
+                            .icon {
+                                font-size: 36px;
+                            }
+                        }
+                    }
+                    ion-calendar-week {
+                        .toolbar-content {
+                            .week-title {
+                                li {
+                                    color: var(--blackColor);
+                                    font-size: var(--subHeadline);
+                                    font-weight: 500;
+                                }
+                            }
+                        }
+                    }
+                    ion-calendar-month {
+                        .days-box {
+                            .days {
+                                .days-btn {
+                                    border-radius: 50%;
+                                    p {
+                                        color: var(--blackColor);
+                                        font-size: var(--subHeadline);
+                                        letter-spacing: 0.4px;
+                                    }
+                                    &.marked {
+                                        background: var(--calendarOtherHoliday);
+                                        cursor: default;
+                                        p {
+                                            color: var(--font-color-white);
+                                            font-weight: var(--font-medium);
+                                            font-size: var(--subHeadline);
+                                            letter-spacing: 0.4px;
+                                        }
+                                        &.Fixed_Holiday {
+                                            background: var(--SAfixedHoliday);
+                                            p {
+                                                color: var(--font-color-white);
+                                                font-weight: var(--font-medium);
+                                                font-size: var(--subHeadline);
+                                                letter-spacing: 0.4px;
+                                            }
+                                        }
+                                        &.Annual_Leave {
+                                            background: var(--SAannualLeave);
+                                            p {
+                                                color: var(--font-color-white);
+                                                font-weight: var(--font-medium);
+                                                font-size: var(--subHeadline);
+                                                letter-spacing: 0.4px;
+                                            }
+                                        }
+                                        &.Sick_Leave {
+                                            background: var(--SAsickLeave);
+                                            p {
+                                                color: var(--font-color-white);
+                                                font-weight: var(--font-medium);
+                                                font-size: var(--subHeadline);
+                                                letter-spacing: 0.4px;
+                                            }
+                                        }
+                                        &.Advance_Sick_Leave {
+                                            background: var(--SAsickLeave);
+                                            p {
+                                                color: var(--font-color-white);
+                                                font-weight: var(--font-medium);
+                                                font-size: var(--subHeadline);
+                                                letter-spacing: 0.4px;
+                                            }
+                                        }
+                                        &.Optional_Holidays {
+                                            background: var(--calendarOptionalHoliday);
+                                            p {
+                                                color: var(--font-color-white);
+                                                font-weight: var(--font-medium);
+                                                font-size: var(--subHeadline);
+                                                letter-spacing: 0.4px;
+                                            }
+                                        }
+                                        &.Other_Leave {
+                                            background: var(--SAotherLeave);
+                                            p {
+                                                color: var(--font-color-white);
+                                                font-weight: var(--font-medium);
+                                                font-size: var(--subHeadline);
+                                                letter-spacing: 0.4px;
+                                            }
+                                        }
+                                        &.PendingForApproval {
+                                            background: var(--SApendingForApproval);
+                                            p {
+                                                color: var(--font-color-white);
+                                                font-weight: var(--font-medium);
+                                                font-size: var(--subHeadline);
+                                                letter-spacing: 0.4px;
+                                            }
+                                        }
+                                        &.Work_From_Home {
+                                            background: var(--SAWorkFromHome);
+                                            p {
+                                                color: var(--font-color-white);
+                                                font-weight: var(--font-medium);
+                                                font-size: var(--subHeadline);
+                                                letter-spacing: 0.4px;
+                                            }
+                                        }
+                                        &.today {
+                                            background: var(--blackColor);
+                                            p {
+                                                color: var(--font-color-white);
+                                                font-weight: var(--font-medium);
+                                                font-size: var(--subHeadline);
+                                                letter-spacing: 0.4px;
+                                            }
+                                        }
+                                    }
+                                    &.on-selected {
+                                        background: var(--blackColor);
+                                        p {
+                                            color: var(--font-color-white);
+                                            font-weight: var(--font-medium);
+                                            font-size: var(--subHeadline);
+                                            letter-spacing: 0.4px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .ionButtonHolidayCal {
+                    height: 28px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: auto;
+                    width: 40%;
+                    --border-radius: 12px !important;
+                    --background-color: black;
+                    p {
+                        font-size: 11px;
+                        text-transform: capitalize;
+                        font-weight: 300;
+                    }
+                    ion-icon {
+                        height: 12px;
+                    }
+                }
+                .holidayList {
+                    width: 100%;
+                    min-height: 100px;
+                    background-color: black;
+                    color: white;
+                    border-radius: 10px;
+                    margin: auto;
+                    margin-top: -8px;
+                    margin-bottom: 20px;
+                    .disp {
+                        display: flex;
+                        justify-content: center;
+                        margin-top: 10px;
+                        font-size: 11px;
+                    }
+                    .circlesDiv {
+                        margin-top: -2px;
+                    }
+                    .circle {
+                        width: 5px;
+                        height: 5px;
+                        border: 1px solid black;
+                        padding: 1px 5px;
+                        background-color: blue;
+                        border-radius: 50%;
+                        font-size: 5px;
+                        margin: 0px 15px;
+                    }
+                    .fixedHoliday {
+                        background: #06b357;
+                    }
+                    .optionalHoliday {
+                        background: #7b37e2;
+                    }
+                }
+            }
+            
+            #paraOneHolidayList {
+                padding-top: 10px !important;
+            }
+            
+            .paraHolidayList {
+                font-size: 12px;
+                color: white;
+            }
+            
+            .leaveApplicationForm {
+                padding: 30px;
+                order: 3;
+                background: var(--pageBackgroundGry);
+                -webkit-box-shadow: inset -3px 0px 5px 0px rgba(0, 0, 0, 0.1);
+                -moz-box-shadow: inset -3px 0px 5px 0px rgba(0, 0, 0, 0.1);
+                box-shadow: inset -3px 0px 5px 0px rgba(0, 0, 0, 0.1);
+                .userCancelNote {
+                    margin-bottom: 15px;
+                    p {
+                        margin: 0px;
+                        width: 100%;
+                        background-color: #e1faf6;
+                        padding: 15px;
+                        border: 1px solid #9ddbce;
+                        border-radius: var(--roundedForImgCorner);
+                        font-size: var(--paragraph-text);
+                        letter-spacing: 0.4px;
+                    }
+                }
+                h2 {
+                    padding-bottom: 20px;
+                    border-bottom: 1px solid var(--inputBorderColor);
+                    position: relative;
+                    i {
+                        position: absolute;
+                        right: 0;
+                        width: 30px;
+                        height: 30px;
+                        display: inline-block;
+                        cursor: pointer;
+                    }
+                }
+                .row {
+                    margin-bottom: 20px;
+                }
+                .row ion-col {
+                    margin-right: 16px;
+                }
+                .item.item-input.item-input-has-focus .item-inner,
+                .item.item-input.input-has-focus .item-inner {
+                    border-bottom-color: var(--MediumVioletRed);
+                    -webkit-box-shadow: inset 0 -1px 0 0 var(--MediumVioletRed);
+                    box-shadow: inset 0 -1px 0 0 var(--MediumVioletRed);
+                }
+                .list .item-input.item-input-has-focus:last-child,
+                .list .item-input.input-has-focus:last-child {
+                    border-bottom-color: var(--MediumVioletRed);
+                    -webkit-box-shadow: inset 0 -1px 0 0 var(--MediumVioletRed);
+                    box-shadow: inset 0 -1px 0 0 var(--MediumVioletRed);
+                }
+                .item {
+                    padding-left: 5px;
+                    border: 1px solid var(--inputBorderColor);
+                    border-radius: var(--roundedForImgCorner);
+                    .item-inner {
+                        border-bottom: 0px;
+                    }
+                    .text-input {
+                        margin: 5px;
+                        font-size: var(--paragraph-text);
+                    }
+                    .select {
+                        width: 100%;
+                        max-width: 100%;
+                        font-size: var(--paragraph-text);
+                        padding: 0px;
+                    }
+                    .select-icon-inner {
+                        left: 0px;
+                        margin-top: -2px;
+                    }
+                }
+                .label,
+                .label-md {
+                    margin: 0px;
+                    span {
+                        font-size: var(--paragraph-text);
+                    }
+                }
+                label {
+                    margin-bottom: 5px;
+                    display: inline-block;
+                    font-size: var(--subHeadline);
+                    font-weight: var(--font-regular);
+                }
+                .buttonSection {
+                    text-align: right;
+                    .preview,
+                    .clear {
+                        color: var(--font-color-white);
+                        font-size: var(--subHeadline);
+                        font-weight: var(--font-regular);
+                        height: 40px;
+                        border-radius: var(--roundedForImgCorner);
+                        text-transform: capitalize;
+                        width: 20%;
+                        box-shadow: none;
+                    }
+                    .preview {
+                        background: var(--backgroundGradient);
+                    }
+                    .clear {
+                        border-left: 1px solid var(--MediumVioletRed);
+                        border-right: 1px solid var(--purpleColor);
+                        border-top: 1px solid var(--MediumVioletRed);
+                        border-bottom: 1px solid var(--purpleColor);
+                        border-radius: var(--roundedForImgCorner);
+                        -webkit-box-sizing: border-box;
+                        -moz-box-sizing: border-box;
+                        box-sizing: border-box;
+                        background-position: 0 0, 0 100%;
+                        background-repeat: no-repeat;
+                        -webkit-background-size: 100% 1px;
+                        -moz-background-size: 100% 1px;
+                        background-size: 100% 1px;
+                        background-image: var(--backgroundGradient);
+                        background: var(--bgTransparent);
+                        color: var(--font-color-gray);
+                        margin-right: 10px;
+                    }
+                }
+                .calendarIcon {
+                    position: absolute;
+                    top: 50px;
+                    right: 10px;
+                    cursor: pointer;
+                    display: flex;
+                }
+                .fileUpload {
+                    display: block;
+                    background: var(--pageBackgroundColor);
+                    padding: 10px 5px 10px 100px;
+                    border-radius: 3px;
+                    min-height: 45px;
+                    width: 100%;
+                    position: relative;
+                    &::after {
+                        content: "Upload Document";
+                        background: var(--backgroundGradient);
+                        color: #fff;
+                        height: 45px;
+                        left: 0;
+                        top: 0;
+                        position: absolute;
+                        padding: 0px 10px;
+                        display: flex;
+                        justify-content: center;
+                        width: 150px;
+                        text-align: center;
+                        flex-direction: column;
+                    }
+                }
+                .fileUpload::-webkit-file-upload-button {
+                    visibility: hidden;
+                }
+                .userComment {
+                    white-space: normal;
+                }
+            }
+            
+            .leaveHolidyStatus {
+                .leaveStatusInfo {
+                    border-bottom: 1px solid var(--inputBorderColor);
+                    .row {
+                        margin-bottom: 10px;
+                        p {
+                            margin: 0px;
+                        }
+                    }
+                }
+                span {
+                    width: 18px;
+                    height: 18px;
+                    border-radius: var(--roundedCorner);
+                    display: inline-block;
+                }
+                .Fixed_Holiday {
+                    .swipMissColor {
+                        background: var(--calendarFixedHoliday);
+                    }
+                }
+                .Annual_Leave {
+                    .swipMissColor {
+                        background: var(--SAannualLeave);
+                    }
+                }
+                .Sick_Leave {
+                    .swipMissColor {
+                        background: var(--SAsickLeave);
+                    }
+                }
+                .Swipe_Miss {
+                    .swipMissColor {
+                        background: var(--calendarSwipeMiss);
+                    }
+                }
+                .Other_Leave {
+                    .swipMissColor {
+                        background: var(--SAotherLeave);
+                    }
+                }
+                .Optional_Holiday {
+                    .swipMissColor {
+                        background: var(--calendarOptionalHoliday);
+                    }
+                }
+                .Work_From_Home {
+                    .swipMissColor {
+                        background: var(--SAWorkFromHome);
+                    }
+                }
+                .PendingForApproval {
+                    .swipMissColor {
+                        background: var(--calendarPendingApproval);
+                    }
+                }
+                .swipMissColor {
+                    background: var(--calendarOtherHoliday);
+                }
+                .col:nth-child(1),
+                .col:nth-child(3) {
+                    max-width: 15%;
+                }
+                .approverInfoSection {
+                    background: var(--pageBackgroundGry);
+                    margin-top: 20px;
+                    border-radius: var(--roundedForImgCorner);
+                    p label {
+                        font-weight: var(--font-medium);
+                        font-size: var(--paragraph-text);
+                    }
+                }
+            }
+            
+            .mobileView,
+            .desktopNone {
+                display: none;
+            }
+            
+            .dateTextBox {
+                .calendarIcon img {
+                    cursor: pointer;
+                }
+            }
+            
+            .leaveApplicationForm .buttonSection {
+                text-align: right;
+                width: 85%;
+                display: inline-block;
+            }
+            /****************** Added CSS For Mobile View *******************/
+            
+            @media (max-width: 768px) {
+                .desktopView {
+                    display: none;
+                }
+                .scroll-content {
+                    background: var(--pageBackgroundGry);
+                    padding-bottom: 50px !important;
+                }
+                .pageLeftSideInfo {
+                    background: var(--pageBackgroundGry);
+                    padding: 0px 16px;
+                    box-shadow: none;
+                    display: block;
+                }
+                .leaveBlanceInfo {
+                    position: inherit;
+                }
+                .homepageWrapper {
+                    .pageLeftSideMainForm {
+                        order: 1;
+                    }
+                    .calendarWrapper {
+                        position: relative;
+                        order: 2;
+                    }
+                    .formWrapper {
+                        order: 3;
+                    }
+                }
+                .pageRightSideMain .pageRightSideInfo {
+                    padding: 16px;
+                }
+                .pageRightSideMainCalendar {
+                    order: 2;
+                    background: var(--pageBackgroundColor);
+                    padding: 0px 16px;
+                    position: static;
+                    -webkit-box-shadow: 0px 2px 5px 4px rgba(0, 0, 0, 0.19);
+                    -moz-box-shadow: 0px 2px 5px 4px rgba(0, 0, 0, 0.19);
+                    box-shadow: 0px 2px 5px 4px rgba(0, 0, 0, 0.19);
+                }
+                .pageRightSideInfoCalendar,
+                .leaveApplicationForm {
+                    padding: 0px;
+                }
+                .leaveApplicationForm {
+                    box-shadow: none;
+                }
+                .actualDateBox {
+                    width: 100%;
+                    h2 {
+                        margin-bottom: 10px;
+                        font-size: 15px;
+                        margin-top: 10px !important;
+                    }
+                    div {
+                        padding: 16px 6px;
+                        width: calc(33% - 10px);
+                        text-align: center;
+                        margin-right: 10px;
+                    }
+                }
+                .pageLeftSideInfo .swipeMissSection {
+                    width: 100%;
+                    margin: 0 0 20px 0px;
+                    div {
+                        width: 30%;
+                    }
+                    h2 {
+                        margin-bottom: 10px;
+                    }
+                }
+                ion-calendar {
+                    padding: 10px 0px;
+                    padding-bottom: 0px;
+                }
+                .pageLeftSideMainForm {
+                    order: 1;
+                    padding: 0px;
+                }
+                .pageLeftSideMainForm.leaveForm {
+                    order: 3;
+                    padding: 16px;
+                    margin-top: 15px;
+                }
+                .leaveApplicationForm .buttonSection {
+                    display: none;
+                    position: absolute;
+                    bottom: 0px;
+                    left: 0px;
+                    text-align: inherit;
+                    .button {
+                        margin: 0px;
+                        padding: 0px;
+                    }
+                    .preview,
+                    .clear {
+                        width: 49% !important;
+                    }
+                }
+                .mobileView {
+                    display: block;
+                    position: fixed;
+                    bottom: 0;
+                    z-index: 99;
+                    width: 100%;
+                    .mobileButtonMainSec {
+                        display: flex;
+                        width: 100%;
+                        div {
+                            width: 100%;
+                            display: flex;
+                            button {
+                                width: 100%;
+                                border-radius: 0px;
+                                height: 50px;
+                                margin: 0px;
+                                padding: 0px;
+                                box-shadow: none;
+                                background: var(--backgroundGradient);
+                                font-size: var(--subHeadline);
+                                color: var(--font-color-white);
+                            }
+                            .clear {
+                                border-left: 1px solid var(--MediumVioletRed);
+                                border-right: 1px solid var(--purpleColor);
+                                border-top: 1px solid var(--MediumVioletRed);
+                                border-bottom: 1px solid var(--purpleColor);
+                                -webkit-box-sizing: border-box;
+                                -moz-box-sizing: border-box;
+                                box-sizing: border-box;
+                                background-position: 0 0, 0 100%;
+                                background-repeat: no-repeat;
+                                -webkit-background-size: 100% 1px;
+                                -moz-background-size: 100% 1px;
+                                background-size: 100% 1px;
+                                background-image: var(--backgroundGradient);
+                                background: var(--pageBackgroundGry);
+                                color: var(--font-color-gray);
+                                // margin-right: 10px;
+                            }
+                        }
+                    }
+                }
+                .leaveApplicationForm:last-child .row {
+                    margin-bottom: 0px;
+                }
+                .approverInfoSection {
+                    background: var(--inputBorderColor);
+                    border-radius: var(--roundedForImgCorner);
+                    display: block;
+                    margin-bottom: 40px;
+                }
+                .mobileNone {
+                    display: none;
+                }
+                .leaveHolidyStatus {
+                    .leaveStatusInfo {
+                        border-bottom: none;
+                        .row {
+                            margin-bottom: 0px;
+                        }
+                        p {
+                            font-size: var(--paragraph-text-small);
+                            margin: 0px;
+                            margin-bottom: 0px;
+                        }
+                    }
+                }
+                .leaveHolidyStatus {
+                    .leaveStatusInfo .col:nth-child(1) {
+                        max-width: 8% !important;
+                    }
+                    span {
+                        width: 12px;
+                        height: 12px;
+                    }
+                }
+                .pageRightSideInfoCalendar ion-calendar ion-calendar-month .days-box .days .days-btn p {
+                    font-size: 13px !important;
+                }
+                ion-calendar-month button.days-btn {
+                    width: 26px;
+                    height: 26px;
+                }
+                ion-calendar-month .days {
+                    height: 26px;
+                }
+                .pageRightSideInfoCalendar ion-calendar .title .switch-btn .button-inner {
+                    font-size: 16px;
+                }
+            }
+            
+            .uploadedFileName {
+                font-size: var(--paragraph-text);
+                color: var(--purpleColor);
+                font-weight: var(--font-semiBold);
+                span {
+                    margin-left: 20px;
+                    display: inline-flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    .icon {
+                        color: var(--purpleColor);
+                        font-size: 18px;
+                    }
+                }
+            }
+            
+            .calendarModal {
+                .scroll-content {
+                    overflow-y: hidden;
+                    height: auto;
+                }
+                .title {
+                    .button-inner {
+                        font-size: var(--cardHeadlineText);
+                        letter-spacing: 0.4px;
+                        text-align: center;
+                        color: var(--MediumVioletRed);
+                        font-weight: var(--font-medium);
+                        text-transform: uppercase;
+                    }
+                }
+                ion-calendar-week {
+                    .toolbar {
+                        padding: 0px;
+                        min-height: 50px;
+                        .toolbar-background {
+                            background: var(--pageBackgroundColor);
+                        }
+                        .toolbar-content {
+                            .week-title {
+                                color: var(--blackColor);
+                                background: var(--pageBackgroundColor);
+                                font-size: var(--subHeadline);
+                                li {
+                                    color: var(--blackColor);
+                                    font-size: var(--subHeadline);
+                                }
+                            }
+                        }
+                    }
+                }
+                .month-picker.primary {
+                    .month-packer-item.this-month button {
+                        border-color: var(--MediumVioletRed);
+                    }
+                }
+                ion-calendar-month {
+                    background-color: var(--pageBackgroundColor);
+                    .days-box {
+                        border-bottom: 0px;
+                        .days {
+                            p {
+                                color: var(--blackColor);
+                                font-size: var(--subHeadline);
+                                letter-spacing: 0.4px;
+                            }
+                            .on-selected {
+                                background: var(--MediumVioletRed);
+                                border-radius: 50%;
+                                p {
+                                    color: var(--font-color-white);
+                                    font-size: var(--subHeadline);
+                                    font-weight: var(--font-regular);
+                                }
+                            }
+                            .today {
+                                p {
+                                    color: var(--MediumVioletRed);
+                                    font-size: var(--subHeadline);
+                                    font-weight: var(--font-regular);
+                                }
+                            }
+                            .today.on-selected {
+                                p {
+                                    color: var(--font-color-white !important);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+            .alert-md .alert-radio-group,
+            .alert-md .alert-checkbox-group {
+                max-height: 260px !important;
+            }
+            
+            .alert-ios .alert-radio-group,
+            .alert-ios .alert-checkbox-group {
+                max-height: 260px !important;
+            }
+            
+            .attachFileWrapper {
+                .fileNameInput {
+                    background: var(--pageBackgroundColor);
+                    height: 45px;
+                }
+                .fileExplorerBtn {
+                    width: 35%;
+                    z-index: 2;
+                    position: relative;
+                    cursor: pointer;
+                    opacity: 0;
+                    // &:after {
+                    //     content: 'Upload Document';
+                    //     background: var(--backgroundGradient);
+                    //     color: var(--pageBackgroundColor);
+                    //     height: 45px;
+                    //     left: 0;
+                    //     top: 0;
+                    //     text-align: center;
+                    //     position: absolute;
+                    //     display: flex;
+                    //     justify-content: center;
+                    //     width: 100%;
+                    //     text-align: center;
+                    //     flex-direction: column;
+                    //     z-index: 1;
+                    // }
+                }
+                .uploadBtn {
+                    background: var(--backgroundGradient);
+                    color: var(--pageBackgroundColor);
+                    height: 45px;
+                    left: 2px;
+                    // top: 0;
+                    text-align: center;
+                    position: absolute;
+                    font-size: var(--subHeadline);
+                    width: 35%;
+                    line-height: 1.2;
+                    cursor: pointer;
+                }
+            }
+            
+            .supportingDoc {
+                width: 100%;
+            }

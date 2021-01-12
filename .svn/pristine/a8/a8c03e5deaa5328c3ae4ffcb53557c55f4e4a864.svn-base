@@ -1,0 +1,470 @@
+<app-header></app-header>
+
+<ion-content>
+    <ion-grid class="homepageWrapper">
+        <ion-row>
+            <ion-col size="12" size-lg="8" size-md="8" size-sm="12" size-xl="8" class="pageLeftSideMainForm">
+
+                <div class="pageLeftSideMain">
+                    <div class="pageLeftSideInfo">
+                        <div class="actualDateBox">
+                            <h2>Actual Leave Balance</h2>
+                            <div (click)="calCulateBalanceLeaves()">
+                                <i><img src="assets/imgs/calendar_white.png" /></i> {{ currDateToDisplay }}
+                            </div>
+                            <div>
+                                <span>{{leaveBal.sickLeave}}<span>&nbsp;hrs</span></span> SICK LEAVE
+                            </div>
+                            <div>
+                                <span>{{leaveBal.vacationLeave}}<span>&nbsp;hrs</span></span> VACATION LEAVE
+                            </div>
+                            <div>
+                                <span>{{leaveBal.floatingLeave}}<span>&nbsp;hrs</span></span> FLOATING LEAVE
+                            </div>
+                        </div>
+                        <div class="leaveBlanceInfo" *ngIf="global.checkIfDataIsValid(homeMessage)">
+                            <p [innerHTML]="homeMessage"></p>
+                        </div>
+                    </div>
+                </div>
+
+            </ion-col>
+            <ion-col size-lg="8" size-md="8" size-sm="12" size-xl="8" class="formWrapper">
+                <ion-col size-lg="12" size-md="12" size-sm="12" size-xl="12" class="pageLeftSideMainForm leaveForm">
+                    <div class="pageLeftSideMainForm" *ngIf="isEditable">
+                        <div class="leaveApplicationForm">
+                            <h2>Leave Application</h2>
+                            <ion-row class="formWrapper">
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12">
+                                    <ion-list>
+                                        <label>Leave Type</label>
+                                        <ion-item>
+                                            <ion-select (ionChange)="selectedLeaveType(leaveInfo.leaveType)" [(ngModel)]="leaveInfo.leaveType">
+                                                <ion-select-option value="Bereavement">Bereavement</ion-select-option>
+                                                <ion-select-option value="Floating Leave">Floating Leave
+                                                </ion-select-option>
+                                                <ion-select-option value="Jury Duty">Jury Duty</ion-select-option>
+                                                <ion-select-option value="Maternity Leave" *ngIf="!isMale">Maternity Leave
+                                                </ion-select-option>
+                                                <ion-select-option value="Philanthropic Work">Philanthropic Work
+                                                </ion-select-option>
+                                                <ion-select-option value="Paternity Leave" *ngIf="isMale">Paternity Leave
+                                                </ion-select-option>
+                                                <!-- <ion-select-option value="Shut Down">Shut Down</ion-select-option> -->
+                                                <ion-select-option value="Sick Leave">Sick Leave</ion-select-option>
+                                                <ion-select-option value="Unpaid Leave">Unpaid Leave</ion-select-option>
+                                                <ion-select-option value="Vacation">Vacation Leave</ion-select-option>
+                                                <ion-select-option value="Voting">Voting</ion-select-option>
+                                            </ion-select>
+                                        </ion-item>
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+
+                            <ion-row>
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12" (click)="openStartDateCalendar()">
+                                    <ion-list>
+                                        <label>Start Date</label>
+                                        <ion-item><span>{{ leaveInfo.startDate }}</span></ion-item>
+                                        <i class="calendarIcon"><img src="assets/imgs/calendar_gray.png" /></i>
+                                    </ion-list>
+                                </ion-col>
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12" (click)="openEndDateCalendar()">
+                                    <ion-list>
+                                        <label>End Date</label>
+                                        <ion-item><span>{{ leaveInfo.endDate }}</span></ion-item>
+                                        <i class="calendarIcon"><img src="assets/imgs/calendar_gray.png" /></i>
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+
+                            <ion-row *ngIf="leaveInfo.leaveType == 'Bereavement' || leaveInfo.leaveType == 'Maternity Leave' || 
+                                        leaveInfo.leaveType == 'Paternity Leave' || leaveInfo.leaveType == 'Sick Leave' || 
+                                        leaveInfo.leaveType == 'Unpaid Leave' || leaveInfo.leaveType == 'Vacation' || 
+                                        leaveInfo.leaveType == 'Voting' || leaveInfo.leaveType == 'Jury Duty' || 
+                                        leaveInfo.leaveType == 'Leaving Zensar Inc' || leaveInfo.leaveType == 'Shut Down'">
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12">
+                                    <ion-list>
+                                        <label>Start Time</label>
+                                        <ion-item>
+                                            <ion-select (ionChange)="selectedStartTime(leaveInfo.startTime)" [(ngModel)]="leaveInfo.startTime">
+                                                <ion-select-option value="00:00">00:00</ion-select-option>
+                                                <ion-select-option value="01:00">01:00</ion-select-option>
+                                                <ion-select-option value="02:00">02:00</ion-select-option>
+                                                <ion-select-option value="03:00">03:00</ion-select-option>
+                                                <ion-select-option value="04:00">04:00</ion-select-option>
+                                                <ion-select-option value="05:00">05:00</ion-select-option>
+                                                <ion-select-option value="06:00">06:00</ion-select-option>
+                                                <ion-select-option value="07:00">07:00</ion-select-option>
+                                                <ion-select-option value="08:00">08:00</ion-select-option>
+                                                <ion-select-option value="09:00">09:00</ion-select-option>
+                                                <ion-select-option value="10:00">10:00</ion-select-option>
+                                                <ion-select-option value="11:00">11:00</ion-select-option>
+                                                <ion-select-option value="12:00">12:00</ion-select-option>
+                                                <ion-select-option value="13:00">13:00</ion-select-option>
+                                                <ion-select-option value="14:00">14:00</ion-select-option>
+                                                <ion-select-option value="15:00">15:00</ion-select-option>
+                                                <ion-select-option value="16:00">16:00</ion-select-option>
+                                                <ion-select-option value="17:00">17:00</ion-select-option>
+                                                <ion-select-option value="18:00">18:00</ion-select-option>
+                                                <ion-select-option value="19:00">19:00</ion-select-option>
+                                                <ion-select-option value="20:00">20:00</ion-select-option>
+                                                <ion-select-option value="21:00">21:00</ion-select-option>
+                                                <ion-select-option value="22:00">22:00</ion-select-option>
+                                                <ion-select-option value="23:00">23:00</ion-select-option>
+                                                <ion-select-option value="24:00">24:00</ion-select-option>
+                                            </ion-select>
+                                        </ion-item>
+                                    </ion-list>
+                                </ion-col>
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12">
+                                    <ion-list>
+                                        <label>End Time</label>
+                                        <ion-item>
+                                            <ion-select (ionChange)="selectedEndTime(leaveInfo.endTime)" [(ngModel)]="leaveInfo.endTime">
+                                                <ion-select-option value="00:00">00:00</ion-select-option>
+                                                <ion-select-option value="01:00">01:00</ion-select-option>
+                                                <ion-select-option value="02:00">02:00</ion-select-option>
+                                                <ion-select-option value="03:00">03:00</ion-select-option>
+                                                <ion-select-option value="04:00">04:00</ion-select-option>
+                                                <ion-select-option value="05:00">05:00</ion-select-option>
+                                                <ion-select-option value="06:00">06:00</ion-select-option>
+                                                <ion-select-option value="07:00">07:00</ion-select-option>
+                                                <ion-select-option value="08:00">08:00</ion-select-option>
+                                                <ion-select-option value="09:00">09:00</ion-select-option>
+                                                <ion-select-option value="10:00">10:00</ion-select-option>
+                                                <ion-select-option value="11:00">11:00</ion-select-option>
+                                                <ion-select-option value="12:00">12:00</ion-select-option>
+                                                <ion-select-option value="13:00">13:00</ion-select-option>
+                                                <ion-select-option value="14:00">14:00</ion-select-option>
+                                                <ion-select-option value="15:00">15:00</ion-select-option>
+                                                <ion-select-option value="16:00">16:00</ion-select-option>
+                                                <ion-select-option value="17:00">17:00</ion-select-option>
+                                                <ion-select-option value="18:00">18:00</ion-select-option>
+                                                <ion-select-option value="19:00">19:00</ion-select-option>
+                                                <ion-select-option value="20:00">20:00</ion-select-option>
+                                                <ion-select-option value="21:00">21:00</ion-select-option>
+                                                <ion-select-option value="22:00">22:00</ion-select-option>
+                                                <ion-select-option value="23:00">23:00</ion-select-option>
+                                                <ion-select-option value="24:00">24:00</ion-select-option>
+                                            </ion-select>
+                                        </ion-item>
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+
+                            <ion-row *ngIf="leaveInfo.leaveType == 'Paternity Leave' || leaveInfo.leaveType == 'Maternity Leave'">
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12" (click)="openchildBirthDueDateCalendar()">
+                                    <ion-list>
+                                        <label>Child Birth Due Date</label>
+                                        <ion-item><span> {{
+                                            leaveInfo.childBirthDate }}</span></ion-item>
+                                        <i class="calendarIcon"><img src="assets/imgs/calendar_gray.png" /></i>
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+
+                            <ion-row>
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12">
+                                    <ion-list>
+                                        <label>Total Duration</label>
+                                        <div class="totalDuration">
+                                            {{leaveInfo.absence_hours}}
+                                        </div>
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+
+                            <!-- <ion-row
+                                *ngIf="(leaveInfo.leaveType == 'Jury Duty' || leaveInfo.leaveType == 'Philanthropic Work')">
+                                <ion-col size="12" size-sm="12" size-md="10" size-lg="10">
+                                    <ion-list *ngIf="global.checkIfDataIsValid(leaveInfo.attachedFileLink)"
+                                        (click)="openFile(leaveInfo.attachedFileLink)">
+                                        <label>Supporting Documents</label>
+                                        <p class="uploadedFileName"> {{ leaveInfo.attachment_file_name }} <span
+                                                (click)="leaveInfo.attachedFileLink =''">
+                                                <ion-icon name="close-circle"></ion-icon>
+                                            </span></p>
+
+                                    </ion-list>
+                                    <ion-list *ngIf="!global.checkIfDataIsValid(leaveInfo.attachedFileLink)">
+                                        <label (click)="openUploader($event)">Supporting Documents</label>
+                                        <input type="file" class="fileUpload" id="file" name="attachment"
+                                            (change)="handleFileInput($event.target.files); $event.stopPropagation()">
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row> -->
+
+
+                            <ion-row *ngIf="(leaveInfo.leaveType == 'Jury Duty' || leaveInfo.leaveType == 'Philanthropic Work')">
+                                <ion-col size="12" size-sm="12" size-md="10" size-lg="10">
+                                    <ion-list *ngIf="global.checkIfDataIsValid(leaveInfo.attachedFileLink)" (click)="openFile(leaveInfo.attachedFileLink)">
+                                        <label>Supporting Documents</label>
+                                        <p class="uploadedFileName"> {{ leaveInfo.attachment_file_name }} <span (click)="leaveInfo.attachedFileLink =''">
+                                                <ion-icon name="close-circle"></ion-icon>
+                                            </span></p>
+
+                                    </ion-list>
+                                    <ion-list *ngIf="!global.checkIfDataIsValid(leaveInfo.attachedFileLink)" class="attachFileWrapper">
+
+                                        <label (click)="openUploader($event)">Supporting Documents</label>
+                                        <!-- <input type="file" class="fileUpload" id="file" name="attachment"
+                                            (change)="handleFileInput($event.target.files); $event.stopPropagation()"> -->
+                                        <ion-row>
+                                            <input type="file" class="fileExplorerBtn" name="attachment" id="file" (change)="handleFileInput($event.target.files); $event.stopPropagation()">
+                                            <button class="uploadBtn">Upload Document</button>
+                                            <ion-input class="fileNameInput" [(ngModel)]="fileName" readonly>
+                                            </ion-input>
+                                        </ion-row>
+
+
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+
+                            <ion-row>
+                                <ion-col size="12" size-sm="12" size-md="10" size-lg="10">
+                                    <ion-list>
+                                        <label>Comment</label>
+                                        <ion-item>
+                                            <ion-textarea rows="5" maxLength="500" [(ngModel)]="leaveInfo.employee_Comments"></ion-textarea>
+                                        </ion-item>
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+
+                            <div class="approverInfoSection desktopNone" padding>
+                                <p *ngIf="global.checkIfDataIsValid(managerInfo) && global.checkIfDataIsValid(managerInfo.managerName)">
+                                    <label>Approver</label> | {{ managerInfo.managerName }}</p>
+                                <p *ngIf="global.checkIfDataIsValid(twoUpManagerInfo) && global.checkIfDataIsValid(twoUpManagerInfo.manager2UpName)">
+                                    <label>2nd Approver</label> | {{ twoUpManagerInfo.manager2UpName }}</p>
+                            </div>
+
+                            <ion-col size="12" size-sm="12" size-md="10" size-lg="10" class="buttonSection">
+                                <div class="ButtonDiv desktopView">
+                                    <div *ngIf="flagsForButtonsVisibility=='clearPreview' && global.checkIfDataIsValid(leaveInfo.absence_hours)">
+                                        <button (click)="clearDialogue()" class="clear">Clear</button>
+                                        <button (click)="getPreview()" class="preview">Preview</button>
+                                    </div>
+                                    <div *ngIf="flagsForButtonsVisibility=='deletePreview' && global.checkIfDataIsValid(leaveInfo.absence_hours)">
+                                        <button (click)="deleteLeave()" class="clear">Delete</button>
+                                        <button (click)="getPreview()" class="preview">Preview</button>
+                                    </div>
+                                </div>
+                            </ion-col>
+                        </div>
+                    </div>
+
+                    <div class="pageLeftSideMainForm" *ngIf="!isEditable">
+                        <div class="leaveApplicationForm">
+                            <div class="userCancelNote" *ngIf="global.checkIfDataIsValid(editleaveInfoObject) && global.checkIfDataIsValid(editleaveInfoObject.auto_approval_msg)">
+                                <p [innerHtml]="editleaveInfoObject.auto_approval_msg"></p>
+                            </div>
+                            <h2>Leave Application
+                            </h2>
+                            <ion-row class="formWrapper">
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12">
+                                    <ion-list>
+                                        <label>Leave Type</label>
+                                        <ion-item>
+                                            <span>
+                                                {{ leaveInfo.leaveType }}
+                                            </span>
+                                        </ion-item>
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+
+                            <ion-row>
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12">
+                                    <ion-list>
+                                        <label>Start Date</label>
+                                        <ion-item><span>{{ leaveInfo.startDate }}</span></ion-item>
+                                        <i class="calendarIcon"><img src="assets/imgs/calendar_gray.png" /></i>
+                                    </ion-list>
+                                </ion-col>
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12">
+                                    <ion-list>
+                                        <label>End Date</label>
+                                        <ion-item><span>{{ leaveInfo.endDate }}</span></ion-item>
+                                        <i class="calendarIcon"><img src="assets/imgs/calendar_gray.png" /></i>
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+
+                            <ion-row *ngIf="leaveInfo.leaveType == 'Bereavement' || leaveInfo.leaveType == 'Maternity Leave' || 
+                                        leaveInfo.leaveType == 'Paternity Leave' || leaveInfo.leaveType == 'Sick Leave' || 
+                                        leaveInfo.leaveType == 'Unpaid Leave' || leaveInfo.leaveType == 'Vacation' || 
+                                        leaveInfo.leaveType == 'Voting' || leaveInfo.leaveType == 'Jury Duty' || 
+                                        leaveInfo.leaveType == 'Leaving Zensar Inc'">
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12" *ngIf="global.checkIfDataIsValid(leaveInfo.startTime)">
+                                    <ion-list>
+                                        <label>Start Time</label>
+                                        <ion-item>
+                                            <span>{{ leaveInfo.startTime }}</span>
+                                        </ion-item>
+                                    </ion-list>
+                                </ion-col>
+
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12" *ngIf="global.checkIfDataIsValid(leaveInfo.endTime)">
+                                    <ion-list>
+                                        <label>End Time</label>
+                                        <ion-item>
+                                            <span>{{ leaveInfo.endTime }}</span>
+                                        </ion-item>
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+
+                            <ion-row *ngIf="leaveInfo.leaveType == 'Paternity Leave' || leaveInfo.leaveType == 'Maternity Leave'">
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12">
+                                    <ion-list>
+                                        <label>Child Birth Due Date</label>
+                                        <ion-item><span> {{ leaveInfo.childBirthDate }}</span></ion-item>
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+
+                            <ion-row>
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12">
+                                    <ion-list>
+                                        <label>Total Duration</label>
+                                        <div style="background: white; padding: 10px 0px 10px 15px; border-radius: 3px; min-height: 42px;">
+                                            {{leaveInfo.absence_hours}}
+                                        </div>
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+
+                            <ion-row class="supportingDoc" *ngIf="(global.checkIfDataIsValid(leaveInfo) && ((leaveInfo.leaveType == 'Jury Duty') || (leaveInfo.leaveType == 'Philanthropic Work')) && global.checkIfDataIsValid(fileToUpload) && global.checkIfDataIsValid(fileToUpload.name))">
+                                <ion-col size-lg="5" size-md="5" size-sm="12" size="12">
+                                    <ion-list>
+                                        <label>Supporting Documents</label>
+                                        <ion-item>
+                                            <span *ngIf="global.checkIfDataIsValid(leaveInfo.attachedFileLink)">
+                                                {{ leaveInfo.attachment_file_name }} </span>
+                                            <span *ngIf="!global.checkIfDataIsValid(leaveInfo.attachedFileLink)">
+                                                {{ fileToUpload.name }}
+                                            </span>
+                                        </ion-item>
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+
+                            <ion-row>
+                                <ion-col size="12" size-sm="12" size-md="10" size-lg="10">
+                                    <ion-list>
+                                        <label>Comment</label>
+                                        <ion-item>
+                                            <span class="userComment" [innerHtml]="leaveInfo.employee_Comments"></span>
+                                        </ion-item>
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+
+                            <div class="approverInfoSection desktopNone" padding>
+                                <p *ngIf="global.checkIfDataIsValid(managerInfo) && global.checkIfDataIsValid(managerInfo.managerName)">
+                                    <label>Approver</label> | {{ managerInfo.managerName }}</p>
+                                <p *ngIf="global.checkIfDataIsValid(twoUpManagerInfo) && global.checkIfDataIsValid(twoUpManagerInfo.manager2UpName)">
+                                    <label>2nd Approver</label> | {{ twoUpManagerInfo.manager2UpName }}</p>
+                            </div>
+
+                            <ion-col size="12" size-sm="12" size-md="10" size-lg="10" class="buttonSection">
+                                <div class="ButtonDiv desktopView">
+                                    <div *ngIf="flagsForButtonsVisibility=='cancelApply'">
+                                        <button (click)="cancel()" class="clear">Edit</button>
+                                        <button (click)="applyLeave()" class="preview">Apply</button>
+                                    </div>
+                                    <div *ngIf="flagsForButtonsVisibility=='editApply'">
+                                        <button (click)="editLeave()" class="clear">Edit</button>
+                                        <button (click)="applyLeave()" class="preview">Apply</button>
+                                    </div>
+                                    <div *ngIf="flagsForButtonsVisibility=='deleteLeave'">
+                                        <button (click)="deleteLeave()" class="clear">Delete Leave</button>
+                                    </div>
+                                </div>
+                            </ion-col>
+                        </div>
+                    </div>
+                </ion-col>
+            </ion-col>
+            <ion-col size-lg="4" size-md="4" size-sm="12" size="12" class="pageRightSideMainCalendar">
+                <div class="pageRightSideInfoCalendar">
+                    <ion-calendar [(ngModel)]="date" (onSelect)="onDateSelect($event)" [type]="type" [options]="options" [format]="'YYYY-MM-DD'" (monthChange)="monthChange($event)" class="usCalendar">
+                    </ion-calendar>
+
+                    <div class="leaveHolidyStatus">
+                        <div>
+                            <div class="leaveStatusInfo">
+                                <ion-row align-items-center class="row Sick_Leave">
+                                    <ion-col size="2">
+                                        <span class="swipMissColor"></span>
+                                    </ion-col>
+                                    <ion-col size="10">
+                                        <p>Sick Leave, Vacation Leave, Other Leaves</p>
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row align-items-center class="row Fixed_Holiday">
+                                    <ion-col size="2">
+                                        <span class="swipMissColor"></span>
+                                    </ion-col>
+                                    <ion-col size="10">
+                                        <p>Fixed Holiday</p>
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row align-items-center class="row Floating_Leave">
+                                    <ion-col size="2">
+                                        <span class="swipMissColor"></span>
+                                    </ion-col>
+                                    <ion-col size="10">
+                                        <p>Floating Leave</p>
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row align-items-center class="row PendingForApproval">
+                                    <ion-col size="2">
+                                        <span class="swipMissColor"></span>
+                                    </ion-col>
+                                    <ion-col size="10">
+                                        <p>Pending For Approval</p>
+                                    </ion-col>
+                                </ion-row>
+                            </div>
+                        </div>
+                        <div class="approverInfoSection mobileNone" padding>
+                            <p *ngIf="global.checkIfDataIsValid(managerInfo) && global.checkIfDataIsValid(managerInfo.managerName)">
+                                <label>Approver</label> | {{ managerInfo.managerName }}</p>
+                            <p *ngIf="global.checkIfDataIsValid(twoUpManagerInfo) && global.checkIfDataIsValid(twoUpManagerInfo.manager2UpName)">
+                                <label>2nd Approver</label> | {{ twoUpManagerInfo.manager2UpName }}</p>
+                        </div>
+                    </div>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+
+<div class="mobileView">
+    <div class="mobileButtonMainSec">
+        <div *ngIf="flagsForButtonsVisibility=='clearPreview' && global.checkIfDataIsValid(leaveInfo.absence_hours)">
+            <button (click)="clearDialogue()" class="clear">Clear</button>
+            <button (click)="getPreview()">Preview</button>
+        </div>
+        <div *ngIf="flagsForButtonsVisibility=='deletePreview' && global.checkIfDataIsValid(leaveInfo.absence_hours)">
+            <button (click)="deleteLeave()" class="clear">Delete</button>
+            <button (click)="getPreview()">Preview</button>
+        </div>
+    </div>
+    <div class="mobileButtonMainSec">
+        <div *ngIf="flagsForButtonsVisibility=='cancelApply'">
+            <button (click)="cancel()" class="clear">Edit</button>
+            <button (click)="applyLeave()">Apply</button>
+        </div>
+        <div *ngIf="flagsForButtonsVisibility=='editApply'">
+            <button (click)="editLeave()" class="clear">Edit</button>
+            <button (click)="applyLeave()">Apply</button>
+        </div>
+        <div *ngIf="flagsForButtonsVisibility=='deleteLeave'">
+            <button (click)="deleteLeave()" class="clear">Delete Leave</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<!-- <ion-app>
+  <ion-split-pane> -->
+<ion-menu persistent="true" type="overlay" swipeEnabled="false">
+    <ion-content>
+        <ion-row class="userDetails">
+            <ion-row class="personalDetails">
+                <i><img [src]="global.getUserProfilePic()" /></i>
+                <span class="text">Hi, {{global.getFullName()}}</span>
+            </ion-row>
+            <ion-row class="location" *ngIf="global.checkIfDataIsValid(global.getUserLocation())">
+                <p><i><img src="assets/icon/header/location.png" /></i><span class="text">{{global.getUserLocation()}}</span>
+                </p>
+            </ion-row>
+        </ion-row>
+
+        <ion-list class="lmsMenu" *ngIf="global.checkIfDataIsValid(global.getSideMenuItems())">
+            <ion-item menuClose class="closeBtn" (click)="menuClose()">
+                <ion-avatar item-start>
+                    <img src="assets/icon/menu/close.png">
+                </ion-avatar>
+            </ion-item>
+            <ion-item menuClose *ngFor="let p of global.getSideMenuItems()" (click)="openPage(p)">
+                <ion-avatar item-start>
+                    <img [src]="p.icon">
+                </ion-avatar>
+                <ion-label>
+                    <h2>{{p.title}}</h2>
+                </ion-label>
+            </ion-item>
+            <ion-item menuClose (click)="holidayCalendar()">
+                <ion-avatar item-start>
+                    <img src="assets/icon/menu/Calendar.png">
+                </ion-avatar>
+                <ion-label>
+                    <h2>Holiday Calendar</h2>
+                </ion-label>
+
+            </ion-item>
+            <ion-item menuClose class="logOutIcon" (click)="logoutDialog()">
+                <ion-avatar item-start>
+                    <img src="assets/icon/menu/Logout.png">
+                </ion-avatar>
+                <ion-label>
+                    <h2>Logout</h2>
+                </ion-label>
+
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-menu>
+<ion-router-outlet main></ion-router-outlet>
+<!-- </ion-split-pane>
+</ion-app> -->

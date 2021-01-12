@@ -1,0 +1,67 @@
+ion-backdrop {
+    z-index: -1;
+    opacity: 0.5;
+}
+
+.popover-ios ion-backdrop,
+.popover-md ion-backdrop {
+    opacity: 0.5 !important;
+}
+
+.popover-ios .popover-content,
+.popover-md .popover-content {
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    max-height: 90%;
+    color: #000;
+    background: #fff;
+    left: 0 !important;
+    border-radius: 0;
+}
+
+.popover-wrapper .popover-arrow {
+    &::after {
+        background: var(--lightSkyBlue);
+    }
+}
+
+.popover-wrapper .popover-content {
+    width: 15%;
+    right: 8% !important;
+    left: unset !important;
+    top: unset;
+    .scroll-content {
+        padding: 0px;
+        overflow: inherit;
+    }
+    ion-content .padding {
+        padding: 0px;
+    }
+    .label {
+        margin: 0px;
+    }
+    .list {
+        margin: 0px;
+    }
+}
+
+.cancelBtn {
+    text-align: center;
+    margin-top: 20px;
+    button {
+        background: var(--backgroundGradient);
+        border-radius: 0px;
+        color: var(--font-color-white);
+        padding: 10px 15px;
+    }
+}
+
+
+/****************** Added CSS For Mobile View *******************/
+
+@media (max-width: 768px) {
+    .popover-wrapper .popover-content {
+        width: 30%;
+    }
+}

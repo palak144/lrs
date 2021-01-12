@@ -1,0 +1,243 @@
+<app-header></app-header>
+<ion-content>
+
+
+    <ion-row>
+        <ion-col size="12" size-lg="12" size-md="12" size-sm="12" size-xl="12" class="leaveSummaryMainInfo">
+            <div class="leaveSummaryDropdown"
+                *ngIf="global.checkIfDataIsValid(tempLeaveHistory) && tempLeaveHistory.length != 0">
+                <ion-list>
+                    <ion-item>
+                        <ion-select (ionChange)="getLeaveStatusType(leaveApprovalStatus)"
+                            [(ngModel)]="leaveApprovalStatus">
+                            <ion-select-option value="All" selected>All</ion-select-option>
+                            <ion-select-option value="Approved">Approved</ion-select-option>
+                            <ion-select-option value="Pending">Pending</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                </ion-list>
+            </div>
+            <div class="leaveSummaryDetails">
+                <ion-button (click)="getDetailedLeaveSummary()">Get Detailed Leave Summary</ion-button>
+
+            </div>
+
+            <div class="leaveSummaryCard" *ngFor="let leave of pagedItems; let i = index"
+                (click)="goToLeaveDetailPage(leave)" [ngClass]="{flexi:leave.LEAVE_TYPE == 'Flexi Leave' , 
+            compensatory:leave.LEAVE_TYPE == 'Compensatory Leave',
+            adoption:leave.LEAVE_TYPE == 'Adoption_Leave',
+            bereavement:leave.LEAVE_TYPE == 'Bereavement Leave' || leave.LEAVE_TYPE == 'Bereavement',
+            lossPay:leave.LEAVE_TYPE == 'Loss of Pay',
+            optional:leave.LEAVE_TYPE == 'Optional Holidays',
+            outOfOffice:leave.LEAVE_TYPE == 'Out of Office' , 
+            paternity:leave.LEAVE_TYPE == 'Paternity_Leave' || leave.LEAVE_TYPE == 'Paternity Leave',
+            privilege:leave.LEAVE_TYPE == 'Privilege Leave',
+            scheduled:leave.LEAVE_TYPE == 'Scheduled Off' , 
+            swipeMiss:leave.LEAVE_TYPE == 'Swipe Miss',
+            workFromHome:leave.LEAVE_TYPE == 'Work From Home',
+            meetingOutOfOffice:leave.LEAVE_TYPE == 'Meeting_Out of Office' || leave.LEAVE_TYPE == 'Meeting Out of Office',
+            userCancelledLeave:global.checkIfDataIsValid(leave.auto_approval_msg)}">
+                <ion-icon
+                    *ngIf="global.checkIfDataIsValid(leave) && global.checkIfDataIsValid(leave.attachment_file_name)"
+                    name="attach"></ion-icon>
+
+                <div class="leaveType">
+                    <h5>{{ leave.LEAVE_TYPE }}</h5>
+                    <h3>{{ leave.DURATION }}
+                        <span
+                            *ngIf="leave.DURATION <= 1 && global.getLocalStorageUserCountry().toLowerCase() == global.usLocation.toLowerCase()">Hr</span>
+                        <span
+                            *ngIf="leave.DURATION > 1 && global.getLocalStorageUserCountry().toLowerCase() == global.usLocation.toLowerCase()">Hrs</span>
+
+                        <span
+                            *ngIf="leave.DURATION <= 1 && global.getLocalStorageUserCountry().toLowerCase() != global.usLocation.toLowerCase()">Day</span>
+                        <span
+                            *ngIf="leave.DURATION > 1 && global.getLocalStorageUserCountry().toLowerCase() != global.usLocation.toLowerCase()">Days</span>
+                    </h3>
+                </div>
+
+                <div class="leaveStartDate">
+                    <h5>Start Date</h5>
+                    <h4>{{ leave.START_DATE }}</h4>
+                </div>
+
+                <div class="leaveEndDate">
+                    <h5>End Date</h5>
+                    <h4>{{ leave.END_DATE }}</h4>
+                </div>
+                <div class="infoIconForCancelledLeave" *ngIf="global.checkIfDataIsValid(leave.auto_approval_msg)"
+                    (click)="leave.showAutoApproveMessage=!leave.showAutoApproveMessage; $event.stopPropagation()">
+                    <img src="assets/imgs/info-white.png">
+                </div>
+
+                <div class="msgDivForCancelledLeave" *ngIf="leave.showAutoApproveMessage">
+                    <h5 [innerHtml]="leave.auto_approval_msg"></h5>
+                </div>
+
+                <div>
+                    <h5>Approval Status</h5>
+                    <h4 class="approvalStatus" [class.approved]="leave.APPROVAL_STATUS == 'Approved'">
+                        {{ leave.APPROVAL_STATUS }}
+                    </h4>
+                </div>
+                <div class="moreOptions" *ngIf="leave.canBeEditedByUser == true || leave.canBeCancelledByUser == true"
+                    (click)="showMoreOption(leave, $event);$event.stopPropagation()">
+                    <img src="assets/icon/leave-summary/moreOptions.svg">
+                </div>
+
+                <!-- Print Section -->
+
+                <div id="printSection{{i}}" class="printSection">
+                    <div class="zensarLogo">
+                        <img src="assets/imgs/zensar.png" style="width:120px;">
+                    </div>
+                    <div class="dataSection"
+                        style="display:inline-block; width:95%; margin:0 auto; padding: 15px; border:2px solid #000;">
+                        <div class="leaveStartDate hideScreen inPrint" *ngIf="global.checkIfDataIsValid(emp)"
+                            style="display: inline-block; width:45%; margin-bottom:10px; ">
+                            <h5 style="font-size: 16px; margin:0px 0px 3px;">Employee Name</h5>
+                            <h4 style="font-size: 14px; margin:0px 0px 3px; ">{{ emp.name }}</h4>
+                        </div>
+                        <div class="leaveStartDate hideScreen inPrint" *ngIf="global.checkIfDataIsValid(emp)"
+                            style="display: inline-block; width:45%; margin-bottom:10px; ">
+                            <h5 style="font-size: 16px; margin:0px 0px 3px;">Employee ID</h5>
+                            <h4 style="font-size: 14px; margin:0px 0px 3px;">{{ emp.number }}</h4>
+                        </div>
+                        <div class="leaveType" style="display: inline-block; width:45%; margin-bottom:10px; ">
+                            <h5 style="font-size: 16px; margin:0px 0px 3px;">Leave Type</h5>
+                            <h4 style="font-size: 14px; margin:0px 0px 3px;">{{ leave.LEAVE_TYPE }}
+                            </h4>
+                        </div>
+                        <div class="leaveType" style="display: inline-block; width:45%; margin-bottom:10px; ">
+                            <h5 style="font-size: 16px; margin:0px 0px 3px;">Leave Duration</h5>
+                            <h4 style="font-size: 14px; margin:0px 0px 3px;">{{ leave.DURATION }}
+                                <span
+                                    *ngIf="leave.DURATION <= 1 && global.getLocalStorageUserCountry().toLowerCase() == global.usLocation.toLowerCase()">Hr</span>
+                                <span
+                                    *ngIf="leave.DURATION > 1 && global.getLocalStorageUserCountry().toLowerCase() == global.usLocation.toLowerCase()">Hrs</span>
+                                <span
+                                    *ngIf="leave.DURATION <= 1 && global.getLocalStorageUserCountry().toLowerCase() != global.usLocation.toLowerCase()">Day</span>
+                                <span
+                                    *ngIf="leave.DURATION > 1 && global.getLocalStorageUserCountry().toLowerCase() != global.usLocation.toLowerCase()">Days</span>
+                            </h4>
+                        </div>
+
+                        <div class="leaveStartDate" style="display: inline-block; width:45%; margin-bottom:10px; ">
+                            <h5 style="font-size: 16px; margin:0px 0px 3px;">Start Date</h5>
+                            <h4 style="font-size: 14px; margin:0px 0px 3px;">{{ leave.START_DATE }}</h4>
+                        </div>
+
+                        <div class="leaveStartDate hideScreen inPrint" *ngIf="global.checkIfDataIsValid(emp)"
+                            style="display: inline-block; width:45%; margin-bottom:10px; ">
+                            <h5 style="font-size: 16px; margin:0px 0px 3px;">Email ID</h5>
+                            <h4 style="font-size: 14px; margin:0px 0px 3px;">{{ emp.email }}</h4>
+                        </div>
+
+                        <div class="leaveEndDate" style="display: inline-block; width:45%; margin-bottom:10px; ">
+                            <h5 style="font-size: 16px; margin:0px 0px 3px;">End Date</h5>
+                            <h4 style="font-size: 14px; margin:0px 0px 3px;">{{ leave.END_DATE }}</h4>
+                        </div>
+                        <div class="leaveEndDate hideScreen inPrint"
+                            style="display: inline-block; width:45%; margin-bottom:10px; "
+                            *ngIf="leave.LEAVE_TYPE == 'Flexi Leave'">
+                            <h5 style="font-size: 16px; margin:0px 0px 3px;">Flexi Leave Type</h5>
+                            <h4 style="font-size: 14px; margin:0px 0px 3px;">{{ leave.leave_sub_type }}</h4>
+                        </div>
+
+                        <div class="leaveEndDate hideScreen inPrint"
+                            style="display: inline-block; width:45%; margin-bottom:10px; "
+                            *ngIf="leave.LEAVE_TYPE == 'Maternity Leave'">
+                            <h5 style="font-size: 16px; margin:0px 0px 3px;">Child Birth Due Date</h5>
+                            <h4 style="font-size: 14px; margin:0px 0px 3px;">{{ leave.start_day_half_day }}</h4>
+                        </div>
+
+                        <div class="leaveEndDate hideScreen inPrint"
+                            style="display: inline-block; width:45%; margin-bottom:10px; "
+                            *ngIf="leave.LEAVE_TYPE == 'Compensatory Leave'">
+                            <h5 style="font-size: 16px; margin:0px 0px 3px;">Work Date</h5>
+                            <h4 style="font-size: 14px; margin:0px 0px 3px;">{{ leave.start_day_half_day }}</h4>
+                        </div>
+
+                        <div class="leaveEndDate hideScreen inPrint"
+                            style="display: inline-block; width:45%; margin-bottom:10px; "
+                            *ngIf="((leave.LEAVE_TYPE == 'Flexi Leave' || leave.LEAVE_TYPE == 'Privilege Leave' || leave.LEAVE_TYPE == 'Special Privilege Leave') && (global.checkIfDataIsValid(leave.start_day_half_day)))">
+                            <h5 style="font-size: 16px; margin:0px 0px 3px;">Start Date Half Day</h5>
+                            <h4 style="font-size: 14px; margin:0px 0px 3px;">{{ leave.start_day_half_day }}</h4>
+                        </div>
+                        <div class="leaveEndDate hideScreen inPrint"
+                            style="display: inline-block; width:45%; margin-bottom:10px; "
+                            *ngIf="((leave.LEAVE_TYPE == 'Flexi Leave' || leave.LEAVE_TYPE == 'Privilege Leave' || leave.LEAVE_TYPE == 'Special Privilege Leave') && (global.checkIfDataIsValid(leave.end_day_half_day)))">
+                            <h5 style="font-size: 16px; margin:0px 0px 3px;">End Date Half Day</h5>
+                            <h4 style="font-size: 14px; margin:0px 0px 3px;">{{ leave.end_day_half_day }}</h4>
+                        </div>
+
+
+
+                        <div class="infoIconForCancelledLeave"
+                            style="display: inline-block; width:45%; margin-bottom:10px; "
+                            *ngIf="global.checkIfDataIsValid(leave.auto_approval_msg)"
+                            (click)="leave.showAutoApproveMessage=!leave.showAutoApproveMessage; $event.stopPropagation()">
+                            <img src="assets/imgs/info-white.png">
+                        </div>
+                        <!-- Changes by Bhushan : Purbali Observations - 26-04-2019 -->
+
+                        <!-- <div class="leaveLeaveStatus">
+                  <h5>Leave Status</h5>
+                  <h4>{{ leave.LEAVE_STATUS }}</h4>
+                </div> -->
+                        <!-- Commented by Bhushan, after confirming it with Aditya/Hrishikesh -->
+
+                        <div class="msgDivForCancelledLeave" *ngIf="leave.showAutoApproveMessage">
+                            <h5 [innerHtml]="leave.auto_approval_msg"></h5>
+                        </div>
+                        <!-- Changes by Bhushan : Purbali Observations - 26-04-2019 -->
+
+                        <div class="inPrint" style="display: inline-block; width:45%; margin-bottom:10px; ">
+                            <h5 style="font-size: 16px; margin:0px 0px 3px;">Approval Status</h5>
+                            <!-- Bug fixes by Bhushan : 07-03-2019 -->
+                            <h4 class="approvalStatus" [class.approved]="leave.APPROVAL_STATUS == 'Approved'"
+                                style="font-size: 14px; margin:0px 0px 3px;">
+                                {{ leave.APPROVAL_STATUS }}
+                            </h4>
+                        </div>
+                        <div class="leaveEndDate hideScreen inPrint"
+                            style="display: inline-block; width:100%; margin-bottom: 5px;">
+                            <h5 style="font-size: 12px; text-align: center;">© 2020 Zensar Technologies</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="printBtn">
+                    <button ion-button block
+                        [printStyle]="{h4: {'font-weight':300, 'font-family': 'Trebuchet MS'},h5: {'font-weight':800, 'font-family': 'Trebuchet MS'}}"
+                        printSectionId="printSection{{i}}" printTitle="Zensar My Leaves summary page print" ngxPrint
+                        (click)="$event.stopPropagation()"></button>
+                </div>
+            </div>
+
+            <div class="noRecordFoundCard"
+                *ngIf="(global.checkIfDataIsValid(leaveHistoryAPIResp) && (global.checkIfDataIsValid(pagedItems) && pagedItems.length == 0)) || (global.checkIfDataIsValid(leaveHistoryAPIResp) && !global.checkIfDataIsValid(pagedItems))">
+                <h2>{{msgToUser}}</h2>
+            </div>
+
+            <ion-row class="paginationWrapper" *ngIf="global.checkIfDataIsValid(pagedItems) && paginationButtonCount>1">
+                <ion-grid class="button-group">
+                    <ion-row *ngIf="pager.pages && pager.pages.length">
+                        <ion-col *ngIf="pager.totalPages > 5" class="firstBtn"
+                            [ngClass]="{disabled:pager.currentPage == 1}">
+                            <button ion-button block color="light" (click)="setPage(1)">First</button>
+                        </ion-col>
+                        <ion-col *ngFor="let page of pager.pages" class="numberBtn"
+                            [ngClass]="{activated:pager.currentPage == page}">
+                            <button ion-button block color="light" (click)="setPage(page)">{{page}}</button>
+                        </ion-col>
+                        <ion-col *ngIf="pager.totalPages > 5" class="lastBtn"
+                            [ngClass]="{disabled:pager.currentPage == pager.totalPages}">
+                            <button ion-button block color="light" (click)="setPage(pager.totalPages)">Last</button>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-row>
+        </ion-col>
+    </ion-row>
+
+</ion-content>

@@ -1,0 +1,98 @@
+.scroll-content {
+    background: var(--pageBackgroundColor);
+    padding: 0px !important;
+    margin-top: 56px;
+}
+.col {
+    padding: 0px;
+}
+.toolbar-background {
+    background: var(--pageBackgroundColor);
+}
+.faqInfoMain {
+    margin: 30px;
+    width: calc(100% - 60px);
+    h2.pageHeading {
+        position: relative;
+        font-size: var(--cardHeadlineText);
+        font-weight: var(--font-regular);
+        margin: 0px;
+        margin-bottom: 25px;
+        letter-spacing: 0.4px;
+        text-transform: capitalize;
+        width: auto;
+        display: inline-block;
+        padding-bottom: 5px;
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            border-bottom: 2px solid var(--outofOffice);
+            width: 25%;
+        }
+    }
+    .faqInfoRow {
+        box-shadow: var(--shadow1);
+        display: flex;
+        width: 100%;
+        position: relative;
+        margin-bottom: 20px;
+        border: 1px solid #f2f2f2;
+        border-radius: var(--roundedForImgCorner);
+    }
+    .prAboutUsSection {
+        width: 100%;
+        .sectionHeading {
+            width: 100%;
+            margin: 0px;
+            font-size: var(--subHeadline);
+            font-weight: var(--font-regular);
+            letter-spacing: 0.4px;
+            padding: 8px 10px 8px 60px;
+            background-image: url('/assets/icon/faq/questionMarkCircular.svg');
+            background-position: left center;
+            background-repeat: no-repeat;
+            background-size: 30px;
+            cursor: pointer;
+            span {
+                width: 100%;
+                display: inline-block;
+                padding: 0px 60px 0px 0px;
+                // background-image: url(../assets/imgs/white-down-arrow.png);
+                background-position: right center;
+                background-repeat: no-repeat;
+                background-size: 30px;
+            }
+            &.expandedCard {
+                span {
+                    // background-image: url(../assets/imgs/white-up-arrow.png);
+                }
+            }
+        }
+        app-expandable-section{
+            width: 100%;
+           
+            p.sectionDescription {
+                padding: 15px 10px;
+                font-size: var(--paragraph-text);
+                font-weight: var(--font-light);
+                margin: 0px;
+                letter-spacing: 0.4px;
+            }
+        }
+    }
+}
+/****************** Added CSS For Mobile View *******************/
+@media (max-width: 768px) {
+    // .content-ios {
+    //     .scroll-content {
+    //         display: inline-block;
+    //         width: 100%;
+    //     }
+    // }
+    .faqInfoMain {
+        margin: 16px;
+        width: 100%;
+    }
+}

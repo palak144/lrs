@@ -1,0 +1,676 @@
+@import "../functions";
+@mixin transition-property($args...) {
+    -webkit-transition-property: $args;
+    -moz-transition-property: $args;
+    -ms-transition-property: $args;
+    -o-transition-property: $args;
+    transition-property: $args;
+}
+
+@mixin transition-duration($args...) {
+    -webkit-transition-duration: $args;
+    -moz-transition-duration: $args;
+    -ms-transition-duration: $args;
+    -o-transition-duration: $args;
+    transition-duration: $args;
+}
+
+@mixin transition-timing-function($args...) {
+    -webkit-transition-timing-function: $args;
+    -moz-transition-timing-function: $args;
+    -ms-transition-timing-function: $args;
+    -o-transition-timing-function: $args;
+    transition-timing-function: $args;
+}
+
+@mixin month-color($background-color: primary, $color: #fff) {
+    button.days-btn small,
+    .days .marked p,
+    .days .today p {
+        color: bindColors($background-color);
+    }
+    .days .days-btn p {
+        color: #000;
+        font-size: 16px;
+        letter-spacing: 0.4px;
+        border-radius: 50%;
+    }
+    .days .today p {
+        color: #000;
+        font-weight: 700;
+    }
+    .days .last-month-day p,
+    .days .next-month-day p {
+        color: rgba(0, 0, 0, .25);
+    }
+    .days .today.on-selected p,
+    .days .marked.on-selected p {
+        color: $color;
+    }
+    .days .on-selected,
+    .startSelection button.days-btn,
+    .endSelection button.days-btn {
+        background-color: bindColors($background-color);
+        color: $color;
+    }
+    .startSelection {
+        position: relative;
+        &:after {
+            height: 36px;
+            width: 50%;
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: block;
+            background-color: lighten(bindColors($background-color), 12%);
+        }
+    }
+    .endSelection {
+        position: relative;
+        &:after {
+            height: 36px;
+            width: 50%;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            background-color: lighten(bindColors($background-color), 12%);
+        }
+    }
+    .startSelection.endSelection {
+        &:after {
+            background-color: transparent;
+        }
+    }
+    .startSelection button.days-btn {
+        border-radius: 50%
+    }
+    .between button.days-btn {
+        background-color: lighten(bindColors($background-color), 12%);
+        width: 100%;
+        border-radius: 0;
+        p {
+            color: $color;
+        }
+    }
+    .endSelection button.days-btn {
+        border-radius: 50%;
+        p {
+            color: $color;
+        }
+    }
+    .days.startSelection:nth-child(7n):after,
+    .days.between:nth-child(7n) button.days-btn,
+    button.days-btn.is-last {
+        border-radius: 0 36px 36px 0;
+        &.on-selected {
+            border-radius: 50%
+        }
+    }
+    .days.endSelection:nth-child(7n+1):after,
+    .days.between:nth-child(7n+1) button.days-btn,
+    button.days-btn.is-first {
+        border-radius: 36px 0 0 36px;
+    }
+    .startSelection button.days-btn.is-first,
+    .endSelection button.days-btn.is-first,
+    button.days-btn.is-first.on-selected,
+    button.days-btn.is-last.on-selected,
+    .startSelection button.days-btn.is-last,
+    .endSelection button.days-btn.is-last {
+        border-radius: 50%
+    }
+    .startSelection.is-last-wrap {
+        &::after {
+            border-radius: 0 36px 36px 0;
+        }
+    }
+    .endSelection.is-first-wrap {
+        &::after {
+            border-radius: 36px 0 0 36px;
+        }
+    }
+    .days .on-selected p {
+        color: $color !important;
+    }
+    .startSelection,
+    .endSelection,
+    .between {
+        button.days-btn {
+            @include transition-property(background-color);
+            @include transition-duration(180ms);
+            @include transition-timing-function(ease-out);
+        }
+    }
+}
+
+ion-calendar-month {
+    display: inline-block;
+    width: 100%;
+    .days-box {
+        padding: 0.5rem;
+    }
+    .days:nth-of-type(7n),
+    .days:nth-of-type(7n+1) {
+        width: 15%;
+    }
+    .days {
+        width: 14%;
+        float: left;
+        text-align: center;
+        height: 36px;
+        margin-bottom: 5px;
+    }
+    .days .marked p {
+        font-weight: 500;
+    }
+    .days .on-selected {
+        border: none;
+        p {
+            font-size: 1.3em;
+        }
+    }
+    button.days-btn {
+        border-radius: 36px;
+        width: 36px;
+        display: block;
+        margin: 0 auto;
+        padding: 0;
+        height: 36px;
+        background-color: transparent;
+        position: relative;
+        z-index: 2;
+    }
+    button.days-btn p {
+        margin: 0;
+        font-size: 1.2em;
+        color: #333;
+    }
+    button.days-btn.on-selected small {
+        transition: bottom .3s;
+        bottom: -14px;
+    }
+    button.days-btn small {
+        overflow: hidden;
+        display: block;
+        left: 0;
+        right: 0;
+        bottom: -5px;
+        position: absolute;
+        z-index: 1;
+        text-align: center;
+        font-weight: 200;
+    }
+    .primary {
+        @include month-color();
+    }
+    .secondary {
+        @include month-color(secondary);
+    }
+    .danger {
+        @include month-color(danger);
+    }
+    .dark {
+        @include month-color(dark);
+    }
+    .light {
+        @include month-color(light, #a0a0a0);
+        .days .today p {
+            color: #565656;
+        }
+    }
+    .cal-color {
+        @include month-color(cal-color);
+    }
+}
+
+ion-calendar-month {
+    .days {
+        button[disabled] {
+            cursor: default;
+            opacity: .4;
+            pointer-events: none;
+            p {
+                color: $blackBgColor !important;
+            }
+        }
+        .days-btn {
+            &.on-selected {
+                background: $blackBgColor;
+                color: $fontWhiteColor;
+            }
+            &.marked {
+                background: $calendarOtherHoliday;
+                cursor: default;
+                p {
+                    color: $fontWhiteColor;
+                    font-weight: $font-medium;
+                    letter-spacing: 0.4px;
+                }
+                &.Fixed_Holiday {
+                    background: $calendarFixedHoliday;
+                    p {
+                        color: $fontWhiteColor;
+                        font-weight: $font-medium;
+                        letter-spacing: 0.4px;
+                    }
+                }
+                &.Annual_Leave {
+                    background: $calendarAnnualLeave;
+                    p {
+                        color: $fontWhiteColor;
+                        font-weight: $font-medium;
+                        letter-spacing: 0.4px;
+                    }
+                }
+                &.Swipe_Miss {
+                    background: $calendarSwipeMiss;
+                    box-shadow: $calendarBoxShadow;
+                    p {
+                        color: $fontWhiteColor;
+                        font-weight: $font-medium;
+                        letter-spacing: 0.4px;
+                    }
+                }
+                &.Privilege_Leave {
+                    background: $calendarAppliedLeave;
+                    p {
+                        color: $fontWhiteColor;
+                        font-weight: $font-medium;
+                        letter-spacing: 0.4px;
+                    }
+                }
+                &.Flexi_Leave {
+                    background: $calendarAppliedLeave;
+                    p {
+                        color: $fontWhiteColor;
+                        font-weight: $font-medium;
+                        letter-spacing: 0.4px;
+                    }
+                }
+                &.Optional_Holidays {
+                    background: $calendarOptionalHoliday;
+                    p {
+                        color: $fontWhiteColor;
+                        font-weight: $font-medium;
+                        letter-spacing: 0.4px;
+                    }
+                }
+                &.Out_of_Office {
+                    background: $outOfOffice;
+                    p {
+                        color: $fontWhiteColor;
+                        font-weight: $font-medium;
+                        letter-spacing: 0.4px;
+                    }
+                }
+                &.Meeting_Out_of_Office {
+                    background: $outOfOffice;
+                    p {
+                        color: $fontWhiteColor;
+                        font-weight: $font-medium;
+                        letter-spacing: 0.4px;
+                    }
+                }
+                &.PendingForApproval {
+                    background: $calendarPendingApproval;
+                    p {
+                        color: $fontWhiteColor;
+                        font-weight: $font-medium;
+                        letter-spacing: 0.4px;
+                    }
+                }
+                &.Work_From_Home {
+                    background: $workFromHome;
+                    p {
+                        color: $fontWhiteColor;
+                        font-weight: $font-medium;
+                        letter-spacing: 0.4px;
+                    }
+                }
+                &.today {
+                    background: $blackBgColor;
+                    p {
+                        color: $fontWhiteColor;
+                        font-weight: $font-medium;
+                        letter-spacing: 0.4px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.usCalendar {
+    ion-calendar-month {
+        .days {
+            .days-btn {
+                border-radius: 50%;
+                &.on-selected {
+                    background: $blackBgColor;
+                    color: $fontWhiteColor;
+                }
+                &.marked {
+                    background: $calendarOtherHoliday;
+                    cursor: default;
+                    p {
+                        color: $fontWhiteColor;
+                        font-weight: $font-medium;
+                        letter-spacing: 0.4px;
+                    }
+                    &.Fixed_Holiday {
+                        background: $calendarFixedHoliday;
+                        p {
+                            color: $fontWhiteColor;
+                            font-weight: $font-medium;
+                            letter-spacing: 0.4px;
+                        }
+                    }
+                    &.Floating_Leave {
+                        background: $calendarFloatingLeave;
+                        p {
+                            color: $fontWhiteColor;
+                            font-weight: $font-medium;
+                            letter-spacing: 0.4px;
+                        }
+                    }
+                    &.Sick_Leave {
+                        background: $calendarAppliedLeave;
+                        p {
+                            color: $fontWhiteColor;
+                            font-weight: $font-medium;
+                            letter-spacing: 0.4px;
+                        }
+                    }
+                    &.Vacation_Leave {
+                        background: $calendarAppliedLeave;
+                        p {
+                            color: $fontWhiteColor;
+                            font-weight: $font-medium;
+                            letter-spacing: 0.4px;
+                        }
+                    }
+                    &.Bereavement_Leave {
+                        background: $calendarAppliedLeave;
+                        p {
+                            color: $fontWhiteColor;
+                            font-weight: $font-medium;
+                            letter-spacing: 0.4px;
+                        }
+                    }
+                    &.Jury_Duty_Leave {
+                        background: $calendarAppliedLeave;
+                        p {
+                            color: $fontWhiteColor;
+                            font-weight: $font-medium;
+                            letter-spacing: 0.4px;
+                        }
+                    }
+                    &.Leaving_Zensar_Inc {
+                        background: $calendarAppliedLeave;
+                        p {
+                            color: $fontWhiteColor;
+                            font-weight: $font-medium;
+                            letter-spacing: 0.4px;
+                        }
+                    }
+                    &.Maternity_Leave {
+                        background: $calendarAppliedLeave;
+                        p {
+                            color: $fontWhiteColor;
+                            font-weight: $font-medium;
+                            letter-spacing: 0.4px;
+                        }
+                    }
+                    &.Philanthropic_Work {
+                        background: $calendarAppliedLeave;
+                        p {
+                            color: $fontWhiteColor;
+                            font-weight: $font-medium;
+                            letter-spacing: 0.4px;
+                        }
+                    }
+                    &.Paternity_Leave {
+                        background: $calendarAppliedLeave;
+                        p {
+                            color: $fontWhiteColor;
+                            font-weight: $font-medium;
+                            letter-spacing: 0.4px;
+                        }
+                    }
+                    &.Shut_Down {
+                        background: $calendarAppliedLeave;
+                        p {
+                            color: $fontWhiteColor;
+                            font-weight: $font-medium;
+                            letter-spacing: 0.4px;
+                        }
+                    }
+                    &.Unpaid_Leave {
+                        background: $calendarAppliedLeave;
+                        p {
+                            color: $fontWhiteColor;
+                            font-weight: $font-medium;
+                            letter-spacing: 0.4px;
+                        }
+                    }
+                    &.Voting_Leave {
+                        background: $calendarAppliedLeave;
+                        p {
+                            color: $fontWhiteColor;
+                            font-weight: $font-medium;
+                            letter-spacing: 0.4px;
+                        }
+                    }
+                    &.PendingForApproval {
+                        background: $calendarPendingApproval;
+                        p {
+                            color: $fontWhiteColor;
+                            font-weight: $font-medium;
+                            letter-spacing: 0.4px;
+                        }
+                    }
+                    &.today {
+                        background: $blackBgColor;
+                        p {
+                            color: $fontWhiteColor;
+                            font-weight: $font-medium;
+                            letter-spacing: 0.4px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.saCalendar {
+    ion-calendar-month {
+        .days {
+            .days-btn {
+                border-radius: 50%;
+                &.on-selected {
+                    background: $blackBgColor;
+                    color: $fontWhiteColor;
+                }
+                p {
+                    color: $blackBgColor;
+                    font-size: $subHeadline;
+                    letter-spacing: 0.4px;
+                }
+                &.marked {
+                    background: $calendarOtherHoliday;
+                    cursor: default;
+                    p {
+                        color: $fontWhiteColor;
+                        font-weight: $font-medium;
+                        font-size: $subHeadline;
+                        letter-spacing: 0.4px;
+                    }
+                    &.Fixed_Holiday {
+                        background: $SAfixedHoliday;
+                        p {
+                            color: $fontWhiteColor;
+                            font-weight: $font-medium;
+                            font-size: $subHeadline;
+                            letter-spacing: 0.4px;
+                        }
+                    }
+                    &.Annual_Leave {
+                        background: $SAannualLeave;
+                        p {
+                            color: $fontWhiteColor;
+                            font-weight: $font-medium;
+                            font-size: $subHeadline;
+                            letter-spacing: 0.4px;
+                        }
+                    }
+                    &.Sick_Leave {
+                        background: $SAsickLeave;
+                        p {
+                            color: $fontWhiteColor;
+                            font-weight: $font-medium;
+                            font-size: $subHeadline;
+                            letter-spacing: 0.4px;
+                        }
+                    }
+                    &.Advance_Sick_Leave {
+                        background: $SAsickLeave;
+                        p {
+                            color: $fontWhiteColor;
+                            font-weight: $font-medium;
+                            font-size: $subHeadline;
+                            letter-spacing: 0.4px;
+                        }
+                    }
+                    &.Optional_Holidays {
+                        background: $calendarOptionalHoliday;
+                        p {
+                            color: $fontWhiteColor;
+                            font-weight: $font-medium;
+                            font-size: $subHeadline;
+                            letter-spacing: 0.4px;
+                        }
+                    }
+                    &.Other_Leave {
+                        background: $SAotherLeave;
+                        p {
+                            color: $fontWhiteColor;
+                            font-weight: $font-medium;
+                            font-size: $subHeadline;
+                            letter-spacing: 0.4px;
+                        }
+                    }
+                    &.PendingForApproval {
+                        background: $SApendingForApproval;
+                        p {
+                            color: $fontWhiteColor;
+                            font-weight: $font-medium;
+                            font-size: $subHeadline;
+                            letter-spacing: 0.4px;
+                        }
+                    }
+                    &.today {
+                        background: $blackBgColor;
+                        p {
+                            color: $fontWhiteColor;
+                            font-weight: $font-medium;
+                            font-size: $subHeadline;
+                            letter-spacing: 0.4px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.livexCalendar {
+    ion-calendar-month {
+        .days-box {
+            .days {
+                .days-btn {
+                    border-radius: 50%;
+                    p {
+                        color: $blackBgColor;
+                        font-size: $subHeadline;
+                        letter-spacing: 0.4px;
+                    }
+                    &.marked {
+                        background: $calendarLiveXIndiaLeaves;
+                        cursor: default;
+                        p {
+                            color: $fontWhiteColor;
+                            font-weight: $font-medium;
+                            font-size: $subHeadline;
+                            letter-spacing: 0.4px;
+                        }
+                        &.Sick_Leave_LiveEx {
+                            background: $calendarFixedHoliday;
+                            p {
+                                color: $fontWhiteColor;
+                                font-weight: $font-medium;
+                                font-size: $subHeadline;
+                                letter-spacing: 0.4px;
+                            }
+                        }
+                        &.Annual_Leave_LiveEx {
+                            background: $calendarAppliedLeave;
+                            p {
+                                color: $fontWhiteColor;
+                                font-weight: $font-medium;
+                                font-size: $subHeadline;
+                                letter-spacing: 0.4px;
+                            }
+                        }
+                        &.PendingForApproval {
+                            background: $calendarPendingApproval;
+                            p {
+                                color: $fontWhiteColor;
+                                font-weight: $font-medium;
+                                font-size: $subHeadline;
+                                letter-spacing: 0.4px;
+                            }
+                        }
+                        &.today {
+                            background: $blackBgColor;
+                            p {
+                                color: $fontWhiteColor;
+                                font-weight: $font-medium;
+                                font-size: $subHeadline;
+                                letter-spacing: 0.4px;
+                            }
+                        }
+                    }
+                    &.on-selected {
+                        background: $blackBgColor;
+                        p {
+                            color: $fontWhiteColor;
+                            font-weight: $font-medium;
+                            font-size: $subHeadline;
+                            letter-spacing: 0.4px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    ion-calendar-month {
+        .primary {
+            .days {
+                .days-btn {
+                    height: 26px;
+                    width: 26px;
+                    p {
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+    }
+}

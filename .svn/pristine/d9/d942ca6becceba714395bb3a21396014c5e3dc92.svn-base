@@ -1,0 +1,147 @@
+<app-header></app-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <!-- Left Side Section -->
+            <ion-col size-xl="8" size-lg="8" size-md="8" size-sm="12" size="12" class="pageLeftSideMainForm">
+                <div class="pageLeftSideInfo">
+                    <div class="actualDateBoxNew">
+                        <div>
+                            <h3>{{ leaveInfo.employee_name }}</h3>
+                            <h5>{{ leaveInfo.employee_ID }}</h5>
+                        </div>
+                    </div>
+                </div>
+            </ion-col>
+
+            <ion-col size-xl="8" size-lg="8" size-md="8" size-sm="12" size="12" class="pageLeftSideMainForm leaveForm">
+
+                <div class="pageLeftSideMainForm">
+                    <div class="leaveApplicationForm">
+                        <div class="userCancelNote" *ngIf="leaveInfo.is_cancel_request == '1'">
+                            <p [innerHtml]="leaveInfo.cancelRequestMessage"></p>
+                        </div>
+                        <h2>Leave Application</h2>
+                        <ion-row>
+                            <ion-col size-xl="5" size-lg="5" size-md="5" size-sm="12" size="12">
+                                <ion-list>
+                                    <label>Leave Type</label>
+                                    <ion-item>
+                                        <span> {{ leaveInfo.leaveType }}</span>
+                                    </ion-item>
+                                </ion-list>
+                            </ion-col>
+                        </ion-row>
+
+                        <ion-row>
+                            <ion-col size-xl="5" size-lg="5" size-md="5" size-sm="12" size="12">
+                                <ion-list>
+                                    <label>Start Date</label>
+                                    <ion-item><span>{{ leaveInfo.startDate }}</span></ion-item>
+                                </ion-list>
+                            </ion-col>
+                            <ion-col size-xl="5" size-lg="5" size-md="5" size-sm="12" size="12">
+                                <ion-list>
+                                    <label>End Date</label>
+                                    <ion-item><span>{{ leaveInfo.endDate }}</span></ion-item>
+                                </ion-list>
+                            </ion-col>
+                        </ion-row>
+
+                        <ion-row *ngIf="leaveInfo.leaveType == 'Compensatory Leave'">
+                            <ion-col size-xl="5" size-lg="5" size-md="5" size-sm="12" size="12" *ngIf="global.checkIfDataIsValid(leaveInfo.startHalfDay)">
+                                <ion-list>
+                                    <label>Work Date</label>
+                                    <ion-item>
+                                        <span> {{ leaveInfo.startHalfDay }} </span>
+                                    </ion-item>
+                                </ion-list>
+                            </ion-col>
+                        </ion-row>
+
+                        <ion-row *ngIf="(global.checkIfDataIsValid(global.getLocalStorageUserCountry()) && (global.getLocalStorageUserCountry().toLowerCase() != global.usLocation.toLowerCase())) && leaveInfo.leaveType != 'Compensatory Leave' && leaveInfo.leaveType != 'Maternity Leave'">
+                            <ion-col size-xl="5" size-lg="5" size-md="5" size-sm="12" size="12" *ngIf="global.checkIfDataIsValid(leaveInfo.startHalfDay)">
+                                <ion-list>
+                                    <label>Start Date Half Day</label>
+                                    <ion-item>
+                                        <span> {{ leaveInfo.startHalfDay }} </span>
+                                    </ion-item>
+                                </ion-list>
+                            </ion-col>
+                            <ion-col size-xl="5" size-lg="5" size-md="5" size-sm="12" size="12" *ngIf="global.checkIfDataIsValid(leaveInfo.endHalfDay)">
+                                <ion-list>
+                                    <label>End Date Half Day</label>
+                                    <ion-item>
+                                        <span> {{ leaveInfo.endHalfDay }} </span>
+                                    </ion-item>
+                                </ion-list>
+                            </ion-col>
+                        </ion-row>
+
+                        <ion-row *ngIf="leaveInfo.leaveType == 'Maternity Leave'">
+                            <ion-col size-xl="5" size-lg="5" size-md="5" size-sm="12" size="12" *ngIf="global.checkIfDataIsValid(leaveInfo.startHalfDay)">
+                                <ion-list>
+                                    <label>Child Birth Due Date</label>
+                                    <ion-item>
+                                        <span> {{ leaveInfo.startHalfDay }} </span>
+                                    </ion-item>
+                                </ion-list>
+                            </ion-col>
+                        </ion-row>
+
+                        <ion-row>
+                            <ion-col size-xl="5" size-lg="5" size-md="5" size-sm="12" size="12">
+                                <ion-list>
+                                    <label>Total Duration</label>
+                                    <ion-item>
+                                        <span> {{ leaveInfo.leaveDuration }} </span>
+                                    </ion-item>
+                                </ion-list>
+                            </ion-col>
+                        </ion-row>
+
+                        <ion-row>
+                            <ion-col size-xl="10" size-lg="10" size-md="10" size-sm="12" size="12">
+                                <ion-list>
+                                    <label>Comment</label>
+                                    <ion-item>
+                                        <span class="userComment">{{ leaveInfo.employee_Comments }}</span>
+                                    </ion-item>
+                                </ion-list>
+                            </ion-col>
+                        </ion-row>
+
+                        <ion-row *ngIf="((global.checkIfDataIsValid(leaveInfo.attachment_file_link)) && (global.checkIfDataIsValid(leaveInfo)) && (leaveInfo.location == global.zenUkLocation || leaveInfo.location == global.zenUk || leaveInfo.location == global.usLocation || leaveInfo.location == global.usLocationValue2 || leaveInfo.location == global.zenLiveX || leaveInfo.location == global.saLocation))">
+                            <ion-col size-xl="5" size-lg="5" size-md="5" size-sm="12" size="12">
+                                <ion-list (click)="openFile(leaveInfo.attachment_file_link)">
+                                    <label>Supporting Documents</label>
+                                    <p class="uploadedFileName"> {{ leaveInfo.attachment_file_name }}</p>
+                                </ion-list>
+                            </ion-col>
+                        </ion-row>
+
+                        <ion-row class="managerComment">
+                            <ion-col size-xl="10" size-lg="10" size-md="10" size-sm="12" size="12">
+                                <ion-list>
+                                    <label>Manager Comment</label>
+                                    <ion-item>
+                                        <ion-textarea rows="5" maxLength="500" [(ngModel)]="leaveInfo.manager_comments">
+                                        </ion-textarea>
+                                    </ion-item>
+                                </ion-list>
+                            </ion-col>
+                        </ion-row>
+
+                        <ion-row *ngIf="canBeCancelled">
+                            <ion-col size-xl="10" size-lg="10" size-md="10" size-sm="12" size="12" class="buttonSection">
+                                <button ion-button class="clear" (click)="reject()">Reject</button>
+                                <button ion-button class="preview" (click)="approve()">Approve</button>
+                            </ion-col>
+                        </ion-row>
+                    </div>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

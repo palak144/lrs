@@ -1,0 +1,55 @@
+{
+  "_from": "typescript-base64-arraybuffer",
+  "_id": "typescript-base64-arraybuffer@0.1.0",
+  "_inBundle": false,
+  "_integrity": "sha1-BqBa8SJQP8kaSbAGtSoX9khiZrU=",
+  "_location": "/typescript-base64-arraybuffer",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "typescript-base64-arraybuffer",
+    "name": "typescript-base64-arraybuffer",
+    "escapedName": "typescript-base64-arraybuffer",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/typescript-base64-arraybuffer/-/typescript-base64-arraybuffer-0.1.0.tgz",
+  "_shasum": "06a05af122503fc91a49b006b52a17f6486266b5",
+  "_spec": "typescript-base64-arraybuffer",
+  "_where": "d:\\PWA\\Leave_Managment_Migration\\src\\app\\pages",
+  "author": {
+    "name": "Rhett Robinson",
+    "email": "rrhett@gmail.com"
+  },
+  "bugs": {
+    "url": "http://github.com/rrhett/typescript-base64-arraybuffer/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "A very basic base64 encode/decode that can be used by Typescript/JS applications.",
+  "homepage": "https://github.com/rrhett/typescript-base64-arraybuffer#readme",
+  "jsnext:main": "typescript-base64-arraybuffer.js",
+  "keywords": [
+    "typescript",
+    "javascript",
+    "arraybuffer",
+    "base64"
+  ],
+  "license": "ISC",
+  "main": "typescript-base64-arraybuffer.umd.js",
+  "module": "typescript-base64-arraybuffer.js",
+  "name": "typescript-base64-arraybuffer",
+  "peerDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/rrhett/typescript-base64-arraybuffer.git"
+  },
+  "typings": "typescript-base64-arraybuffer.d.ts",
+  "version": "0.1.0"
+}

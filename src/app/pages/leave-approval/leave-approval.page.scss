@@ -1,0 +1,465 @@
+.scroll-content {
+    background: var(--pageBackgroundColor);
+    padding: 0px !important;
+    margin-top: 56px;
+}
+
+.col {
+    padding: 0px;
+}
+
+.toolbar-background {
+    background: var(--pageBackgroundColor);
+}
+
+.pageHeadlineText {
+    background: linear-gradient(to right, #d0196c 0%, #772a88 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    font-size: var(--mainHeadlineText);
+    font-weight: var(--font-medium);
+    padding: 0px;
+    margin: 0px;
+}
+
+.pageHeading {
+    position: relative;
+    font-size: var(--cardHeadlineText);
+    font-weight: var(--font-regular);
+    margin: 0px;
+    margin-bottom: 25px;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
+    width: auto;
+    display: inline-block;
+    padding-bottom: 5px;
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        border-bottom: 2px solid var(--outofOffice);
+        width: 25%;
+    }
+}
+
+.leaveSummaryMainInfo {
+    padding: 30px;
+    .leaveSummaryDropdown {
+        width: 30%;
+        display: inline-block;
+        margin-bottom: 30px;
+        float: right;
+        .item {
+            padding: 0px;
+            border: 1px solid var(--inputBorderColor);
+            border-radius: 3px;
+            .label {
+                padding-left: 16px;
+                color: var(--blackColor);
+            }
+        }
+        ion-searchbar {
+            background: transparent;
+            padding: 0px;
+            .searchbar-input-container {
+                .searchbar-clear-button {
+                    .searchbar-clear-icon {
+                        display: flex !important;
+                        justify-content: center;
+                        flex-direction: column;
+                        align-items: center;
+                        .icon-inner {
+                            display: flex !important;
+                            justify-content: center;
+                            flex-direction: column;
+                            align-items: center;
+                        }
+                    }
+                }
+            }
+            .searchbar-input {
+                box-shadow: none;
+                border-radius: var(--roundedForImgCorner);
+                height: 50px;
+                padding: 6px 55px 6px 40px;
+                border: 1px solid var(--inputBorderColor);
+                font-size: var(--paragraph-text);
+                line-height: normal;
+            }
+            .searchbar-search-icon {
+                top: 15px;
+                width: 21px;
+                height: 21px;
+                background-size: 19px;
+            }
+        }
+        ion-searchbar {
+            svg {
+                display: block;
+                height: 100% !important;
+                width: 100% !important;
+            }
+        }
+    }
+    .leaveSummaryCard {
+        -webkit-box-shadow: var(--shadow1);
+        -moz-box-shadow: var(--shadow1);
+        box-shadow: var(--shadow1);
+        display: flex;
+        width: 100%;
+        position: relative;
+        margin-bottom: 20px;
+        border-radius: 3px;
+        border-left: 3px solid var(--flexiLeave);
+        // z-index: 1;
+        cursor: pointer;
+        &.flexi {
+            border-left: 3px solid var(--calendarAppliedLeave);
+        }
+        &.compensatory {
+            border-left: 3px solid var(--calendarAppliedLeave);
+        }
+        &.outOfOffice {
+            border-left: 3px solid var(--calendarAppliedLeave);
+        }
+        &.swipeMiss {
+            border-left: 3px solid var(--calendarSwipeMiss);
+        }
+        &.workFromHome {
+            border-left: 3px solid var(--calendarAppliedLeave);
+        }
+        &.privilege {
+            border-left: 3px solid var(--calendarAppliedLeave);
+        }
+        &.adoption {
+            border-left: 3px solid var(--calendarAppliedLeave);
+        }
+        &.bereavement {
+            border-left: 3px solid var(--calendarAppliedLeave);
+        }
+        &.lossPay {
+            border-left: 3px solid var(--calendarAppliedLeave);
+        }
+        &.optional {
+            border-left: 3px solid var(--calendarOptionalHoliday);
+        }
+        &.paternity {
+            border-left: 3px solid var(--calendarAppliedLeave);
+        }
+        &.scheduled {
+            border-left: 3px solid var(--calendarAppliedLeave);
+        }
+        &.userCancelledLeave {
+            background: var(--userCancelledLeave);
+            border-left: 3px solid var(--userCancelledLeave);
+            div {
+                h5,
+                h3,
+                h4 {
+                    color: var(--font-color-white);
+                }
+            }
+            .msgDivForCancelledLeave {
+                width: calc(100% + 3px);
+                display: block;
+                position: absolute;
+                top: 100%;
+                background: rgba(0, 0, 0, 0.75);
+                left: -3px;
+                padding: 12px;
+                border-left: 3px solid rgba(0, 0, 0, 0.75);
+                z-index: 1;
+                h5 {
+                    margin: 0px;
+                    color: var(--font-color-white);
+                    font-size: var(--paragraph-text);
+                    letter-spacing: 0.4px;
+                }
+            }
+            .infoIconForCancelledLeave {
+                position: absolute;
+                top: 50%;
+                left: 10px;
+                transform: translateY(-50%);
+                width: auto;
+                padding-left: 0px;
+            }
+        }
+        div {
+            width: 98%;
+            padding-left: 3%;
+            h5 {
+                margin: 0px;
+                margin-bottom: 10px;
+                font-size: var(--subHeadline);
+                font-weight: var(--font-regular);
+                color: var(--gryTextColor);
+                letter-spacing: 0.4px;
+            }
+            h3 {
+                font-size: var(--cardHeadlineText);
+                font-weight: var(--font-medium);
+                margin: 0px;
+                letter-spacing: 0.4px;
+            }
+            h4 {
+                font-size: var(--subHeadline);
+                font-weight: var(--font-medium);
+                margin: 0px;
+                letter-spacing: 0.4px;
+            }
+        }
+        div.applyDate {
+            width: 70% !important;
+        }
+        .ion-md-attach {
+            font-size: 26px;
+            color: var(--purpleColor);
+            position: absolute;
+            right: 60px;
+            top: 27px;
+        }
+        .moreOptions {
+            width: 20%;
+            vertical-align: middle;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 0;
+            z-index: 999;
+            img {
+                height: 25px;
+                width: 20px;
+                position: absolute;
+                right: 25px;
+                margin: 0 auto;
+            }
+        }
+        .moreOptionList {
+            position: absolute;
+            top: 30px;
+            right: 6%;
+            width: 100px;
+            padding-left: 10px;
+            background: var(--lightSkyBlue);
+            border: 1px solid var(--blueBorder);
+            .list {
+                margin: 0px;
+                .item {
+                    background: transparent;
+                    padding-left: 0px;
+                    .item-inner {
+                        border-bottom: 0px;
+                        padding-right: 0px;
+                        .input-wrapper {
+                            padding-left: 0%;
+                            width: 100%;
+                        }
+                        .label {
+                            margin: 0px;
+                            font-size: var(--subHeadline);
+                            letter-spacing: 0.4px;
+                        }
+                    }
+                }
+            }
+        }
+        // .approvalStatus{
+        //     text-align: center;
+        //     border-left: 1px solid var(--MediumVioletRed;
+        //     border-right: 1px solid var(--purpleColor;
+        //     border-top: 1px solid var(--MediumVioletRed;
+        //     border-radius: var(--roundedForImgCorner;
+        //     -webkit-box-sizing: border-box;
+        //     -moz-box-sizing: border-box;
+        //     box-sizing: border-box;
+        //     background-position: 0 0, 0 100%;
+        //     background-repeat: no-repeat;
+        //     -webkit-background-size: 100% 1px;
+        //     -moz-background-size: 100% 1px;
+        //     background-size: 100% 1px;
+        //     background-image: var(--backgroundGradient;
+        //     border-bottom-color: transparent;
+        //     box-shadow: inset 0 -1px 0 0 var(--MediumVioletRed;
+        //     width: auto;
+        //     padding: 10px;
+        //     background: linear-gradient(to right, var(--MediumVioletRed 0%, var(--purpleColor 100%) !important;
+        //     -webkit-background-clip: text !important;
+        //     -webkit-text-fill-color: transparent !important;
+        //     display: inline-block;  
+        //     &.approved{
+        //         background: var(--backgroundGradient !important;
+        //         color: var(--font-color-white !important;
+        //         -webkit-text-fill-color: #fff !important;
+        //         border-radius: var(--roundedForImgCorner;
+        //         padding: 10px;
+        //         text-align: center;
+        //     }   
+        // }
+        ion-icon[name="attach"]{
+            font-size: 26px;
+            color: var(--purpleColor);
+            position: absolute;
+            right: 47px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+    .pagination {
+        -webkit-box-shadow: 1px 10px 24px -8px rgba(0, 0, 0, 0.15);
+        -moz-box-shadow: 1px 10px 24px -8px rgba(0, 0, 0, 0.15);
+        box-shadow: 1px 10px 24px -8px rgba(0, 0, 0, 0.15);
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .paginationWrapper {
+        background: var(--pageBackgroundColor);
+        box-shadow: var(--shadow1);
+        border-radius: var(--roundedForImgCorner);
+        ion-row {
+            justify-content: center;
+            flex-wrap: nowrap;
+            position: relative;
+        }
+        ion-col {
+            width: 15%;
+            max-width: 50%;
+            display: inline-block;
+            flex-basis: auto;
+            flex-grow: unset;
+            &.firstBtn {
+                button {
+                    width: auto;
+                }
+            }
+            &.lastBtn {
+                button {
+                    width: auto;
+                }
+            }
+            button {
+                background-color: transparent;
+                box-shadow: none;
+                height: 42px;
+                width: 40px;
+                height: 40px;
+                text-align: center;
+                margin: 0 auto;
+                border-radius: 50%;
+                font-size: var(--paragraph-text-medium);
+                font-weight: var(--font-medium);
+                text-transform: uppercase;
+                .button-block {
+                    width: 100%;
+                }
+            }
+        }
+        .activated {
+            button {
+                color: #fff;
+                background: linear-gradient( to right, var(--MediumVioletRed) 0%, var(--purpleColor) 100%) !important;
+                border-radius: 50%;
+            }
+        }
+    }
+}
+
+
+.noRecordFoundCard {
+    box-shadow: var(--shadow1);
+    display: flex;
+    width: 100%;
+    padding: 15px;
+    background: var(--pageBackgroundColor);
+    text-align: center;
+    justify-content: center;
+    h2 {
+        font-size: var(--subHeadline);
+        font-weight: var(--font-regular);
+        margin-bottom: 0px;
+    }
+}
+
+
+/****************** Added CSS For Mobile View *******************/
+
+@media (max-width: 768px) {
+    // .content-ios {
+    //     .scroll-content {
+    //         display: inline-block;
+    //         width: 100%;
+    //     }
+    // }
+    .leaveSummaryMainInfo {
+        padding: 16px;
+    }
+    .leaveSummaryMainInfo .leaveSummaryDropdown {
+        width: 100%;
+        margin-bottom: 16px;
+        float: none;
+    }
+    .leaveSummaryMainInfo .leaveSummaryCard {
+        display: block;
+        div {
+            width: 100%;
+            padding-left: 0px;
+            margin-bottom: 16px;
+            & h5 {
+                margin-bottom: 5px;
+            }
+            & h5.employeeName {
+                display: none;
+                /*Bug fixes by Bhushan/Nivant : Remove Name label from mobile screen(Leave and approval summary) : 14-03-2019*/
+            }
+        }
+        .moreOptions {
+            position: absolute;
+            top: 24px;
+            right: -13px;
+        }
+        .leaveStartDate,
+        .leaveEndDate {
+            display: inline-block;
+            width: 49%;
+        }
+        &.userCancelledLeave {
+            .infoIconForCancelledLeave {
+                position: absolute;
+                top: 75%;
+                left: auto;
+                transform: none;
+                width: auto;
+                padding-left: 0px;
+                right: 10px;
+                height: 30px;
+            }
+        }
+        ion-icon[name="attach"]{
+          
+            right: 50px;
+            top: 25px;
+            
+        }
+    }
+    .paginationWrapper {
+        .grid {
+            padding: 0px;
+        }
+        .row {
+            display: inline-block;
+            width: 100%;
+            overflow-x: hidden;
+            white-space: normal;
+            .col {
+                width: 21.5% !important;
+                display: inline-block !important;
+            }
+        }
+    }
+    .ion-md-attach {
+        right: 50px !important;
+        top: 10px !important;
+    }
+}

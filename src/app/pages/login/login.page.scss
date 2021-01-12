@@ -1,0 +1,341 @@
+ion-content {
+    --background: linear-gradient(-45deg, #d11a6d, #7a2a89, #b41e75, #c543b7);
+    background-size: 400% 400%;
+    -webkit-animation: Gradient 20s ease infinite;
+    -moz-animation: Gradient 20s ease infinite;
+    animation: Gradient 20s ease infinite;
+}
+
+.grid {
+    height: 100%;
+    padding: 0px;
+    .row {
+        height: 100%;
+    }
+    ion-col .col col-6 {
+        height: 100%;
+        padding: 0px;
+        position: relative;
+    }
+}
+
+ion-grid {
+    margin: 0px;
+    padding: 0px;
+    .loginMainRow {
+        height: 100vh;
+    }
+}
+
+.loginLeftSide {
+    background-color: var(--pageBackgroundColor);
+    float: left;
+    width: 50%;
+    order: 1;
+    .loginInfoLeft {
+        width: 50%;
+        ion-list {
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
+        .item {
+            padding: 0px;
+            margin-bottom: 16px;
+            .item-inner {
+                padding: 0px 10px;
+            }
+        }
+    }
+}
+
+.loginInfoLeft,
+.loginInfoRight {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
+
+.loginInfoSection {
+    float: right;
+    width: 50%;
+    order: 2;
+}
+
+.loginInfoRight i {
+    display: inline-block;
+    width: 40%;
+}
+
+.loginInfoRight h1 {
+    font-size: 60px;
+    color: var(--font-color-white);
+    text-transform: uppercase;
+    line-height: 1.1em;
+    span {
+        display: block;
+        margin-bottom: 5px;
+    }
+}
+
+.loginInfoRight h1 span:nth-child(1) {
+    font-weight: 500;
+    font-size: 100px;
+}
+
+.loginInfoRight h1 span:nth-child(2) {
+    font-weight: 300;
+    font-size: 70px;
+}
+
+.loginInfoRight h1 span:nth-child(3) {
+    font-weight: 100;
+    font-size: 70px;
+}
+
+.loginInfoLeft h2 {
+    color: var(--font-color-gray);
+    font-size: var(--cardHeadlineText);
+    text-transform: uppercase;
+    margin: 0px;
+    padding: 0px;
+    margin-bottom: 20px;
+    font-weight: var(--font-medium);
+}
+
+.validUserInfo {
+    border-left: 1px solid var(--MediumVioletRed);
+    border-right: 1px solid var(--purpleColor);
+    border-radius: var(--roundedForImgCorner);
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background-position: 0 0, 0 100%;
+    background-repeat: no-repeat;
+    -webkit-background-size: 100% 1px;
+    -moz-background-size: 100% 1px;
+    background-size: 100% 1px;
+    background-image: var(--backgroundGradient);
+    border-bottom-color: transparent;
+    box-shadow: inset 0 -1px 0 0 var(--MediumVioletRed);
+}
+
+.actionButton .submitBtn {
+    width: 100%;
+    background: var(--backgroundGradient);
+    height: 50px;
+    margin: 0px;
+    box-shadow: none;
+    font-size: var(--cardHeadlineText);
+    font-weight: var(--font-light);
+    text-transform: capitalize;
+    border-radius: var(--roundedForImgCorner);
+    margin-bottom: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    // box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    position: relative;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    color: var(--font-color-white);
+}
+
+.actionButton .submitBtn:hover,
+.submitBtn:focus,
+.submitBtn:active {
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
+    transition: 0.3s ease all;
+    -moz-transition: 0.3s ease all;
+    -webkit-transition: 0.3s ease all;
+    box-shadow: 0 10px 10px -8px rgba(0, 0, 0, 0.5);
+}
+
+.row a {
+    display: block;
+    margin: 0 auto;
+    color: var(--font-color-gray);
+    font-size: var(--subHeadline);
+    font-weight: var(--font-regular);
+    line-height: 1.5em;
+    text-align: center;
+    letter-spacing: 0px;
+    transition: letter-spacing 0.5s;
+    &:hover {
+        letter-spacing: 1px;
+    }
+}
+
+.group {
+    position: relative;
+    margin-bottom: 25px;
+    .passwordIcon {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 23px;
+        color: var(--purpleColor);
+    }
+}
+
+input {
+    font-size: var(--subHeadline);
+    padding: 10px 10px 10px 16px;
+    display: block;
+    width: 100%;
+    border: none;
+    border: 1px solid var(--inputBorderColor);
+    border-radius: var(--roundedForImgCorner);
+}
+
+input:focus {
+    outline: none;
+    border-left: 1px solid var(--MediumVioletRed);
+    border-right: 1px solid var(--purpleColor);
+    border-radius: var(--roundedForImgCorner);
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background-position: 0 0, 0 100%;
+    background-repeat: no-repeat;
+    -webkit-background-size: 100% 1px;
+    -moz-background-size: 100% 1px;
+    background-size: 100% 1px;
+    background-image: var(--backgroundGradient);
+    border-bottom-color: transparent;
+    box-shadow: inset 0 -1px 0 0 var(--MediumVioletRed);
+}
+
+
+/* LABEL ========================== */
+
+label {
+    color: var(--inputLeableColor);
+    font-size: var(--paragraph-text);
+    font-weight: 300;
+    position: absolute;
+    pointer-events: none;
+    left: 12px;
+    top: 15px;
+    transition: 0.1s ease all;
+    -moz-transition: 0.1s ease all;
+    -webkit-transition: 0.1s ease all;
+    font-style: italic;
+}
+
+
+/* active state */
+
+input:focus~label,
+input:valid~label {
+    top: -11px;
+    font-size: var(--paragraph-text-medium);
+    color: var(--MediumVioletRed);
+    background: var(--pageBackgroundColor);
+    padding: 0px 10px;
+}
+
+
+/*Browser Saved Login credentials overlapping with Floating input text bug Fix by Hrishikesh on 10-04-2019  */
+
+input:-webkit-autofill+label {
+    top: -11px;
+    font-size: var(--paragraph-text-medium);
+    color: var(--MediumVioletRed);
+    background: var(--pageBackgroundColor);
+    padding: 0px 10px;
+}
+
+@-webkit-keyframes Gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@-moz-keyframes Gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes Gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/****************** Added CSS For Mobile View *******************/
+
+@media (max-width: 768px) {
+    .loginLeftSide {
+        order: 2;
+    }
+    .loginInfoSection {
+        order: 1;
+    }
+    .loginInfoRight i {
+        width: 46%;
+    }
+    .loginInfoRight h1 {
+        line-height: 50px;
+    }
+    .loginInfoRight h1 span:nth-child(1) {
+        font-size: 70px;
+    }
+    .loginInfoRight h1 span:nth-child(2) {
+        font-size: 40px;
+    }
+    .loginInfoRight h1 span:nth-child(3) {
+        font-size: 40px;
+    }
+    .loginLeftSide .loginInfoLeft,
+    .loginInfoSection .loginInfoRight {
+        width: 90%;
+        position: inherit;
+        transform: inherit;
+        top: inherit;
+        left: inherit;
+        margin-left: 5%;
+        margin: 5%;
+    }
+    .loginInfoSection {
+        position: relative;
+    }
+    .loginInfoSection::after {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 15px 10px 0 10px;
+        border-color: #8b2783 transparent transparent transparent;
+        transform: translate(-50%, 0%);
+        left: 50%;
+        bottom: -12px;
+        z-index: 11;
+    }
+}

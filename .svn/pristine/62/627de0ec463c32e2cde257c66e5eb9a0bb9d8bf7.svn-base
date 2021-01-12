@@ -1,0 +1,995 @@
+ion-content {
+    --background: var(--pageBackgroundColorLightGrey);
+    --background-color: var(--pageBackgroundColorLightGrey);
+    .scroll-content {
+        margin-top: 64px;
+    }
+}
+
+h2.pageHeading {
+    position: relative;
+    font-size: var(--cardHeadlineText);
+    font-weight: var(--font-regular);
+    margin: 0px;
+    margin-bottom: 25px;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
+    width: auto;
+    display: inline-block;
+    padding-bottom: 5px;
+    // &:after {
+    //     content: '';
+    //     position: absolute;
+    //     bottom: 0;
+    //     left: 0;
+    //     border-bottom: 2px solid var(--outofOffice;
+    //     width: 25%;
+    // }
+}
+
+.searchbar {
+    padding: 0px;
+    background: transparent;
+    margin-top: 11px;
+    .searchbar-input {
+        border-radius: 5px;
+        height: 45px;
+        box-shadow: none;
+        font-weight: 400;
+    }
+    .searchbar-search-icon {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+.divTable {
+    padding-top: 0px;
+    margin-top: -5px;
+}
+
+.serachMainSec {
+    background: #202123;
+    padding: 16px;
+    padding-bottom: 0px;
+    .list.list-md,
+    .list.list-ios {
+        margin: 0px;
+    }
+}
+
+ion-searchbar {
+    svg {
+        display: block;
+        height: 100% !important;
+        width: 100% !important;
+    }
+}
+
+.searchbar-input-container.sc-ion-searchbar-md {
+    background: var(--pageBackgroundColor);
+    .searchbar-input-container {
+        .searchbar-clear-button {
+            .searchbar-clear-icon {
+                display: flex !important;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                .icon-inner {
+                    display: flex !important;
+                    justify-content: center;
+                    flex-direction: column;
+                    align-items: center;
+                }
+                svg {
+                    display: block;
+                    height: 100% !important;
+                    width: 100% !important;
+                }
+            }
+        }
+    }
+}
+
+.inputField {
+    ion-list {
+        --ion-item-background: transparent;
+        --ion-background-color: transparent;
+        padding: 0px;
+        margin-bottom: 15px;
+        min-height: 75px;
+    }
+    ion-searchbar {
+        padding: 15px 10px;
+        --background: var(--pageBackgroundColor);
+        --ion-background-color: var(--pageBackgroundColor) !important;
+    }
+    label {
+        font-size: var(--subHeadline);
+        margin-bottom: 5px;
+        color: var(--font-color-black);
+        display: inline-block;
+    }
+    .item {
+        padding: 0px;
+        height: 45px;
+        border: 0px;
+        border-radius: 5px;
+        border-bottom: 0px !important;
+        --padding-start: 0px !important;
+        --ion-safe-area-left: 0px !important;
+        --padding-end: 0px !important;
+        --border-width: 0px !important;
+        --border-color: transparent !important;
+        --ion-item-background: var(--pageBackgroundColor) !important;
+        --ion-background-color: var(--pageBackgroundColor) !important;
+        --ion-safe-area-right: 0px;
+        --inner-padding-end: 0px;
+        --inner-padding-bottom: 0px !important;
+        cursor: pointer;
+        &:hover {
+            background: var(--pageBackgroundColor) !important;
+            --ion-item-background: var(--pageBackgroundColor) !important;
+            --ion-background-color: var(--pageBackgroundColor) !important;
+            --background-hover: var(--pageBackgroundColor) !important;
+            --background-activated: var(--pageBackgroundColor) !important;
+            --background-focused: var(--pageBackgroundColor) !important;
+            --background: var(--pageBackgroundColor) !important;
+        }
+        &.item-select {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        span {
+            padding-left: 10px;
+        }
+        ion-select {
+            padding: 10px;
+            max-width: 100%;
+            width: 100%;
+        }
+        .item-inner {
+            padding-right: 0px;
+            border-bottom: 0px;
+            .label {
+                margin: 0px;
+                span {
+                    width: 100%;
+                    padding: 10px;
+                }
+            }
+            input {
+                margin: 0px;
+                padding: 0px 30px 0px 10px;
+            }
+            ion-select {
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+    }
+    .goBtn {
+        background: var(--backgroundGradient);
+        height: 45px;
+        padding: 10px 20px;
+        margin-top: 28px;
+        border-radius: 5px;
+        img {
+            width: 25px;
+        }
+    }
+}
+
+.calendarIcon {
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.monthTabel {
+    background: var(--pageBackgroundColor);
+    // margin-left: 200px;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    thead {
+        th {
+            background: var(--tableHeadingColor);
+            color: var(--font-color-white);
+            font-size: var(--paragraph-text-large);
+            padding: 10px;
+            font-weight: var(--font-regular);
+            border: 1px solid var(--tabelBorderColor);
+            &.monthName:nth-child(odd) {
+                background: var(--tableHeadingMonthColor1);
+            }
+            &.monthName:nth-child(even) {
+                background: var(--tableHeadingMonthColor2);
+            }
+        }
+    }
+    tbody {
+        td {
+            padding: 10px;
+            color: var(--font-color-black);
+            font-size: var(--paragraph-text-large);
+            border: 1px solid var(--inputBorderColor);
+            text-align: center;
+        }
+    }
+}
+
+.monthTabel thead tr .employeeName,
+.monthTabel tbody tr td:first-child {
+    width: 180px;
+    white-space: nowrap;
+}
+
+// .freezingTableWrapper {
+//     width: calc(100% - 280px);
+//     overflow-x: scroll;
+//     margin-left: 280px;
+//     overflow-y: visible;
+//     padding: 0;
+// }
+// .monthTabel thead tr .employeeName,
+// .monthTabel tbody tr td:first-child {
+//     position: absolute;
+//     width: 180px;
+//     left: 0;
+//     top: auto;
+//     border-top-width: 1px;
+//     /*only relevant for first row*/
+//     margin-top: -1px;
+//     /*compensate for top border*/
+// }
+// .monthTabel thead tr .totalLeaves,
+// .monthTabel tbody tr td:nth-child(2) {
+//     position: absolute;
+//     width: 100px;
+//     left: 180px;
+//     top: auto;
+//     border-top-width: 1px;
+//     /*only relevant for first row*/
+//     margin-top: -1px;
+//     /*compensate for top border*/
+// }
+.legendWrapper {
+    ul {
+        padding: 0px;
+        margin: 0px;
+        display: block;
+        list-style: none;
+        float: right;
+        li {
+            margin-right: 20px;
+            font-size: var(--paragraph-text);
+            display: inline-block;
+            span {
+                height: 15px;
+                width: 15px;
+                background: var(--tabelOtherLeave);
+                border-radius: 10px;
+                display: inline-block;
+                margin-right: 10px;
+                --float: left;
+            }
+            &.paidLeaveLegend {
+                span {
+                    background: var(--tabelpaidLeave);
+                }
+            }
+            &.flexiLeaveLegend {
+                span {
+                    background: var(--tabelFlexiLeave);
+                }
+            }
+            &.workFromHomeLegend {
+                span {
+                    background: var(--tableWorkFromHome);
+                }
+            }
+            &.outOfOfficeLegend {
+                span {
+                    background: var(--tableOutOfOffice);
+                }
+            }
+            &.IndiaFlexiLeaveLegend.flexiLeaveLegend {
+                span {
+                    background: var(--calendarAppliedLeave);
+                }
+            }
+            &.UKAnnualLeaveLegend.annualLeaveLegend {
+                span {
+                    background: var(--calendarAnnualLeave);
+                }
+            }
+            &.sickLeaveLegend.UKF {
+                span {
+                    background: var(--calendarOtherHoliday);
+                }
+            }
+            &.meetingOutOfOfficeLegend {
+                span {
+                    background: var(--outOfOffice);
+                }
+            }
+            &.workFromHome {
+                span {
+                    background: var(--workFromHome);
+                }
+            }
+            &.swipeMissLegend {
+                span {
+                    background: var(--calendarSwipeMiss);
+                }
+            }
+            &.fixedLeaveLegend {
+                span {
+                    background: var(--tabelFixedLeave);
+                }
+            }
+            &.unpaidLeaveLegend {
+                span {
+                    background: var(--tabelUnpaidLeave);
+                }
+            }
+            &.halfdayLeaveLegend {
+                span {
+                    background: var(--tabelHalfDayLeave);
+                }
+            }
+            &.otherLeaveLegend {
+                span {
+                    background: var(--tabelOtherLeave);
+                }
+            }
+            &.optionalHolidayLegend {
+                span {
+                    background: var(--calendarOptionalHoliday);
+                }
+            }
+            &.pendingForApprovalLegend {
+                span {
+                    background: var(--calendarPendingApproval);
+                }
+            }
+            &.sickLeaveLegend.usSickLeaveLegend {
+                span {
+                    background: var(--calendarAppliedLeave);
+                }
+            }
+            &.floatingLeaveLegend {
+                span {
+                    background: var(--calendarFloatingLeave);
+                }
+            }
+            &.fixedLeaveLegend {
+                span {
+                    background: var(--calendarFixedHoliday);
+                }
+            }
+            &.saAnnualLeaveLegend {
+                span {
+                    background: var(--SAannualLeave);
+                }
+            }
+            &.sickLeaveLegend {
+                span {
+                    background: var(--SAsickLeave);
+                }
+            }
+            &.otherLeaveLegend {
+                span {
+                    background: var(--SAotherLeave);
+                }
+            }
+        }
+    }
+}
+
+.freezingTableWrapper {
+    width: calc(100% - 490px);
+    margin-bottom: 15px;
+    overflow-y: hidden;
+    margin-left: 490px;
+    padding-bottom: 15px;
+    &::-webkit-scrollbar-track {
+        background-color: #cdcdcd;
+        border-radius: 5px;
+    }
+    &::-webkit-scrollbar {
+        height: 5px;
+        width: 5px;
+        background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #000;
+        border-radius: 5px;
+    }
+}
+
+.table {
+    display: table;
+    width: 100%;
+    max-width: 100%;
+    background: var(--pageBackgroundColor);
+    .table-header {
+        display: table-header-group;
+        background-color: var(--tableHeadingColor);
+        .table-row {
+            display: table-row;
+            div {
+                display: table-cell;
+                vertical-align: middle;
+                padding: 10px;
+                text-align: center;
+                color: var(--font-color-white);
+                border-bottom: 1px solid var(--tabelBorderColor);
+                border-right: 1px solid var(--tabelBorderColor);
+                border-collapse: collapse;
+                border-spacing: 0;
+                font-size: var(--paragraph-text);
+                &.padding0 {
+                    padding: 0px;
+                    margin: 0px;
+                    border: 0px;
+                }
+                &.header-month {
+                    padding: 0px 0px 0px;
+                    border: 0px;
+                    border-bottom: 1px solid var(--tabelBorderColor);
+                    display: none;
+                    &.visibleMonth {
+                        display: table-cell;
+                    }
+                    span {
+                        padding: 10px;
+                        display: inline-block;
+                    }
+                    &:nth-child(odd) {
+                        background: var(--tableHeadingMonthColor1);
+                    }
+                    &:nth-child(even) {
+                        background: var(--tableHeadingMonthColor2);
+                    }
+                }
+                &.month-days {
+                    display: flex;
+                    padding: 0px 0px 0px;
+                    border: 0px;
+                    background-color: var(--tableHeadingColor);
+                    span {
+                        display: inline-flex;
+                        width: 100%;
+                        justify-content: center;
+                        border-right: 1px solid var(--tabelBorderColor);
+                        border-collapse: collapse;
+                        border-spacing: 0;
+                        padding: 10px;
+                        width: 43px;
+                        height: 43px;
+                    }
+                }
+            }
+        }
+    }
+    .table-body {
+        display: table-row-group;
+        i {
+            font-style: normal !important;
+        }
+        .table-row {
+            display: table-row;
+            div {
+                display: table-cell;
+                text-align: center;
+                padding: 10px;
+                border-bottom: 1px solid var(--inputBorderColor);
+                border-right: 1px solid var(--inputBorderColor);
+                border-collapse: collapse;
+                border-spacing: 0;
+                vertical-align: top;
+                border-bottom: 1px;
+                &.padding0 {
+                    padding: 0px;
+                    border: 0px;
+                }
+                &.empName {
+                    white-space: nowrap;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    padding-right: 5px;
+                }
+                &.true {
+                    background: var(--tableWeekend);
+                    color: #d0196cb0;
+                }
+                &.leaveList {
+                    padding: 0px;
+                    border: 0px;
+                    border-bottom: 1px solid var(--inputBorderColor);
+                }
+                &.month-days {
+                    display: flex;
+                    padding: 0px;
+                    border: 0px;
+                    span {
+                        display: inline-flex;
+                        width: 100%;
+                        justify-content: center;
+                        padding: 10px;
+                        border-right: 1px solid var(--inputBorderColor);
+                        border-collapse: collapse;
+                        border-spacing: 0;
+                        width: 43px;
+                        height: 43px;
+                        overflow: hidden;
+                        &.normalDay {
+                            background: var(--pageBackgroundColor);
+                            color: var(--font-color-white);
+                        }
+                        &.FL,
+                        &.PL {
+                            background: var(--calendarAppliedLeave);
+                            color: var(--font-color-white);
+                        }
+                        &.FH {
+                            background: var(--tabelFixedLeave);
+                            color: var(--font-color-white);
+                        }
+                        &.paidLeave {
+                            background: var(--tabelpaidLeave);
+                            color: var(--font-color-white);
+                        }
+                        &.halfDayLeave {
+                            background: var(--tabelHalfDayLeave);
+                            color: var(--font-color-white);
+                        }
+                        &.unpaidLeave {
+                            background: var(--tabelUnpaidLeave);
+                            color: var(--font-color-white);
+                        }
+                        &.otherLeave {
+                            background: var(--tabelOtherLeave);
+                            color: var(--font-color-white);
+                        }
+                        &.Weekend {
+                            background: var(--tableWeekend);
+                        }
+                        &.OOO {
+                            background: var(--tableOutOfOffice);
+                        }
+                        &.WFH {
+                            background: var(--tableWorkFromHome);
+                        }
+                        &.SO {
+                            background: var(--calendarAppliedLeave);
+                            color: var(--font-color-white);
+                        }
+                        &.SL,
+                        &.V {
+                            background: var(--calendarAppliedLeave);
+                            color: var(--font-color-white);
+                        }
+                        &.PAL,
+                        &.MLZ,
+                        &.PLZ,
+                        &.CP {
+                            background: var(--SAotherLeave);
+                            color: var(--font-color-white);
+                        }
+                        &.OH {
+                            background: var(--calendarOptionalHoliday);
+                            color: var(--font-color-white);
+                        }
+                    }
+                    &.indiaLocation {
+                        span {
+                            background: var(--calendarOtherHoliday);
+                            color: var(--font-color-white);
+                            &.normalDay {
+                                background: var(--pageBackgroundColor);
+                                color: var(--font-color-white);
+                            }
+                            &.Weekend {
+                                background: var(--tableWeekend);
+                            }
+                            &.FH {
+                                background: var(--calendarFixedHoliday);
+                                color: var(--font-color-white);
+                            }
+                            &.OH {
+                                background: var(--calendarOptionalHoliday);
+                                color: var(--font-color-white);
+                            }
+                            &.OOO {
+                                background: var(--tableOutOfOffice);
+                            }
+                            &.WFH {
+                                background: var(--tableWorkFromHome);
+                            }
+                            &.FL,
+                            &.PL {
+                                background: var(--calendarOtherHoliday);
+                                color: var(--font-color-white);
+                            }
+                            &.secondHalf {
+                                position: relative;
+                                z-index: 1;
+                                background: var(--calendarAppliedLeave);
+                                i {
+                                    font-style: normal;
+                                    transform: translate(10px, 10px);
+                                }
+                                &::after {
+                                    content: '';
+                                    position: absolute;
+                                    border: 21.5px solid;
+                                    border-color: #ffff transparent transparent #ffff;
+                                    top: 0;
+                                    left: 0;
+                                    z-index: -1;
+                                }
+                            }
+                            &.firstHalf {
+                                position: relative;
+                                z-index: 1;
+                                background: var(--calendarAppliedLeave);
+                                i {
+                                    font-style: normal;
+                                    transform: translate(-10px, -10px);
+                                }
+                                &::after {
+                                    content: '';
+                                    position: absolute;
+                                    border: 21.5px solid;
+                                    border-color: transparent #ffff #ffff transparent;
+                                    top: 0;
+                                    left: 0;
+                                    z-index: -1;
+                                }
+                            }
+                        }
+                    }
+                    &.usLocation {
+                        span {
+                            background: var(--calendarOtherHoliday);
+                            color: var(--font-color-white);
+                            &.normalDay {
+                                background: var(--pageBackgroundColor);
+                                color: var(--font-color-white);
+                            }
+                            &.Weekend {
+                                background: var(--tableWeekend);
+                            }
+                            &.FL {
+                                background: var(--calendarFloatingLeave);
+                                color: var(--font-color-white);
+                            }
+                            &.SL {
+                                background: var(--calendarAppliedLeave);
+                                color: var(--font-color-white);
+                            }
+                            &.FH {
+                                background: var(--calendarFixedHoliday);
+                                color: var(--font-color-white);
+                            }
+                        }
+                    }
+                    &.ukLocation {
+                        span {
+                            background: var(--calendarOtherHoliday);
+                            color: var(--font-color-white);
+                            &.normalDay {
+                                background: var(--pageBackgroundColor);
+                                color: var(--font-color-white);
+                            }
+                            &.Weekend {
+                                background: var(--tableWeekend);
+                            }
+                            &.AL {
+                                background: var(--calendarAnnualLeave);
+                                color: var(--font-color-white);
+                            }
+                            &.SL {
+                                background: var(--calendarAppliedLeave);
+                                color: var(--font-color-white);
+                            }
+                            &.FH {
+                                background: var(--calendarFixedHoliday);
+                                color: var(--font-color-white);
+                            }
+                            &.WFH {
+                                background: var(--workFromHome);
+                                color: var(--font-color-white);
+                            }
+                            &.MOO {
+                                background: var(--outOfOffice);
+                                color: var(--font-color-white);
+                            }
+                        }
+                    }
+                    &.saLocation {
+                        span {
+                            background: var(--SAotherLeave);
+                            color: var(--font-color-white);
+                            &.normalDay {
+                                background: var(--pageBackgroundColor);
+                                color: var(--font-color-white);
+                            }
+                            &.Weekend {
+                                background: var(--tableWeekend);
+                            }
+                            &.AL {
+                                background: var(--SAannualLeave);
+                                color: var(--font-color-white);
+                            }
+                            &.SL,
+                            &.ASL {
+                                background: var(--SAsickLeave);
+                                color: var(--font-color-white);
+                            }
+                            &.FH {
+                                background: var(--calendarFixedHoliday);
+                                color: var(--font-color-white);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .table-header {
+        .table-row {
+            .header-name {
+                position: absolute;
+                width: 420px;
+                top: auto;
+                left: 0;
+                min-height: 85px;
+                background-color: var(--tableHeadingColor);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            .header-totalLeaves {
+                position: absolute;
+                width: 75px;
+                top: auto;
+                left: 420px;
+                min-height: 85px;
+                background-color: var(--tableHeadingColor);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+        }
+    }
+    .table-body {
+        .table-row {
+            .empName {
+                position: absolute;
+                width: 420px;
+                top: auto;
+                left: 0;
+                background: var(--pageBackgroundColor);
+                min-height: 44px;
+                cursor: pointer;
+                color: var(--MediumVioletRed);
+                padding-bottom: 1px;
+                border-bottom: 1px solid var(--inputBorderColor) !important;
+                border-bottom-color: var(--inputBorderColor) !important;
+            }
+            .totalLeaves {
+                position: absolute;
+                width: 75px;
+                top: auto;
+                left: 420px;
+                background: var(--pageBackgroundColor);
+                min-height: 44px;
+                cursor: pointer;
+                color: var(--MediumVioletRed);
+                padding-bottom: 1px;
+                border-bottom: 1px solid var(--inputBorderColor) !important;
+                border-bottom-color: var(--inputBorderColor) !important;
+            }
+        }
+    }
+}
+
+
+/****************** Added CSS For Mobile View *******************/
+
+@media (max-width: 460px) {
+    /*Jyoti's suggestion : 13-11.2019*/
+    .table .table-header .table-row .divForEveryMonth {
+        text-align: left;
+    }
+    h2.pageHeading {
+        margin-bottom: 10px;
+    }
+    .managerDashboardWrapper {
+        padding: 5px 0px;
+        .inputField {
+            padding: 5px 0px;
+            .list {
+                margin-bottom: 0px;
+            }
+            .goBtn {
+                margin-top: 12px;
+            }
+        }
+        .mobileDateSec {
+            padding-right: 5px;
+        }
+        .inputField.mobileDateSec .item .item-inner .label span {
+            font-size: 15px;
+        }
+        .mobileDateSec .calendarIcon {
+            position: absolute;
+            top: 42px;
+            right: 7px;
+            cursor: pointer;
+            width: 20px;
+        }
+    }
+    .searchbar {
+        padding: 0px 16px 16px;
+    }
+    .divTable {
+        padding: 0px;
+    }
+    .legendWrapper ul li {
+        font-size: 13px;
+        margin-right: 15px;
+    }
+    .legendWrapper ul li span {
+        width: 12px;
+        height: 12px;
+        margin-top: 3px;
+        margin-right: 5px;
+    }
+}
+
+@media (max-width: 767px) {
+    /*Jyoti's suggestion : 13-11.2019*/
+    .freezingTableWrapper {
+        width: calc(100% - 190px);
+        margin-bottom: 15px;
+        overflow-y: hidden;
+        margin-left: 190px;
+        padding-bottom: 15px;
+    }
+    /*Suggestions by Pooja : 06-12-2019*/
+    .locationMobileView {
+        padding-right: 5px;
+    }
+    .buttonMobileView {
+        // display: inline-block;
+        // width: 24% !important;
+        // max-width: 26%;
+        // margin-left: 10px;
+        margin-top: 15px;
+        text-align: right;
+    }
+    .serachMainSec {
+        margin-top: 10px;
+    }
+    .table {
+        .table-header {
+            .table-row {
+                .header-name {
+                    position: absolute;
+                    width: 120px;
+                    top: auto;
+                    left: 0;
+                    min-height: 85px;
+                    background-color: var(--tableHeadingColor);
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+                .header-totalLeaves {
+                    position: absolute;
+                    width: 75px;
+                    top: auto;
+                    left: 120px;
+                    min-height: 85px;
+                    background-color: var(--tableHeadingColor);
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+            }
+        }
+        .table-body {
+            .table-row {
+                .empName {
+                    position: absolute;
+                    width: 120px;
+                    top: auto;
+                    left: 0;
+                    background: var(--pageBackgroundColor);
+                    min-height: 44px;
+                    text-shadow: 3px 3px 2px rgba(150, 150, 150, 0.52);
+                    border-bottom: 1px solid var(--inputBorderColor) !important;
+                    border-bottom-color: var(--inputBorderColor) !important;
+                }
+                .totalLeaves {
+                    position: absolute;
+                    width: 75px;
+                    top: auto;
+                    left: 120px;
+                    background: var(--pageBackgroundColor);
+                    min-height: 44px;
+                    text-shadow: 3px 3px 2px rgba(150, 150, 150, 0.52);
+                    border-bottom: 1px solid var(--inputBorderColor) !important;
+                    border-bottom-color: var(--inputBorderColor) !important;
+                }
+            }
+        }
+    }
+    .ios {
+        .freezingTableWrapper {
+            width: 100%;
+            background: var(--pageBackgroundColor);
+            margin-bottom: 15px;
+            overflow-y: hidden;
+            margin-left: 0px;
+            .table {
+                .table-header {
+                    .table-row {
+                        .header-name {
+                            position: relative;
+                            width: 120px;
+                            top: auto;
+                            left: auto;
+                            min-height: 85px;
+                            background-color: var(--tableHeadingColor);
+                            display: table-cell;
+                        }
+                        .header-totalLeaves {
+                            position: relative;
+                            width: 75px;
+                            top: auto;
+                            left: auto;
+                            min-height: 85px;
+                            background-color: var(--tableHeadingColor);
+                            display: table-cell;
+                        }
+                    }
+                }
+                .table-body {
+                    .table-row {
+                        .empName {
+                            position: relative;
+                            width: 120px;
+                            top: auto;
+                            left: auto;
+                            display: table-cell;
+                            min-height: 44px;
+                            text-shadow: 3px 3px 2px rgba(150, 150, 150, 0.52);
+                            border-bottom: 1px solid var(--inputBorderColor) !important;
+                            border-bottom-color: var(--inputBorderColor) !important;
+                        }
+                        .totalLeaves {
+                            position: relative;
+                            width: 75px;
+                            top: auto;
+                            left: auto;
+                            display: table-cell;
+                            min-height: 44px;
+                            text-shadow: 3px 3px 2px rgba(150, 150, 150, 0.52);
+                            border-bottom: 1px solid var(--inputBorderColor) !important;
+                            border-bottom-color: var(--inputBorderColor) !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

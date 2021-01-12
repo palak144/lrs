@@ -1,0 +1,614 @@
+:host(.inner-scroll) {
+    --padding-start: 0px !important;
+    --padding-end: 0px !important;
+}
+
+ion-grid {
+    padding: 0px;
+    .pageLeftSideMainForm {
+        padding: 0px;
+    }
+}
+
+.scroll-content {
+    background: var(--pageBackgroundColor);
+    padding: 0px !important;
+    margin-top: 56px;
+}
+
+.bar-button-menutoggle {
+    display: block !important;
+}
+
+.col,
+.grid {
+    padding: 0px;
+}
+
+.toolbar-background {
+    background: var(--pageBackgroundColor);
+}
+
+.pageHeading {
+    position: relative;
+    font-size: var(--cardHeadlineText);
+    font-weight: var(--font-regular);
+    margin: 0px;
+    margin-bottom: 25px;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
+    width: auto;
+    display: inline-block;
+    padding-bottom: 5px;
+    &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        border-bottom: 2px solid var(--outofOffice);
+        width: 25%;
+    }
+}
+
+.pageHeadlineText {
+    background: linear-gradient(to right, #d0196c 0%, #772a88 100%);
+    --webkit-background-clip: text;
+    --webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    font-size: var(--mainHeadlineText);
+    font-weight: var(--font-medium);
+    padding: 0px;
+    margin: 0px;
+}
+
+.pageLeftSideMain h2,
+.leaveApplicationForm h2,
+.pageRightSideInfo h2,
+.leaveHolidyStatus h2 {
+    font-size: var(--cardHeadlineText);
+    font-weight: var(--font-regular);
+    margin: 0px;
+    margin-bottom: 16px;
+}
+
+.actualDateBoxNew {
+    display: flex;
+    width: 100%;
+    div {
+        width: 100%;
+        font-size: var(--paragraph-text);
+        font-weight: 500;
+        border-radius: var(--roundedForImgCorner);
+        h5 {
+            margin-bottom: 10px;
+            font-size: var(--subHeadline);
+            font-weight: var(--font-regular);
+            color: var(--gryTextColor);
+            letter-spacing: 0.4px;
+            margin: 5px 0px 0px;
+        }
+        h3 {
+            font-size: var(--cardHeadlineText);
+            font-weight: var(--font-medium);
+            margin: 0px;
+            letter-spacing: 0.4px;
+        }
+    }
+}
+
+.pageLeftSideInfo {
+    background: var(--pageBackgroundColor);
+    padding: 30px;
+    order: 1;
+    -webkit-box-shadow: inset -3px 0px 5px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: inset -3px 0px 5px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: inset -3px 0px 5px 0px rgba(0, 0, 0, 0.1);
+    .swipeMissSection {
+        display: inline-block;
+        width: 49%;
+        div {
+            display: inline-block;
+            padding: 16px;
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 4px;
+            background: var(--swipMissColor);
+            width: 22%;
+            text-align: center;
+            span {
+                display: block;
+                text-align: center;
+                font-size: var(--largeMainHeadlineText);
+                font-weight: var(--font-bold);
+            }
+        }
+    }
+    .pageLeftSideMainForm {
+        background: var(--pageBackgroundGry);
+    }
+    .pageRightSideMain {
+        background: var(--pageBackgroundColor);
+        -webkit-box-shadow: -4px 0px 23px 0px rgba(0, 0, 0, 0.09);
+        -moz-box-shadow: -4px 0px 23px 0px rgba(0, 0, 0, 0.09);
+        box-shadow: -4px 0px 23px 0px rgba(0, 0, 0, 0.09);
+        order: 2;
+        .pageRightSideInfo {
+            padding: 30px;
+            border-bottom: 1px solid var(--inputBorderColor);
+            h2 {
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+
+// .pageRightSideMainCalendar {
+//     background: var(--pageBackgroundColor);
+//     position: absolute;
+//     right: 0;
+//     ion-calendar {
+//         .title {
+//             .switch-btn {
+//                 .button-inner {
+//                     font-size: var(--cardHeadlineText);
+//                     letter-spacing: 0.4px;
+//                     text-transform: capitalize;
+//                     .arrow-dropdown {
+//                         display: none;
+//                     }
+//                 }
+//             }
+//             .button {
+//                 ion-icon {
+//                     font-size: 36px;
+//                 }
+//             }
+//         }
+//         ion-calendar-week {
+//             .toolbar-content {
+//                 .week-title {
+//                     li {
+//                         color: var(--blackColor);
+//                         font-size: var(--subHeadline);
+//                         font-weight: 500;
+//                     }
+//                 }
+//             }
+//         }
+//         ion-calendar-month {
+//             .days-box {
+//                 .days {
+//                     .days-btn {
+//                         border-radius: 50%;
+//                         p {
+//                             color: var(--blackColor);
+//                             font-size: var(--subHeadline);
+//                             letter-spacing: 0.4px;
+//                         }
+//                         &.marked {
+//                             background: var(--calendarOtherHoliday);
+//                             p {
+//                                 color: var(--font-color-white);
+//                                 font-weight: var(--font-medium);
+//                                 font-size: var(--subHeadline);
+//                                 letter-spacing: 0.4px;
+//                             }
+//                             &.Fixed_Holiday {
+//                                 background: var(--calendarFixedHoliday);
+//                                 p {
+//                                     color: var(--font-color-white);
+//                                     font-weight: var(--font-medium);
+//                                     font-size: var(--subHeadline);
+//                                     letter-spacing: 0.4px;
+//                                 }
+//                             }
+//                             &.Swipe_Miss {
+//                                 background: var(--calendarSwipeMiss);
+//                                 box-shadow: var(--calendarBoxShadow);
+//                                 p {
+//                                     color: var(--font-color-white);
+//                                     font-weight: var(--font-medium);
+//                                     font-size: var(--subHeadline);
+//                                     letter-spacing: 0.4px;
+//                                 }
+//                             }
+//                             &.Privilege_Leave {
+//                                 background: var(--calendarAppliedLeave);
+//                                 p {
+//                                     color: var(--font-color-white);
+//                                     font-weight: var(--font-medium);
+//                                     font-size: var(--subHeadline);
+//                                     letter-spacing: 0.4px;
+//                                 }
+//                             }
+//                             &.Flexi_Leave {
+//                                 background: var(--calendarAppliedLeave);
+//                                 p {
+//                                     color: var(--font-color-white);
+//                                     font-weight: var(--font-medium);
+//                                     font-size: var(--subHeadline);
+//                                     letter-spacing: 0.4px;
+//                                 }
+//                             }
+//                             &.Optional_Holiday {
+//                                 background: var(--calendarOtherHoliday);
+//                                 p {
+//                                     color: var(--font-color-white);
+//                                     font-weight: var(--font-medium);
+//                                     font-size: var(--subHeadline);
+//                                     letter-spacing: 0.4px;
+//                                 }
+//                             }
+//                             &.Out_of_Office {
+//                                 background: var(--calendarOtherHoliday);
+//                                 p {
+//                                     color: var(--font-color-white);
+//                                     font-weight: var(--font-medium);
+//                                     font-size: var(--subHeadline);
+//                                     letter-spacing: 0.4px;
+//                                 }
+//                             }
+//                             &.today {
+//                                 background: var(--blackColor);
+//                                 p {
+//                                     color: var(--font-color-white);
+//                                     font-weight: var(--font-medium);
+//                                     font-size: var(--subHeadline);
+//                                     letter-spacing: 0.4px;
+//                                 }
+//                             }
+//                         }
+//                         &.on-selected {
+//                             background: var(--blackColor);
+//                             p {
+//                                 color: var(--font-color-white);
+//                                 font-weight: var(--font-medium);
+//                                 font-size: var(--subHeadline);
+//                                 letter-spacing: 0.4px;
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+.pageRightSideInfoCalendar {
+    padding: 30px;
+    order: 4;
+}
+
+.leaveApplicationForm {
+    padding: 30px;
+    order: 3;
+    background: var(--pageBackgroundGry);
+    -webkit-box-shadow: inset -3px 0px 5px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: inset -3px 0px 5px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: inset -3px 0px 5px 0px rgba(0, 0, 0, 0.1);
+    .userCancelNote {
+        margin-bottom: 15px;
+        p {
+            margin: 0px;
+            width: 100%;
+            background-color: #e1faf6;
+            padding: 15px;
+            border: 1px solid #9ddbce;
+            border-radius: var(--roundedForImgCorner);
+            font-size: var(--paragraph-text);
+            letter-spacing: 0.4px;
+        }
+    }
+    h2 {
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--inputBorderColor);
+    }
+    .row {
+        margin-bottom: 20px;
+    }
+    .row ion-col {
+        margin-right: 16px;
+    }
+    ion-list {
+        background: transparent;
+        .item {
+            --padding-start: 0px !important;
+            --ion-safe-area-left: 0px !important;
+            --padding-end: 0px !important;
+            --border-width: 0px !important;
+            --border-color: transparent !important;
+            background-color: var(--pageBackgroundColor) !important;
+            --ion-item-background: var(--pageBackgroundColor) !important;
+            --ion-background-color: var(--pageBackgroundColor) !important;
+            --inner-padding-end: 0px !important;
+            --inner-padding-start: 0px !important;
+            &.item-textarea {
+                height: auto;
+                ion-textarea {
+                    margin: 0px;
+                    padding: 0px 0px 0px 15px;
+                }
+            }
+        }
+    }
+    .item-md.item-input.item-input-has-focus .item-inner,
+    .item-md.item-input.input-has-focus .item-inner {
+        border-bottom-color: var(--MediumVioletRed);
+        -webkit-box-shadow: inset 0 -1px 0 0 var(--MediumVioletRed);
+        box-shadow: inset 0 -1px 0 0 var(--MediumVioletRed);
+    }
+    .list-md .item-input.item-input-has-focus:last-child,
+    .list-md .item-input.input-has-focus:last-child {
+        border-bottom-color: var(--MediumVioletRed);
+        -webkit-box-shadow: inset 0 -1px 0 0 var(--MediumVioletRed);
+        box-shadow: inset 0 -1px 0 0 var(--MediumVioletRed);
+    }
+    .item {
+        padding-left: 5px;
+        border: 1px solid var(--inputBorderColor);
+        border-radius: var(--roundedForImgCorner);
+        .text-input {
+            margin: 5px;
+            font-size: var(--paragraph-text);
+        }
+        .select {
+            width: 100%;
+            max-width: 100%;
+            font-size: var(--paragraph-text);
+            padding-left: 5px;
+        }
+    }
+    label {
+        margin-bottom: 5px;
+        display: inline-block;
+        font-size: var(--subHeadline);
+        font-weight: var(--font-regular);
+    }
+    .buttonSection {
+        text-align: right;
+        .preview,
+        .clear {
+            color: var(--font-color-white);
+            font-size: var(--subHeadline);
+            font-weight: var(--font-regular);
+            height: 40px;
+            border-radius: var(--roundedForImgCorner);
+            text-transform: capitalize;
+            width: 20%;
+            box-shadow: none;
+        }
+        .preview {
+            background: var(--backgroundGradient);
+        }
+        .clear {
+            border-left: 1px solid var(--MediumVioletRed);
+            border-right: 1px solid var(--purpleColor);
+            border-top: 1px solid var(--MediumVioletRed);
+            border-bottom: 1px solid var(--purpleColor);
+            border-radius: var(--roundedForImgCorner);
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            background-position: 0 0, 0 100%;
+            background-repeat: no-repeat;
+            -webkit-background-size: 100% 1px;
+            -moz-background-size: 100% 1px;
+            background-size: 100% 1px;
+            background-image: var(--backgroundGradient);
+            background: var( --pageBackgroundGry);
+            color: var(--font-color-gray);
+            margin-right: 10px;
+        }
+    }
+    .calendarIcon {
+        position: absolute;
+        top: 40px;
+        right: 10px;
+    }
+    .userComment {
+        white-space: normal;
+    }
+}
+
+.leaveHolidyStatus {
+    .leaveStatusInfo {
+        border-bottom: 1px solid var(--inputBorderColor);
+    }
+    span {
+        width: 18px;
+        height: 18px;
+        border-radius: var(--roundedCorner);
+        display: inline-block;
+    }
+    .Fixed_Holiday {
+        .swipMissColor {
+            background: var(--calendarFixedHoliday);
+        }
+    }
+    .Privilege_Leave {
+        .swipMissColor {
+            background: var(--calendarAppliedLeave);
+        }
+    }
+    .Flexi_Leave {
+        .swipMissColor {
+            background: var(--calendarAppliedLeave);
+        }
+    }
+    .Swipe_Miss {
+        .swipMissColor {
+            background: var(--calendarSwipeMiss);
+        }
+    }
+    .Out_of_Office {
+        .swipMissColor {
+            background: var(--calendarOtherHoliday);
+        }
+    }
+    .Optional_Holiday {
+        .swipMissColor {
+            background: var(--calendarOtherHoliday);
+        }
+    }
+    .swipMissColor {
+        background: var(--calendarOtherHoliday);
+    }
+    .col:nth-child(1),
+    .col:nth-child(3) {
+        max-width: 15%;
+    }
+    .col:nth-child(2) {
+        max-width: 25%;
+    }
+    .approverInfoSection {
+        background: var(--pageBackgroundGry);
+        margin-top: 20px;
+        border-radius: var(--roundedForImgCorner);
+        p label {
+            font-weight: var(--font-medium);
+            font-size: var(--paragraph-text);
+        }
+    }
+}
+
+.uploadedFileName {
+    font-size: var(--paragraph-text);
+    color: var(--purpleColor);
+    font-weight: var(--font-semiBold);
+    cursor: pointer;
+    span {
+        margin-left: 20px;
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+        ion-icon {
+            fill: var(--purpleColor);
+            font-size: 18px;
+        }
+    }
+}
+
+
+/****************** Added CSS For Mobile View *******************/
+
+@media (max-width: 768px) {
+    .scroll-content {
+        background: var(--pageBackgroundGry);
+    }
+    .pageLeftSideInfo {
+        background: var(--pageBackgroundColor);
+        padding: 0px;
+        box-shadow: none;
+        padding: 25px;
+    }
+    .pageRightSideMain .pageRightSideInfo {
+        padding: 16px;
+    }
+    .pageHeading {
+        width: 100%;
+        display: inline-block;
+        background: var(--pageBackgroundColor);
+        padding: 16px;
+        -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+        -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+        box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+    }
+    .pageRightSideMainCalendar {
+        order: 2;
+        background: var(--pageBackgroundColor);
+        padding: 16px;
+        position: static;
+    }
+    .pageRightSideInfoCalendar,
+    .leaveApplicationForm {
+        padding: 10px 10px 20px;
+    }
+    .leaveApplicationForm {
+        box-shadow: none;
+    }
+    .actualDateBox {
+        width: 100%;
+        margin-bottom: 16px;
+        div {
+            padding: 16px 9px;
+        }
+    }
+    .pageLeftSideInfo .swipeMissSection {
+        width: 100%;
+    }
+    ion-calendar {
+        padding: 10px 0px;
+    }
+    .pageLeftSideMainForm {
+        order: 1;
+        padding: 0px;
+    }
+    .pageLeftSideMainForm.leaveForm {
+        order: 3;
+        padding: 16px;
+    }
+    .leaveApplicationForm .buttonSection {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        text-align: inherit;
+        display: flex;
+        .button {
+            margin: 0px;
+            padding: 0px;
+        }
+        .preview,
+        .clear {
+            width: 49% !important;
+        }
+    }
+    .actualDateBoxNew {
+        display: inline-block;
+        padding-top: 0;
+        div:nth-child(1) {
+            display: block;
+            width: 100%;
+            & h5 {
+                margin-bottom: 5px;
+            }
+        }
+        div:nth-child(2),
+        div:nth-child(4) {
+            width: 26%;
+            display: inline-block;
+            & h5 {
+                margin-bottom: 5px;
+            }
+            & h3 {
+                font-size: var(--subHeadline);
+            }
+        }
+        div:nth-child(3) {
+            width: 45%;
+            display: inline-block;
+            & h5 {
+                margin-bottom: 5px;
+            }
+            & h3 {
+                font-size: var(--subHeadline);
+            }
+        }
+    }
+    .pageHeading:after {
+        content: "";
+        position: absolute;
+        bottom: 7px;
+        left: 18px;
+        border-bottom: 2px solid var(--outofOffice);
+        width: 11%;
+    }
+}
+
+.managerComment {
+    margin-bottom: 40px;
+    ion-list {
+        margin-bottom: 0px;
+    }
+}
+

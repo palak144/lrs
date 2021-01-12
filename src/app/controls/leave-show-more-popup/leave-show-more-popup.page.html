@@ -1,0 +1,11 @@
+<ion-content>
+  <div *ngIf="_global.checkIfDataIsValid(_selectedLeaveObject)">
+    <ion-list class="moreOptionList">
+      <ion-item *ngIf="_selectedLeaveObject.canBeEditedByUser == true" (click)="edit()">{{firstButtonTitle}}</ion-item>
+      <ion-item *ngIf="_selectedLeaveObject.canBeCancelledByUser == true" (click)="delete()">{{secondButtonTitle}}
+      </ion-item>
+      <ion-item *ngIf="_selectedLeaveObject.canBeRejected == true" (click)="edit()">{{firstButtonTitle}}</ion-item>
+      <ion-item *ngIf="_selectedLeaveObject.canBeRejected == true" (click)="delete()">{{secondButtonTitle}}</ion-item>
+    </ion-list>
+  </div>
+</ion-content>
